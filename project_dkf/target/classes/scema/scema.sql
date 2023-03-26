@@ -40,3 +40,64 @@ CREATE TABLE Category(
     CONSTRAINT PRIMARY KEY (CategoryID)
 );
 
+CREATE TABLE Attendance(
+    EmployeeID VARCHAR(6) NOT NULL,
+    OtTime DOUBLE(2,2),
+    TimeOut TIME,
+    TimeIn TIME,
+    TtlWorkHours DOUBLE(2,2),
+    AP VARCHAR(2),
+    Date DATE,
+    CONSTRAINT FOREIGN KEY(EmployeeID) REFERENCES Employee(EmployeeID)
+);
+
+CREATE TABLE Fund(
+    EmployeeID VARCHAR(6) NOT NULL,
+    Etf DOUBLE(10,2),
+    Epf DOUBLE(10,2),
+    Month INT(2),
+    Year INT(4),
+    CONSTRAINT FOREIGN KEY(EmployeeID) REFERENCES Employee(EmployeeID)
+);
+
+CREATE TABLE Salary(
+    SalaryID VARCHAR(6)NOT NULL ,
+    EmployeeID VARCHAR(6) NOT NULL,
+    Transport DOUBLE(10,2),
+    Attendance DOUBLE(10,2),
+    Ot DOUBLE(10,2),
+    Skill DOUBLE(10,2),
+    Rent DOUBLE(10,2),
+    CONSTRAINT PRIMARY KEY (SalaryID),
+    CONSTRAINT FOREIGN KEY(EmployeeID) REFERENCES Employee(EmployeeID)
+);
+
+CREATE TABLE Orders(
+    OrderID VARCHAR(6)NOT NULL ,
+    UserID VARCHAR(6) NOT NULL,
+    BuyerID VARCHAR(6)NOT NULL ,
+    TShirtColor VARCHAR(10),
+    TShirtCC VARCHAR(10),
+    PayTerm TEXT,
+    OrderDate DATE,
+    CONSTRAINT PRIMARY KEY (OrderID),
+    CONSTRAINT FOREIGN KEY (UserID)REFERENCES User(UserID),
+    CONSTRAINT FOREIGN KEY (BuyerID)REFERENCES Buyer(BuyerID)
+);
+
+CREATE TABLE Buyer(
+    BuyerID VARCHAR(6)NOT NULL ,
+    BuyerName TEXT,
+    BuyerCN VARCHAR(12),
+    BuyerAddress TEXT,
+    CONSTRAINT PRIMARY KEY (BuyerID)
+);
+
+CREATE TABLE TrimCard(
+    TrimId VARCHAR(6) NOT NULL ,
+    OrderID VARCHAR(6)NOT NULL ,
+    AssDetails TEXT,
+    CONSTRAINT PRIMARY KEY (TrimId),
+    CONSTRAINT FOREIGN KEY (OrderID)REFERENCES Orders(OrderID)
+);
+

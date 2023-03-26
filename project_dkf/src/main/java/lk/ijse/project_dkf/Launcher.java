@@ -13,6 +13,7 @@ public class Launcher extends Application {
         Parent parent= FXMLLoader.load(getClass().getResource("/view/logIn.fxml"));
         stage.setScene(new Scene(parent));
         stage.setTitle("Log In");
+        stage.setResizable(false);
         stage.centerOnScreen();
 
         stage.show();

@@ -63,7 +63,7 @@ CREATE TABLE Fund(
 CREATE TABLE Salary(
     SalaryID VARCHAR(6)NOT NULL ,
     EmployeeID VARCHAR(6) NOT NULL,
-    Tranceport DOUBLE(10,2),
+    Transport DOUBLE(10,2),
     Attendance DOUBLE(10,2),
     Ot DOUBLE(10,2),
     Skill DOUBLE(10,2),
@@ -71,3 +71,46 @@ CREATE TABLE Salary(
     CONSTRAINT PRIMARY KEY (SalaryID),
     CONSTRAINT FOREIGN KEY(EmployeeID) REFERENCES Employee(EmployeeID)
 );
+
+CREATE TABLE Orders(
+    OrderID VARCHAR(6)NOT NULL ,
+    UserID VARCHAR(6) NOT NULL,
+    BuyerID VARCHAR(6)NOT NULL ,
+    TShirtColor VARCHAR(10),
+    TShirtCC VARCHAR(10),
+    PayTerm TEXT,
+    OrderDate DATE,
+    CONSTRAINT PRIMARY KEY (OrderID),
+    CONSTRAINT FOREIGN KEY (UserID)REFERENCES User(UserID),
+    CONSTRAINT FOREIGN KEY (BuyerID)REFERENCES Buyer(BuyerID)
+);
+
+CREATE TABLE Buyer(
+    BuyerID VARCHAR(6)NOT NULL ,
+    BuyerName TEXT,
+    BuyerCN VARCHAR(12),
+    BuyerAddress TEXT,
+    CONSTRAINT PRIMARY KEY (BuyerID)
+);
+
+CREATE TABLE TrimCard(
+    TrimId VARCHAR(6) NOT NULL ,
+    OrderID VARCHAR(6)NOT NULL ,
+    AssDetails TEXT,
+    CONSTRAINT PRIMARY KEY (TrimId),
+    CONSTRAINT FOREIGN KEY (OrderID)REFERENCES Orders(OrderID)
+);
+
+CREATE TABLE OrderRatio(
+    RatioId VARCHAR(6) NOT NULL ,
+    OrderID VARCHAR(6)NOT NULL ,
+    Colour VARCHAR(10),
+    SQty INT (20),
+    MQty INT(20),
+    LQty INT(20),
+    XLQty INT(20),
+    XXLQty INT(20),
+    CONSTRAINT PRIMARY KEY (RatioId),
+    CONSTRAINT FOREIGN KEY (OrderID)REFERENCES Orders(OrderID)
+);
+
