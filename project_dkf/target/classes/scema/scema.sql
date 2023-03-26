@@ -40,34 +40,3 @@ CREATE TABLE Category(
     CONSTRAINT PRIMARY KEY (CategoryID)
 );
 
-CREATE TABLE Attendance(
-    EmployeeID VARCHAR(6) NOT NULL,
-    OtTime DOUBLE(2,2),
-    TimeOut TIME,
-    TimeIn TIME,
-    TtlWorkHours DOUBLE(2,2),
-    AP VARCHAR(2),
-    Date DATE,
-    CONSTRAINT FOREIGN KEY(EmployeeID) REFERENCES Employee(EmployeeID)
-);
-
-CREATE TABLE Fund(
-    EmployeeID VARCHAR(6) NOT NULL,
-    Etf DOUBLE(10,2),
-    Epf DOUBLE(10,2),
-    Month INT(2),
-    Year INT(4),
-    CONSTRAINT FOREIGN KEY(EmployeeID) REFERENCES Employee(EmployeeID)
-);
-
-CREATE TABLE Salary(
-    SalaryID VARCHAR(6)NOT NULL ,
-    EmployeeID VARCHAR(6) NOT NULL,
-    Tranceport DOUBLE(10,2),
-    Attendance DOUBLE(10,2),
-    Ot DOUBLE(10,2),
-    Skill DOUBLE(10,2),
-    Rent DOUBLE(10,2),
-    CONSTRAINT PRIMARY KEY (SalaryID),
-    CONSTRAINT FOREIGN KEY(EmployeeID) REFERENCES Employee(EmployeeID)
-);
