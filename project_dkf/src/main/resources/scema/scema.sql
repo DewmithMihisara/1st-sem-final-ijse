@@ -20,7 +20,7 @@ CREATE TABLE LogHistory(
 
 CREATE TABLE Employee(
     EmployeeID VARCHAR(6) NOT NULL,
-    UserID VARCHAR(6) NOT NULL,
+    UserID VARCHAR(6),
     CategoryID VARCHAR(6) NOT NULL,
     EmpFirstName VARCHAR(15),
     EmpLastName VARCHAR(15),
@@ -64,6 +64,7 @@ CREATE TABLE Salary(
     SalaryID VARCHAR(6)NOT NULL ,
     EmployeeID VARCHAR(6) NOT NULL,
     Transport DOUBLE(10,2),
+    Date DATE,
     Attendance DOUBLE(10,2),
     Ot DOUBLE(10,2),
     Skill DOUBLE(10,2),
