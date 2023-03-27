@@ -1,0 +1,25 @@
+.textBox{
+    -fx-background-color: tranceparent;
+}
+
+.btn{
+    -fx-background-radius: 50,50,50,50;
+    -fx-background-color: linear-gradient(to right, #E2E1FF, #7F7BEA);
+    -fx-transition:5.0s ;
+}
+.btn:hover{
+    -fx-background-color: linear-gradient(to left, #E2E1FF, #7F7BEA);
+}
+.btn:pressed{
+    -fx-background-color: linear-gradient(to left, #7F7BEA, #7F7BEA);
+}
+.btn2{
+    -fx-background-color: tranceparent;
+    -fx-text-fill: #ADB5BD;
+}
+.btn2:hover{
+    -fx-text-fill: linear-gradient(to left, #E2E1FF, #7F7BEA);
+}
+.btn2:pressed{
+    -fx-text-fill: #7F7BEA;
+}
