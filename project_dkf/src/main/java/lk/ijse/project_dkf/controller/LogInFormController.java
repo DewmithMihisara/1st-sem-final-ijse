@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LogIn {
+public class LogInFormController {
     @FXML
     private Button frgtPwBtn;
 
@@ -34,11 +34,9 @@ public class LogIn {
     @FXML
     void signUpOnActon(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("/view/newAcForm.fxml"));
-
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("Create new Account");
         stage.setScene(new Scene(parent));
         stage.centerOnScreen();
     }
-
 }
