@@ -14,26 +14,26 @@
             <Image url="@../img/LoginBackGround.png" />
          </image>
       </ImageView>
-      <TextField layoutX="837.0" layoutY="332.0" prefHeight="35.0" prefWidth="314.0" promptText="User Name" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="usrTxt" layoutX="837.0" layoutY="332.0" prefHeight="35.0" prefWidth="314.0" promptText="User Name" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField layoutX="837.0" layoutY="427.0" prefHeight="35.0" prefWidth="314.0" promptText="Password" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="pwTxt" layoutX="837.0" layoutY="427.0" prefHeight="35.0" prefWidth="314.0" promptText="Password" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Button layoutX="899.0" layoutY="549.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Sign In" textFill="WHITE">
+      <Button fx:id="sgnBtn" layoutX="899.0" layoutY="549.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Sign In" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="899.0" layoutY="651.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Sign Up" textFill="WHITE">
+      <Button fx:id="sgnUpBtn" layoutX="899.0" layoutY="651.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Sign Up" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="1043.0" layoutY="487.0" mnemonicParsing="false" styleClass="btn2" stylesheets="@../style/loginStyle.css" text="Forget Password?" />
+      <Button fx:id="frgtPwBtn" layoutX="1043.0" layoutY="487.0" mnemonicParsing="false" styleClass="btn2" stylesheets="@../style/loginStyle.css" text="Forget Password?" />
    </children>
 </AnchorPane>
