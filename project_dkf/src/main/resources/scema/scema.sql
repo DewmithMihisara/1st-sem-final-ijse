@@ -18,6 +18,13 @@ CREATE TABLE LogHistory(
     CONSTRAINT FOREIGN KEY(UserID) REFERENCES User(UserID)
 );
 
+CREATE TABLE Category(
+                         CategoryID VARCHAR(6) NOT NULL,
+                         Des TEXT,
+                         BasicSalary DOUBLE(11,2),
+                         CONSTRAINT PRIMARY KEY (CategoryID)
+);
+
 CREATE TABLE Employee(
     EmployeeID VARCHAR(6) NOT NULL,
     UserID VARCHAR(6),
@@ -31,13 +38,6 @@ CREATE TABLE Employee(
     CONSTRAINT PRIMARY KEY (EmployeeID),
     CONSTRAINT FOREIGN KEY(UserID) REFERENCES User(UserID),
     CONSTRAINT FOREIGN KEY(CategoryID) REFERENCES Category(CategoryID)
-);
-
-CREATE TABLE Category(
-    CategoryID VARCHAR(6) NOT NULL,
-    Des TEXT,
-    BasicSalary DOUBLE(11,2),
-    CONSTRAINT PRIMARY KEY (CategoryID)
 );
 
 CREATE TABLE Attendance(
@@ -73,6 +73,14 @@ CREATE TABLE Salary(
     CONSTRAINT FOREIGN KEY(EmployeeID) REFERENCES Employee(EmployeeID)
 );
 
+CREATE TABLE Buyer(
+                      BuyerID VARCHAR(6)NOT NULL ,
+                      BuyerName TEXT,
+                      BuyerCN VARCHAR(12),
+                      BuyerAddress TEXT,
+                      CONSTRAINT PRIMARY KEY (BuyerID)
+);
+
 CREATE TABLE Orders(
     OrderID VARCHAR(6)NOT NULL ,
     UserID VARCHAR(6) NOT NULL,
@@ -84,14 +92,6 @@ CREATE TABLE Orders(
     CONSTRAINT PRIMARY KEY (OrderID),
     CONSTRAINT FOREIGN KEY (UserID)REFERENCES User(UserID),
     CONSTRAINT FOREIGN KEY (BuyerID)REFERENCES Buyer(BuyerID)
-);
-
-CREATE TABLE Buyer(
-    BuyerID VARCHAR(6)NOT NULL ,
-    BuyerName TEXT,
-    BuyerCN VARCHAR(12),
-    BuyerAddress TEXT,
-    CONSTRAINT PRIMARY KEY (BuyerID)
 );
 
 CREATE TABLE TrimCard(
@@ -196,6 +196,13 @@ CREATE TABLE OutPack(
     CONSTRAINT PRIMARY KEY (PackID,OutputID)
 );
 
+CREATE TABLE Shipment(
+                         ShipID VARCHAR(6)NOT NULL,
+                         Date DATE,
+                         ShipDate DATE,
+                         CONSTRAINT PRIMARY KEY (ShipID)
+);
+
 CREATE TABLE Stock(
     StockID VARCHAR(6)NOT NULL ,
     ShipID VARCHAR(6)NOT NULL ,
@@ -213,13 +220,6 @@ CREATE TABLE PackStock(
     CONSTRAINT FOREIGN KEY (PackID)REFERENCES Packing(PackID)
         ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT PRIMARY KEY (PackID,StockID)
-);
-
-CREATE TABLE Shipment(
-    ShipID VARCHAR(6)NOT NULL,
-    Date DATE,
-    ShipDate DATE,
-    CONSTRAINT PRIMARY KEY (ShipID)
 );
 
 CREATE TABLE Payment(
