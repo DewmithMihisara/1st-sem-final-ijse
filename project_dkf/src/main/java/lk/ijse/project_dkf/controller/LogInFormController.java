@@ -38,22 +38,26 @@ public class LogInFormController {
 
     @FXML
     void sgnMainBtnOnAction(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("/view/dashboardForm.fxml"));
+        Parent anchorPane = FXMLLoader
+                .load(getClass()
+                        .getResource("/view/dashboardForm.fxml"));
 
+        Scene scene = new Scene(anchorPane);
         Stage stage = (Stage) root.getScene().getWindow();
-        stage.setTitle("DashBoard");
-        stage.setScene(new Scene(parent));
-        stage.centerOnScreen();
+        stage.setTitle("HomePage");
+        stage.setScene(scene);
     }
 
     @FXML
     void signUpBtnOnAction(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("/view/newAcForm.fxml"));
+        Parent anchorPane = FXMLLoader
+                .load(getClass()
+                        .getResource("/view/newAcForm.fxml"));
 
+        Scene scene = new Scene(anchorPane);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("SignUp");
-        stage.setScene(new Scene(parent));
-        stage.centerOnScreen();
+        stage.setScene(scene);
 
     }
 

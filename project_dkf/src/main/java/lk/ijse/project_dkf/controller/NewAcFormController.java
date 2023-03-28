@@ -35,22 +35,25 @@ public class NewAcFormController {
 
     @FXML
     void signInBtnOnActon(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("/view/logInForm.fxml"));
+        Parent anchorPane = FXMLLoader
+                .load(getClass()
+                        .getResource("/view/logInForm.fxml"));
 
+        Scene scene = new Scene(anchorPane);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("SignIn");
-        stage.setScene(new Scene(parent));
-        stage.centerOnScreen();
+        stage.setScene(scene);
     }
 
     @FXML
     void signUpMainBtnOnActon(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("/view/logInForm.fxml"));
+        Parent anchorPane = FXMLLoader
+                .load(getClass()
+                        .getResource("/view/logInForm.fxml"));
 
+        Scene scene = new Scene(anchorPane);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("SignIn");
-        stage.setScene(new Scene(parent));
-        stage.centerOnScreen();
-
+        stage.setScene(scene);
     }
 }
