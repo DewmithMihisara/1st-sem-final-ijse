@@ -1,25 +1,38 @@
 .textBox{
     -fx-background-color: tranceparent;
+    -fx-text-fill: #FFFF;
 }
 
 .btn{
-    -fx-background-radius: 50,50,50,50;
-    -fx-background-color: linear-gradient(to right, #E2E1FF, #7F7BEA);
-    -fx-transition:5.0s ;
+    -fx-background-radius: 20,20,20,20;
+    -fx-background-color: #FFFF;
+    -fx-text-fill: #023E8A;
 }
 .btn:hover{
-    -fx-background-color: linear-gradient(to left, #E2E1FF, #7F7BEA);
+    -fx-background-color: #0096C7;
+    -fx-text-fill:  #FFFF;
 }
 .btn:pressed{
-    -fx-background-color: linear-gradient(to left, #7F7BEA, #7F7BEA);
+    -fx-background-color: #0096C7;
+    -fx-text-fill:  #FFFF;
 }
 .btn2{
     -fx-background-color: tranceparent;
-    -fx-text-fill: #ADB5BD;
+    -fx-text-fill: #8FB3CE;
 }
 .btn2:hover{
-    -fx-text-fill: linear-gradient(to left, #E2E1FF, #7F7BEA);
+    -fx-text-fill:  #FFFF;
 }
 .btn2:pressed{
-    -fx-text-fill: #7F7BEA;
+    -fx-text-fill:  #FFFF;
+}
+.signBtn{
+    -fx-background-color: tranceparent;
+    -fx-text-fill: #8395BB;
+}
+.signBtn:hover{
+    -fx-text-fill: #FFFF;
+}
+.signBtn:pressed{
+    -fx-text-fill: #FFFF;
 }
