@@ -12,7 +12,7 @@ public class Launcher extends Application {
     public void start(Stage stage) throws Exception {
         Parent parent= FXMLLoader.load(getClass().getResource("/view/logInForm.fxml"));
         stage.setScene(new Scene(parent));
-        stage.setTitle("Log In");
+        stage.setTitle("SignIn");
         stage.setResizable(false);
         stage.centerOnScreen();
 
