@@ -9,6 +9,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.project_dkf.dto.User;
+import lk.ijse.project_dkf.model.LogInModel;
+import lk.ijse.project_dkf.model.NewACModel;
+import lk.ijse.project_dkf.util.Navigation;
+import lk.ijse.project_dkf.util.Rout;
 
 import java.io.IOException;
 
@@ -35,25 +40,13 @@ public class NewAcFormController {
 
     @FXML
     void signInBtnOnActon(ActionEvent event) throws IOException {
-        Parent anchorPane = FXMLLoader
-                .load(getClass()
-                        .getResource("/view/logInForm.fxml"));
-
-        Scene scene = new Scene(anchorPane);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setTitle("SignIn");
-        stage.setScene(scene);
+        Navigation.navigation(Rout.LOGIN,root);
     }
 
     @FXML
     void signUpMainBtnOnActon(ActionEvent event) throws IOException {
-        Parent anchorPane = FXMLLoader
-                .load(getClass()
-                        .getResource("/view/logInForm.fxml"));
-
-        Scene scene = new Scene(anchorPane);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setTitle("SignIn");
-        stage.setScene(scene);
+        User user=new User(usrTxt.getText(),pwTxt.getText(),eMailTxt.getText(),PhoneTxt.getText());
+        NewACModel.isDuplicate(user);
+        Navigation.navigation(Rout.LOGIN,root);
     }
 }

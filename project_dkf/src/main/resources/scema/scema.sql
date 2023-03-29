@@ -3,19 +3,19 @@ CREATE DATABASE dkf;
 USE dkf;
 
 CREATE TABLE User(
-    UserID VARCHAR(6) NOT NULL,
     UserName VARCHAR(20) NOT NULL,
     Password VARCHAR(10) NOT NULL,
     UserEmail VARCHAR(50) NOT NULL ,
     UserContact VARCHAR(12) NOT NULL,
-    CONSTRAINT PRIMARY KEY (UserID)
+    UserAddress TEXT,
+    CONSTRAINT PRIMARY KEY (UserName)
 );
 
 CREATE TABLE LogHistory(
-    UserID VARCHAR(6) NOT NULL,
+    UserName VARCHAR(20) NOT NULL,
     LogIn DATETIME,
     logOut DATETIME,
-    CONSTRAINT FOREIGN KEY(UserID) REFERENCES User(UserID)
+    CONSTRAINT FOREIGN KEY(UserName) REFERENCES User(UserName)
 );
 
 CREATE TABLE Category(
@@ -27,7 +27,7 @@ CREATE TABLE Category(
 
 CREATE TABLE Employee(
     EmployeeID VARCHAR(6) NOT NULL,
-    UserID VARCHAR(6),
+    UserName VARCHAR(20),
     CategoryID VARCHAR(6) NOT NULL,
     EmpFirstName VARCHAR(15),
     EmpLastName VARCHAR(15),
@@ -36,7 +36,7 @@ CREATE TABLE Employee(
     EmpContact VARCHAR(12),
     EmpAddress TEXT,
     CONSTRAINT PRIMARY KEY (EmployeeID),
-    CONSTRAINT FOREIGN KEY(UserID) REFERENCES User(UserID),
+    CONSTRAINT FOREIGN KEY(UserName) REFERENCES User(UserName),
     CONSTRAINT FOREIGN KEY(CategoryID) REFERENCES Category(CategoryID)
 );
 
@@ -83,14 +83,14 @@ CREATE TABLE Buyer(
 
 CREATE TABLE Orders(
     OrderID VARCHAR(6)NOT NULL ,
-    UserID VARCHAR(6) NOT NULL,
+    UserName VARCHAR(20) NOT NULL,
     BuyerID VARCHAR(6)NOT NULL ,
     TShirtColor VARCHAR(10),
     TShirtCC VARCHAR(10),
     PayTerm TEXT,
     OrderDate DATE,
     CONSTRAINT PRIMARY KEY (OrderID),
-    CONSTRAINT FOREIGN KEY (UserID)REFERENCES User(UserID),
+    CONSTRAINT FOREIGN KEY (UserName)REFERENCES User(UserName),
     CONSTRAINT FOREIGN KEY (BuyerID)REFERENCES Buyer(BuyerID)
 );
 
@@ -269,3 +269,6 @@ CREATE TABLE StockInvoice(
         ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT PRIMARY KEY (StockID,InvoiceID)
 );
+
+
+INSERT INTO User (UserName,Password,UserEmail,UserContact) VALUES ('DEW','123','DEW@gmail.com','1234567890');
