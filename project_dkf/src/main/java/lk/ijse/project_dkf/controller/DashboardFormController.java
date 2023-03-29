@@ -9,11 +9,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.project_dkf.util.Navigation;
+import lk.ijse.project_dkf.util.Rout;
 
 import java.io.IOException;
 
 public class DashboardFormController {
-
+    @FXML
+    private Button bkBtn;
+    @FXML
+    private AnchorPane midleStage;
     @FXML
     private Button logOutBtn;
 
@@ -25,19 +30,14 @@ public class DashboardFormController {
 
     @FXML
     void logOutBtnOnAction(ActionEvent event) throws IOException {
-        Parent anchorPane = FXMLLoader
-                .load(getClass()
-                        .getResource("/view/logInForm.fxml"));
-
-        Scene scene = new Scene(anchorPane);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setTitle("SignIn");
-        stage.setScene(scene);
+        Navigation.navigation(Rout.LOGIN,root);
     }
-
     @FXML
-    void userBtnOnAction(ActionEvent event) {
-
+    void userBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.USER_SETTINGS,midleStage);
     }
-
+    @FXML
+    void bkBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.DASHBOARD,root);
+    }
 }

@@ -30,5 +30,16 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button fx:id="bkBtn" layoutX="83.0" layoutY="99.0" mnemonicParsing="false" onAction="#bkBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo/backBtnLogo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <AnchorPane fx:id="midleStage" layoutX="72.0" layoutY="156.0" prefHeight="672.0" prefWidth="1295.0" style="-fx-background-color: tranceperant;" />
+      <Button fx:id="logOutBtn2" layoutX="1374.0" layoutY="857.0" mnemonicParsing="false" onAction="#logOutBtnOnAction" styleClass="iconBtn" stylesheets="@../style/dashboardStyle.css" />
    </children>
 </AnchorPane>
