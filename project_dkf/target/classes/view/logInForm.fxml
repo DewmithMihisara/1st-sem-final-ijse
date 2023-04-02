@@ -16,7 +16,7 @@
             <Image url="@../img/LogInForm.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usrTxt" layoutX="545.0" layoutY="393.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="usrTxt" layoutX="545.0" layoutY="393.0" prefHeight="40.0" prefWidth="355.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>

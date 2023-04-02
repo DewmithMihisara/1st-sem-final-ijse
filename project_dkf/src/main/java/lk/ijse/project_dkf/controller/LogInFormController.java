@@ -31,6 +31,7 @@ public class LogInFormController {
     private Button signUpBtn;
     @FXML
     private TextField usrTxt;
+    public static User user;
     @FXML
     void frgtPwBtnOnActon(ActionEvent event) {
     }
@@ -40,12 +41,21 @@ public class LogInFormController {
         String password = pwTxt.getText();
 
         try {
-            User user= LogInModel.isCorrect(usrName);
+            user= LogInModel.isCorrect(usrName);
             if (user.getUserName().equals(usrName) && user.getPassword().equals(password)){
                 Navigation.navigation(Rout.DASHBOARD,root);
+            }else {
+                new Alert(Alert.AlertType.ERROR,
+                        "Password is wrong!")
+                        .show();
+                pwTxt.clear();
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR,
+                    "User name is wrong!")
+                    .show();
+            usrTxt.clear();
+            pwTxt.clear();
         }
 
     }

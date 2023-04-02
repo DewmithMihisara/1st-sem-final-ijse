@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -16,6 +17,7 @@ import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class NewAcFormController {
     @FXML
@@ -46,7 +48,20 @@ public class NewAcFormController {
     @FXML
     void signUpMainBtnOnActon(ActionEvent event) throws IOException {
         User user=new User(usrTxt.getText(),pwTxt.getText(),eMailTxt.getText(),PhoneTxt.getText());
-        NewACModel.isDuplicate(user);
-        Navigation.navigation(Rout.LOGIN,root);
+        try {
+            boolean affectedRows =NewACModel.isDuplicate(user);
+            if (affectedRows ) {
+                new Alert(Alert.AlertType.CONFIRMATION,
+                        "User Add!")
+                        .show();
+                Navigation.navigation(Rout.LOGIN,root);
+            }
+        } catch (SQLException e) {
+            usrTxt.clear();
+            new Alert(Alert.AlertType.ERROR,
+                    "User name alredy added!")
+                    .show();
+        }
+
     }
 }

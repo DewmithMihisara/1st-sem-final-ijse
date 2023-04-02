@@ -19,7 +19,7 @@ public class LogInModel {
             );
 
         }
-        return null;
+        return new User();
     }
 
 }
