@@ -6,11 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
 public class Launcher extends Application {
-
     @Override
     public void start(Stage stage) throws Exception {
-        Parent parent= FXMLLoader.load(getClass().getResource("/view/logInForm.fxml"));
+        Parent parent= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/logInForm.fxml")));
         stage.setScene(new Scene(parent));
         stage.setTitle("DKF");
         stage.setResizable(false);
