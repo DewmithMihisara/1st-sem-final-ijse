@@ -47,21 +47,26 @@ public class NewAcFormController {
 
     @FXML
     void signUpMainBtnOnActon(ActionEvent event) throws IOException {
-        User user=new User(usrTxt.getText(),pwTxt.getText(),eMailTxt.getText(),PhoneTxt.getText());
-        try {
-            boolean affectedRows =NewACModel.isDuplicate(user);
-            if (affectedRows ) {
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "User Add!")
-                        .show();
-                Navigation.navigation(Rout.LOGIN,root);
-            }
-        } catch (SQLException e) {
-            usrTxt.clear();
+        if (usrTxt.getText().equals("") || eMailTxt.getText().equals("") || pwTxt.getText().equals("") || PhoneTxt.getText().equals("")){
             new Alert(Alert.AlertType.ERROR,
-                    "User name alredy added!")
+                    "Please Fill all Details!")
                     .show();
+        }else{
+            User user=new User(usrTxt.getText(),pwTxt.getText(),eMailTxt.getText(),PhoneTxt.getText());
+            try {
+                boolean affectedRows =NewACModel.isDuplicate(user);
+                if (affectedRows ) {
+                    new Alert(Alert.AlertType.CONFIRMATION,
+                            "User Add!")
+                            .show();
+                    Navigation.navigation(Rout.LOGIN,root);
+                }
+            } catch (SQLException e) {
+                usrTxt.clear();
+                new Alert(Alert.AlertType.ERROR,
+                        "User name alredy added!")
+                        .show();
+            }
         }
-
     }
 }

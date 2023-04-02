@@ -28,6 +28,9 @@ public class Navigation {
             case USER_SETTINGS:
                 initUi("settingForm.fxml");
                 break;
+            case ORDER:
+                initUi("ordrForm.fxml");
+                break;
         }
     }
 

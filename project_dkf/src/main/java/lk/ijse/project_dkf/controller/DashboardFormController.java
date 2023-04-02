@@ -29,6 +29,8 @@ public class DashboardFormController {
     private Button userBtn;
 
     @FXML
+    private Button orderBtn;
+    @FXML
     void logOutBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.LOGIN,root);
     }
@@ -39,5 +41,9 @@ public class DashboardFormController {
     @FXML
     void bkBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.DASHBOARD,root);
+    }
+    @FXML
+    void orderBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.ORDER,midleStage);
     }
 }

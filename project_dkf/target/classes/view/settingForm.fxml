@@ -8,57 +8,62 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="672.0" prefWidth="1295.0" style="-fx-background-color: tranceparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.SettingFormController">
+<AnchorPane prefHeight="672.0" prefWidth="1295.0" style="-fx-background-color: Tranceparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.SettingFormController">
    <children>
       <ImageView fitHeight="672.0" fitWidth="1295.0" layoutX="324.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../img/UsrProfile.png" />
+            <Image url="@../img/UsrProfileUpdate.png" />
          </image>
       </ImageView>
-      <Button fx:id="updateBtn" layoutX="1026.0" layoutY="560.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Update" textFill="WHITE">
+      <Button fx:id="updatePwBtn" layoutX="1026.0" layoutY="560.0" mnemonicParsing="false" onAction="#updatePwBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Update Password" textFill="WHITE">
          <font>
-            <Font size="24.0" />
+            <Font size="20.0" />
          </font>
       </Button>
-      <TextField fx:id="editProfileeMailTxt" layoutX="70.0" layoutY="248.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="newUsrNameTxt" layoutX="198.0" layoutY="158.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="conformeMailTxt" layoutX="70.0" layoutY="340.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="eMailTxt" layoutX="198.0" layoutY="250.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="editprofileContactTxt" layoutX="70.0" layoutY="433.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="editprofileContactTxt" layoutX="197.0" layoutY="343.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="addresseditProfileTxt" layoutX="70.0" layoutY="526.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="addresseditProfileTxt" layoutX="198.0" layoutY="435.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="editProfileOldPwTxt" layoutX="847.0" layoutY="155.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="editProfileOldPwTxt" layoutX="835.0" layoutY="91.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="editProfileNewPwTxt" layoutX="847.0" layoutY="247.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="editProfileNewPwTxt" layoutX="835.0" layoutY="183.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="conformPwTxt" layoutX="847.0" layoutY="340.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="conformPwTxt" layoutX="836.0" layoutY="276.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Text fx:id="usrtxtField" fill="WHITE" layoutX="184.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="336.0122985839844">
+      <Text fx:id="usrtxtField" fill="WHITE" layoutX="308.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="255.37973022460938">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
+      <Button fx:id="updateProfileBtn" layoutX="353.0" layoutY="560.0" mnemonicParsing="false" onAction="#updateProfileBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Update Profile" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
