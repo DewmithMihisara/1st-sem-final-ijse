@@ -48,15 +48,12 @@ public class SettingFormController implements Initializable {
     void setValues(){
         usrtxtField.setText(LogInFormController.user.getUserName());
     }
-
     @FXML
     void updateProfileBtnOnAction(ActionEvent event) {
 
     }
-
     @FXML
     void updatePwBtnOnAction(ActionEvent event) {
 
     }
-
 }

@@ -1,20 +1,28 @@
 package lk.ijse.project_dkf.controller;
 
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 
 import java.io.IOException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
+import java.util.ResourceBundle;
 
-public class DashboardFormController {
+public class DashboardFormController implements Initializable {
     @FXML
     private Button bkBtn;
     @FXML
@@ -24,7 +32,8 @@ public class DashboardFormController {
 
     @FXML
     private AnchorPane root;
-
+    @FXML
+    private Text timeTxt;
     @FXML
     private Button userBtn;
 
@@ -45,5 +54,27 @@ public class DashboardFormController {
     @FXML
     void orderBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.ORDER,midleStage);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setTime();
+    }
+    private void setTime() {
+        Thread thread=new Thread(() -> {
+            SimpleDateFormat simpleDateFormat =new SimpleDateFormat("hh:mm:ss");
+            while (true){
+                try{
+                    Thread.sleep(1000);
+                }catch (Exception e){
+                    System.out.println(e);
+                }
+                final String timeNow = simpleDateFormat.format(new Date());
+                Platform.runLater(()->{
+                    timeTxt.setText(timeNow);
+                });
+            }
+        });
+        thread.start();
     }
 }

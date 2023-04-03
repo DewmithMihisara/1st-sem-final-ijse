@@ -10,7 +10,6 @@ public class CrudUtil {
         PreparedStatement pstm = DBConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
-
         for (int i = 0; i < args.length; i++) {
             pstm.setObject((i+1), args[i]);
         }
