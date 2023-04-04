@@ -18,7 +18,11 @@ public class Navigation {
             case NEW_AC -> initUi("newAcForm.fxml");
             case DASHBOARD -> initUi("dashboardForm.fxml");
             case USER_SETTINGS -> initUi("settingForm.fxml");
-            case ORDER -> initUi("ordrForm.fxml");
+            case ORDER -> initUi("orderForm.fxml");
+            case NEW_ORDER -> initUi("newOrderForm.fxml");
+            case BUYER -> initUi("buyerForm.fxml");
+            case OUTPUT -> initUi("outputForm.fxml");
+            case PAKING -> initUi("packingForm.fxml");
         }
     }
     private static void initUi(String location) throws IOException {

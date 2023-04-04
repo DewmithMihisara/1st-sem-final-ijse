@@ -37,33 +37,33 @@ public class LogInFormController {
     }
     @FXML
     void sgnMainBtnOnAction(ActionEvent event) throws IOException {
-//        String usrName =usrTxt.getText();
-//        String password = pwTxt.getText();
-//
-//        if (usrName.equals("") ||password.equals("")){
-//            new Alert(Alert.AlertType.ERROR,
-//                    "Please fill all Details!")
-//                    .show();
-//        }else {
-//            try {
-//                user= LogInModel.isCorrect(usrName);
-//                if (user.getUserName().equals(usrName) && user.getPassword().equals(password)){
-//                    Navigation.navigation(Rout.DASHBOARD,root);
-//                }else {
-//                    new Alert(Alert.AlertType.ERROR,
-//                            "Password is wrong!")
-//                            .show();
-//                    pwTxt.clear();
-//                }
-//            } catch (Exception e) {
-//                new Alert(Alert.AlertType.ERROR,
-//                        "User name is wrong!")
-//                        .show();
-//                usrTxt.clear();
-//                pwTxt.clear();
-//            }
-//        }
-        Navigation.navigation(Rout.DASHBOARD,root);
+        String usrName =usrTxt.getText();
+        String password = pwTxt.getText();
+
+        if (usrName.equals("") ||password.equals("")){
+            new Alert(Alert.AlertType.ERROR,
+                    "Please fill all Details!")
+                    .show();
+        }else {
+            try {
+                user= LogInModel.isCorrect(usrName);
+                if (user.getUserName().equals(usrName) && user.getPassword().equals(password)){
+                    Navigation.navigation(Rout.DASHBOARD,root);
+                }else {
+                    new Alert(Alert.AlertType.ERROR,
+                            "Password is wrong!")
+                            .show();
+                    pwTxt.clear();
+                }
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR,
+                        "User name is wrong!")
+                        .show();
+                usrTxt.clear();
+                pwTxt.clear();
+            }
+        }
+//        Navigation.navigation(Rout.DASHBOARD,root);
     }
     @FXML
     void signUpBtnOnAction(ActionEvent event) throws IOException {

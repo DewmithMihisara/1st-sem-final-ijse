@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 import java.util.ResourceBundle;
-
+@Getter
 public class DashboardFormController implements Initializable {
     @FXML
     private Button bkBtn;
@@ -54,6 +55,18 @@ public class DashboardFormController implements Initializable {
     @FXML
     void orderBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.ORDER,midleStage);
+    }
+    @FXML
+    void buyerBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.BUYER,midleStage);
+    }
+    @FXML
+    void outputBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.OUTPUT,midleStage);
+    }
+    @FXML
+    void packingBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.PAKING,midleStage);
     }
 
     @Override
