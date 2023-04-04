@@ -85,5 +85,14 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="772.0" layoutY="22.0" mnemonicParsing="false" onAction="#inputBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo/input.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

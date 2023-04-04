@@ -23,6 +23,9 @@ public class Navigation {
             case BUYER -> initUi("buyerForm.fxml");
             case OUTPUT -> initUi("outputForm.fxml");
             case PAKING -> initUi("packingForm.fxml");
+            case CUT_IN -> initUi("cutInputForm.fxml");
+            case MATERIAL_IN -> initUi("materialInputForm.fxml");
+            case RESEVED_IN -> initUi("resevedInForm.fxml");
         }
     }
     private static void initUi(String location) throws IOException {

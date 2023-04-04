@@ -68,6 +68,10 @@ public class DashboardFormController implements Initializable {
     void packingBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.PAKING,midleStage);
     }
+    @FXML
+    void inputBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.RESEVED_IN,midleStage);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
