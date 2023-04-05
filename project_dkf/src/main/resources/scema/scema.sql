@@ -74,7 +74,7 @@ CREATE TABLE Salary(
 );
 
 CREATE TABLE Buyer(
-                      BuyerID VARCHAR(6)NOT NULL ,
+                      BuyerID VARCHAR(6) NOT NULL ,
                       BuyerName TEXT,
                       BuyerCN VARCHAR(12),
                       BuyerAddress TEXT,
@@ -271,4 +271,4 @@ CREATE TABLE StockInvoice(
 );
 
 
-INSERT INTO User (UserName,Password,UserEmail,UserContact) VALUES ('DEW','123','DEW@gmail.com','1234567890');
+

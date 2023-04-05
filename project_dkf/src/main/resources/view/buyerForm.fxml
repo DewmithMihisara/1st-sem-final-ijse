@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="672.0" prefWidth="1295.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.BuyerFormController">
+<AnchorPane fx:id="midleStage" prefHeight="672.0" prefWidth="1295.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.BuyerFormController">
    <children>
       <ImageView fitHeight="672.0" fitWidth="1295.0" layoutX="183.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -42,12 +42,12 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TableView layoutX="566.0" layoutY="136.0" prefHeight="357.0" prefWidth="630.0">
+      <TableView fx:id="tblBuyer" layoutX="566.0" layoutY="136.0" prefHeight="357.0" prefWidth="630.0">
         <columns>
-          <TableColumn prefWidth="104.0" text="ID" />
-          <TableColumn minWidth="7.0" prefWidth="76.0" text="Name" />
-            <TableColumn minWidth="7.0" prefWidth="283.0" text="Address" />
-            <TableColumn minWidth="7.0" prefWidth="166.0" text="Contact" />
+          <TableColumn fx:id="colId" prefWidth="104.0" text="ID" />
+          <TableColumn fx:id="colName" minWidth="7.0" prefWidth="76.0" text="Name" />
+            <TableColumn fx:id="colAddress" minWidth="7.0" prefWidth="283.0" text="Address" />
+            <TableColumn fx:id="colContact" minWidth="7.0" prefWidth="166.0" text="Contact" />
         </columns>
       </TableView>
       <Button layoutX="566.0" layoutY="524.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Update" textFill="WHITE">
@@ -59,6 +59,20 @@
          <font>
             <Font size="24.0" />
          </font>
+      </Button>
+      <TextField fx:id="buyerIdTxt" layoutX="109.0" layoutY="123.0" onAction="#idSearchOnAction" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <Button layoutX="1196.0" layoutY="28.0" mnemonicParsing="false" onAction="#relodeBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo/resetLogo.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>
