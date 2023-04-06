@@ -74,44 +74,43 @@ CREATE TABLE Salary(
 );
 
 CREATE TABLE Buyer(
-                      BuyerID VARCHAR(6) NOT NULL ,
-                      BuyerName TEXT,
-                      BuyerCN VARCHAR(12),
-                      BuyerAddress TEXT,
-                      CONSTRAINT PRIMARY KEY (BuyerID)
+    BuyerID VARCHAR(6) NOT NULL ,
+    BuyerName TEXT,
+    BuyerCN VARCHAR(12),
+    BuyerAddress TEXT,
+    CONSTRAINT PRIMARY KEY (BuyerID)
 );
 
 CREATE TABLE Orders(
     OrderID VARCHAR(6)NOT NULL ,
-    UserName VARCHAR(20) NOT NULL,
     BuyerID VARCHAR(6)NOT NULL ,
-    TShirtColor VARCHAR(10),
-    TShirtCC VARCHAR(10),
+    Dedline DATE,
+    TtlQty int,
+    DailyOutQty int,
     PayTerm TEXT,
     OrderDate DATE,
     CONSTRAINT PRIMARY KEY (OrderID),
-    CONSTRAINT FOREIGN KEY (UserName)REFERENCES User(UserName),
     CONSTRAINT FOREIGN KEY (BuyerID)REFERENCES Buyer(BuyerID)
 );
 
 CREATE TABLE TrimCard(
-    TrimId VARCHAR(6) NOT NULL ,
     OrderID VARCHAR(6)NOT NULL ,
-    AssDetails TEXT,
-    CONSTRAINT PRIMARY KEY (TrimId),
+    type VARCHAR(20),
+    Colour VARCHAR(10),
+    ReqQty INT,
+    CONSTRAINT PRIMARY KEY (OrderID),
     CONSTRAINT FOREIGN KEY (OrderID)REFERENCES Orders(OrderID)
 );
 
 CREATE TABLE OrderRatio(
-    RatioId VARCHAR(6) NOT NULL ,
     OrderID VARCHAR(6)NOT NULL ,
+    Disc TEXT,
     Colour VARCHAR(10),
     SQty INT (20),
     MQty INT(20),
     LQty INT(20),
     XLQty INT(20),
     XXLQty INT(20),
-    CONSTRAINT PRIMARY KEY (RatioId),
     CONSTRAINT FOREIGN KEY (OrderID)REFERENCES Orders(OrderID)
 );
 
@@ -269,6 +268,9 @@ CREATE TABLE StockInvoice(
         ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT PRIMARY KEY (StockID,InvoiceID)
 );
+
+INSERT INTO User (UserName, Password, UserEmail, UserContact, UserAddress) VALUES ('a','a','a','a','a');
+INSERT INTO Buyer(BuyerID, BuyerName, BuyerCN, BuyerAddress) VALUES ('b01','brandix','1234567890','galle'),('b02','sell','2468498','matara');
 
 
 

@@ -63,7 +63,6 @@ public class LogInFormController {
                 pwTxt.clear();
             }
         }
-//        Navigation.navigation(Rout.DASHBOARD,root);
     }
     @FXML
     void signUpBtnOnAction(ActionEvent event) throws IOException {
