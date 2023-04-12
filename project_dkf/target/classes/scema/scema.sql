@@ -84,12 +84,12 @@ CREATE TABLE Buyer(
 CREATE TABLE Orders(
     OrderID VARCHAR(6)NOT NULL ,
     BuyerID VARCHAR(6)NOT NULL ,
-    Dedline DATE,
-    TtlQty int,
-    DailyOutQty int,
-    PayTerm TEXT,
-    OrderDate DATE,
-    CONSTRAINT PRIMARY KEY (OrderID),
+    Dedline DATE NOT NULL ,
+    TtlQty int NOT NULL ,
+    DailyOutQty int NOT NULL ,
+    PayTerm TEXT NOT NULL ,
+    OrderDate DATE NOT NULL ,
+    PRIMARY KEY (OrderID),
     CONSTRAINT FOREIGN KEY (BuyerID)REFERENCES Buyer(BuyerID)
 );
 
@@ -104,14 +104,14 @@ CREATE TABLE TrimCard(
 
 CREATE TABLE OrderRatio(
     OrderID VARCHAR(6)NOT NULL ,
-    Disc TEXT,
-    Colour VARCHAR(10),
-    SQty INT (20),
-    MQty INT(20),
-    LQty INT(20),
-    XLQty INT(20),
-    XXLQty INT(20),
-    CONSTRAINT FOREIGN KEY (OrderID)REFERENCES Orders(OrderID)
+    Disc TEXT NOT NULL ,
+    Colour VARCHAR(10) NOT NULL ,
+    SQty INT (20) NOT NULL ,
+    MQty INT(20) NOT NULL ,
+    LQty INT(20) NOT NULL ,
+    XLQty INT(20) NOT NULL ,
+    XXLQty INT(20) NOT NULL ,
+    FOREIGN KEY (OrderID)REFERENCES Orders(OrderID)
 );
 
 CREATE TABLE Input(

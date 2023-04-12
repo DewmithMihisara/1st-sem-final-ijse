@@ -14,25 +14,7 @@
             <Image url="@../img/DashboardForm.png" />
          </image>
       </ImageView>
-      <Button fx:id="logOutBtn" layoutX="1325.0" layoutY="20.0" mnemonicParsing="false" onAction="#logOutBtnOnAction" styleClass="iconBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.bottomAnchor="837.0" AnchorPane.rightAnchor="62.0">
-         <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/logo/logOutLogo.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="userBtn" layoutX="1238.0" layoutY="22.0" mnemonicParsing="false" onAction="#userBtnOnAction" styleClass="iconBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.bottomAnchor="835.0">
-         <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/logo/settingIcon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="bkBtn" layoutX="1097.0" layoutY="19.0" mnemonicParsing="false" onAction="#bkBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+      <Button fx:id="bkBtn" layoutX="289.0" layoutY="16.0" mnemonicParsing="false" onAction="#bkBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Home" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -40,16 +22,37 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Button>
       <AnchorPane fx:id="midleStage" layoutX="72.0" layoutY="156.0" prefHeight="672.0" prefWidth="1295.0" style="-fx-background-color: tranceperant;">
          <children>
-            <Text fx:id="timeTxt" layoutX="549.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" textAlignment="CENTER" wrappingWidth="161.6263427734375">
+            <Text fx:id="timeTxt" fill="WHITE" layoutX="549.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" textAlignment="CENTER" wrappingWidth="161.6263427734375">
                <font>
                   <Font size="34.0" />
                </font>
             </Text>
+            <Button fx:id="logOutBtn" layoutX="1177.0" layoutY="578.0" mnemonicParsing="false" onAction="#logOutBtnOnAction" styleClass="iconBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="65.0">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/logo/logOutLogo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="userBtn" layoutX="1077.0" layoutY="574.0" mnemonicParsing="false" onAction="#userBtnOnAction" styleClass="iconBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.bottomAnchor="55.0">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/logo/settingIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children></AnchorPane>
-      <Button fx:id="orderBtn" layoutX="1162.0" layoutY="22.0" mnemonicParsing="false" onAction="#orderBtnOnAction" styleClass="iconBtn" stylesheets="@../style/dashboardStyle.css">
+      <Button fx:id="orderBtn" layoutX="1185.0" layoutY="14.0" mnemonicParsing="false" onAction="#orderBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Order" AnchorPane.leftAnchor="655.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,8 +60,11 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Button>
-      <Button layoutX="1012.0" layoutY="22.0" mnemonicParsing="false" onAction="#buyerBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+      <Button layoutX="1055.0" layoutY="16.0" mnemonicParsing="false" onAction="#buyerBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Buyer" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -66,8 +72,11 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Button>
-      <Button layoutX="931.0" layoutY="19.0" mnemonicParsing="false" onAction="#outputBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+      <Button layoutX="931.0" layoutY="19.0" mnemonicParsing="false" onAction="#outputBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Output" AnchorPane.leftAnchor="1055.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -75,8 +84,11 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Button>
-      <Button layoutX="859.0" layoutY="22.0" mnemonicParsing="false" onAction="#packingBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+      <Button layoutX="600.0" layoutY="13.0" mnemonicParsing="false" onAction="#packingBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Packing" AnchorPane.leftAnchor="1255.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -84,8 +96,11 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Button>
-      <Button layoutX="772.0" layoutY="22.0" mnemonicParsing="false" onAction="#inputBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+      <Button layoutX="448.0" layoutY="16.0" mnemonicParsing="false" onAction="#inputBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Input" AnchorPane.leftAnchor="855.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -93,6 +108,9 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Button>
    </children>
 </AnchorPane>

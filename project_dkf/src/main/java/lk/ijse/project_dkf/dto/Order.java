@@ -2,7 +2,9 @@ package lk.ijse.project_dkf.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -11,9 +13,9 @@ import java.util.Date;
 public class Order {
     private String orderId;
     private String compId;
-    private String payment;
-    private Date orderDate;
+    private Date dline;
     private int ttlQty;
     private int dailyOut;
-    private Date dline;
+    private String payment;
+    private Date orderDate;
 }

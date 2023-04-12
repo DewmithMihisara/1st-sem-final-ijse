@@ -21,7 +21,6 @@ public class NewWindowNavigation {
         Scene scene = new Scene(anchorPane);
 
         Stage stage = new Stage();
-        stage.setTitle("Customer Manage");
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();

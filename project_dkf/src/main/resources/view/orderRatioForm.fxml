@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="672.0" prefWidth="1295.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.OrderRatioController">
+<AnchorPane fx:id="pane" prefHeight="672.0" prefWidth="1295.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.OrderRatioController">
    <children>
       <ImageView fitHeight="672.0" fitWidth="1295.0" layoutX="540.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -57,26 +57,40 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TableView layoutX="93.0" layoutY="306.0" prefHeight="248.0" prefWidth="1111.0">
+      <TableView fx:id="tblOrderRatio" layoutX="93.0" layoutY="306.0" prefHeight="248.0" prefWidth="1111.0">
          <columns>
-            <TableColumn prefWidth="158.0" text="Colour" />
-            <TableColumn prefWidth="238.0" text="Description" />
-            <TableColumn prefWidth="145.0" text="Size S" />
-            <TableColumn prefWidth="145.0" text="Size M" />
-            <TableColumn prefWidth="145.0" text="Size L" />
-            <TableColumn prefWidth="145.0" text="Size XL" />
-            <TableColumn prefWidth="134.0" text="Size XXL" />
+            <TableColumn fx:id="clrColm" prefWidth="158.0" text="Colour" />
+            <TableColumn fx:id="descColm" prefWidth="238.0" text="Description" />
+            <TableColumn fx:id="sColm" prefWidth="145.0" text="Size S" />
+            <TableColumn fx:id="mColm" prefWidth="145.0" text="Size M" />
+            <TableColumn fx:id="lColm" prefWidth="145.0" text="Size L" />
+            <TableColumn prefWidth="145.0" text="Size XL" fx:id="xlColm" />
+            <TableColumn prefWidth="134.0" text="Size XXL" fx:id="xxlColm" />
          </columns>
       </TableView>
-      <Button layoutX="1012.0" layoutY="602.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Add" textFill="WHITE">
+      <Button layoutX="795.0" layoutY="602.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Add" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="779.0" layoutY="602.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Delete" textFill="WHITE">
+      <Button layoutX="582.0" layoutY="602.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Delete" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
+      </Button>
+      <Button fx:id="dnBtn" layoutX="1004.0" layoutY="602.0" mnemonicParsing="false" onAction="#doneBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Done" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="1206.0" layoutY="38.0" mnemonicParsing="false" onAction="#relodeBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo/resetLogo.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>

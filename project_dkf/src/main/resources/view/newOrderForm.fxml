@@ -32,17 +32,17 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Button layoutX="1045.0" layoutY="336.0" mnemonicParsing="false" onAction="#orderRatioBtnOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Order Ratio" textFill="WHITE" AnchorPane.rightAnchor="41.0">
+      <Button fx:id="orderBtn" disable="true" layoutX="1045.0" layoutY="336.0" mnemonicParsing="false" onAction="#orderRatioBtnOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Order Ratio" textFill="WHITE" AnchorPane.rightAnchor="41.0">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <Button layoutX="1045.0" layoutY="444.0" mnemonicParsing="false" onAction="#trimCardBtnOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Trim Card" textFill="WHITE" AnchorPane.rightAnchor="41.0">
+      <Button fx:id="trimCardBtn" disable="true" layoutX="1045.0" layoutY="444.0" mnemonicParsing="false" onAction="#trimCardBtnOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Trim Card" textFill="WHITE" AnchorPane.rightAnchor="41.0">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <Button layoutX="1045.0" layoutY="579.0" mnemonicParsing="false" onAction="#placeOrderOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Place Order" textFill="WHITE" AnchorPane.bottomAnchor="49.0" AnchorPane.rightAnchor="41.0">
+      <Button disable="true" layoutX="1045.0" layoutY="579.0" mnemonicParsing="false" onAction="#placeOrderOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Place Order" textFill="WHITE" AnchorPane.bottomAnchor="49.0" AnchorPane.rightAnchor="41.0">
          <font>
             <Font size="17.0" />
          </font>
@@ -84,5 +84,10 @@
       </Text>
       <DatePicker fx:id="dedlineDate" layoutX="707.0" layoutY="449.0" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent;" />
       <ComboBox fx:id="companyCmbBox" layoutX="150.0" layoutY="225.0" onAction="#companyCmbOnAction" prefHeight="40.0" prefWidth="301.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
+      <Button fx:id="saveBtn" layoutX="1045.0" layoutY="223.0" mnemonicParsing="false" onAction="#saveBtnOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Save" textFill="WHITE" AnchorPane.rightAnchor="41.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

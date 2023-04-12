@@ -61,11 +61,13 @@ public class BuyerFormController implements Initializable {
         Buyer buyer=new Buyer(buyerIdTxt.getText(),buyerNameTxt.getText(),BuyerCnTxt.getText(),buyerAddTxt.getText());
         try {
             boolean affectedRows= BuyerModel.addBuyer(buyer);
+            tblBuyer.refresh();
             if (affectedRows ) {
                 buyerIdTxt.clear();
                 buyerNameTxt.clear();
                 buyerAddTxt.clear();
                 BuyerCnTxt.clear();
+
                 new Alert(Alert.AlertType.CONFIRMATION,
                         "Buyer Add!")
                         .show();

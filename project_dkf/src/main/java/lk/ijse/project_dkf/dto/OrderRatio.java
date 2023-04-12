@@ -16,4 +16,5 @@ public class OrderRatio {
     private int lQty;
     private int xlQty;
     private int xxlty;
+
 }

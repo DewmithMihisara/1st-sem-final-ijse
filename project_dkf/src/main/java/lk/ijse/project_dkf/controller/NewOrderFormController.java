@@ -5,13 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lk.ijse.project_dkf.dto.Buyer;
+import lk.ijse.project_dkf.dto.Order;
+import lk.ijse.project_dkf.model.BuyerModel;
 import lk.ijse.project_dkf.model.NewOrderModel;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.NewWindowNavigation;
@@ -20,12 +19,20 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 @Getter
 public class NewOrderFormController implements Initializable {
+    @FXML
+    private Button saveBtn;
+    @FXML
+    private Button orderBtn;
+    @FXML
+    private Button trimCardBtn;
     @FXML
     private TextField orderIdTxt;
     @FXML
@@ -48,6 +55,42 @@ public class NewOrderFormController implements Initializable {
 
     @FXML
     private TextField ttlQtyTxt;
+
+    @FXML
+    void saveBtnOnAction(ActionEvent event) {
+        if (orderIdTxt.getText().equals("") || companyCmbBox.getSelectionModel().getSelectedItem().equals("") || paymentTermTxt.getText().equals("") || ttlQtyTxt.getText().equals("") || daylyOutTxt.getText().equals("") || dedlineDate.getValue()==null){
+            new Alert(Alert.AlertType.WARNING,
+                    "Enter all Data")
+                    .show();
+        }else {
+            Order order =new Order(
+                    orderIdTxt.getText(),
+                    companyCmbBox.getSelectionModel().getSelectedItem(),
+                    Date.valueOf(dedlineDate.getValue()),
+                    Integer.parseInt(ttlQtyTxt.getText()),
+                    Integer.parseInt(daylyOutTxt.getText()),
+                    paymentTermTxt.getText(),
+                    Date.valueOf(orderDateTxt.getText())
+            );
+            try {
+                boolean affectedRows= NewOrderModel.addOrder(order);
+                if (affectedRows ) {
+                    new Alert(Alert.AlertType.CONFIRMATION,
+                            "Trim card and Order Ratio needed!")
+                            .show();
+                    orderIdTxt.setEditable(false);
+                    orderBtn.setDisable(false);
+                    trimCardBtn.setDisable(false);
+                    saveBtn.setDisable(true);
+                }
+            } catch (SQLException | ParseException e) {
+                new Alert(Alert.AlertType.ERROR,
+                        "Something is wrong")
+                        .show();
+            }
+        }
+
+    }
     @FXML
     void dedlineBtnOnAction(ActionEvent event) {
 
