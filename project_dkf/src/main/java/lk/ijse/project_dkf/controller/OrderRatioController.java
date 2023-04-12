@@ -89,6 +89,9 @@ public class OrderRatioController implements Initializable {
             boolean add=OrderRatioModel.addRatio(orderRatio);
             tblOrderRatio.refresh();
             if (add ) {
+                new Alert(Alert.AlertType.CONFIRMATION,
+                        "Add")
+                        .show();
                 descriptionTxt.clear();
                 clrTxt.clear();
                 sSizeTxt.clear();
@@ -108,9 +111,12 @@ public class OrderRatioController implements Initializable {
         OrderRatioTM selectedItem = tblOrderRatio.getSelectionModel().getSelectedItem();
         try {
             boolean delete=OrderRatioModel.delete(selectedItem.getClr(),setOrderId);
-            new Alert(Alert.AlertType.CONFIRMATION,
+            if (delete){
+                new Alert(Alert.AlertType.CONFIRMATION,
                         "Deleted !")
-                    .show();
+                        .show();
+            }
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,
                     "Something is wrong")

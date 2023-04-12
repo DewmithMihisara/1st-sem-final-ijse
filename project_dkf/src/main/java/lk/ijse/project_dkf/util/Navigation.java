@@ -27,6 +27,7 @@ public class Navigation {
             case MATERIAL_IN -> initUi("materialInputForm.fxml");
             case RESEVED_IN -> initUi("resevedInForm.fxml");
             case ORDER_RATIO -> initUi("orderRatioForm.fxml");
+            case TRIM_CARD -> initUi("trimCardForm.fxml");
         }
     }
     private static void initUi(String location) throws IOException {

@@ -53,4 +53,16 @@ public class NewOrderModel {
                 order.getOrderDate()
         );
     }
+
+    public static void deleteAll(String text) throws SQLException {
+        String sql="DELETE FROM Orders WHERE OrderID=?";
+        CrudUtil.execute(sql,text);
+    }
+
+    public static boolean search(String text) throws SQLException {
+        String sql="SELECT * FROM Orders WHERE OrderID=?";
+        ResultSet resultSet = CrudUtil.execute(sql,text);
+
+        return resultSet.next();
+    }
 }

@@ -58,4 +58,16 @@ public class OrderRatioModel {
         );
         return result;
     }
+
+    public static boolean search(String text) throws SQLException {
+        String sql="SELECT * FROM OrderRatio WHERE OrderID=?";
+        ResultSet resultSet = CrudUtil.execute(sql,text);
+
+        return resultSet.next();
+    }
+
+    public static void deleteAll(String text) throws SQLException {
+        String sql="DELETE FROM OrderRatio WHERE OrderID=?";
+        CrudUtil.execute(sql,text);
+    }
 }

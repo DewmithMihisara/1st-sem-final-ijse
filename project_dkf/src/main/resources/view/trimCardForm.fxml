@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -7,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="672.0" prefWidth="1295.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.TrimCardFormController">
+<AnchorPane fx:id="pane" prefHeight="672.0" prefWidth="1295.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.TrimCardFormController">
    <children>
       <ImageView fitHeight="672.0" fitWidth="1295.0" layoutX="334.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -34,5 +37,36 @@
             <Font size="20.0" />
          </font>
       </TextField>
+      <TableView fx:id="tblTrimCard" layoutX="300.0" layoutY="288.0" prefHeight="248.0" prefWidth="695.0">
+         <columns>
+            <TableColumn fx:id="typeColm" prefWidth="245.0" text="Type" />
+            <TableColumn fx:id="clrColm" prefWidth="221.0" text="Colour" />
+            <TableColumn fx:id="qtyColm" prefWidth="227.0" text="Required Qty" />
+         </columns>
+      </TableView>
+      <Button fx:id="dnBtn" layoutX="1014.0" layoutY="612.0" mnemonicParsing="false" onAction="#doneBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Done" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="805.0" layoutY="612.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="592.0" layoutY="612.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="1161.0" layoutY="22.0" mnemonicParsing="false" onAction="#relodeBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo/resetLogo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

@@ -98,7 +98,6 @@ CREATE TABLE TrimCard(
     type VARCHAR(20),
     Colour VARCHAR(10),
     ReqQty INT,
-    CONSTRAINT PRIMARY KEY (OrderID),
     CONSTRAINT FOREIGN KEY (OrderID)REFERENCES Orders(OrderID)
 );
 
@@ -271,6 +270,8 @@ CREATE TABLE StockInvoice(
 
 INSERT INTO User (UserName, Password, UserEmail, UserContact, UserAddress) VALUES ('a','a','a','a','a');
 INSERT INTO Buyer(BuyerID, BuyerName, BuyerCN, BuyerAddress) VALUES ('b01','brandix','1234567890','galle'),('b02','sell','2468498','matara');
+
+
 
 
 

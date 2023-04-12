@@ -42,12 +42,12 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Button disable="true" layoutX="1045.0" layoutY="579.0" mnemonicParsing="false" onAction="#placeOrderOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Place Order" textFill="WHITE" AnchorPane.bottomAnchor="49.0" AnchorPane.rightAnchor="41.0">
+      <Button layoutX="1045.0" layoutY="579.0" mnemonicParsing="false" onAction="#placeOrderOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Place Order" textFill="WHITE" AnchorPane.bottomAnchor="49.0" AnchorPane.rightAnchor="41.0">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <Button layoutX="770.0" layoutY="578.0" mnemonicParsing="false" onAction="#dedlineBtnOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Declair Order" textFill="WHITE" AnchorPane.bottomAnchor="49.0">
+      <Button layoutX="770.0" layoutY="578.0" mnemonicParsing="false" onAction="#declairBtnOnAction" prefHeight="44.0" prefWidth="209.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Declair Order" textFill="WHITE" AnchorPane.bottomAnchor="49.0">
          <font>
             <Font size="17.0" />
          </font>
