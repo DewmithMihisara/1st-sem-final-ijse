@@ -163,8 +163,10 @@ CREATE TABLE MatIn(
 CREATE TABLE Output(
     OutputID VARCHAR(6) NOT NULL ,
     Day DATE,
+    Colour VARCHAR(10),
+    size VARCHAR(6),
     DailyOut INT(30),
-    CONSTRAINT PRIMARY KEY (OutputID)
+    CONSTRAINT FOREIGN KEY (OutputID)REFERENCES Orders(OrderID)
 );
 
 CREATE TABLE IO(
@@ -269,7 +271,7 @@ CREATE TABLE StockInvoice(
 );
 
 INSERT INTO User (UserName, Password, UserEmail, UserContact, UserAddress) VALUES ('a','a','a','a','a');
-INSERT INTO Buyer(BuyerID, BuyerName, BuyerCN, BuyerAddress) VALUES ('b01','brandix','1234567890','galle'),('b02','sell','2468498','matara');
+
 
 
 

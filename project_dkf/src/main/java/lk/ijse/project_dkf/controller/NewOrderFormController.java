@@ -129,12 +129,13 @@ public class NewOrderFormController implements Initializable {
                 new Alert(Alert.AlertType.CONFIRMATION,
                         "Order Placed")
                         .show();
+                Navigation.navigation(Rout.NEW_ORDER,root);
             }else {
                 new Alert(Alert.AlertType.ERROR,
                         "Plese enter All Data")
                         .show();
             }
-        } catch (SQLException ignored) {}
+        } catch (SQLException | IOException ignored) {}
     }
 
     @FXML

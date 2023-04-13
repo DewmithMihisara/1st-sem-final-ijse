@@ -114,6 +114,10 @@ public class BuyerFormController implements Initializable {
     @FXML
     void updateBtnOnAction(ActionEvent event) {
         Buyer buyer=new Buyer(buyerIdTxt.getText(),buyerNameTxt.getText(),BuyerCnTxt.getText(),buyerAddTxt.getText());
+//        Buyer buyer = Buyer.builder()
+//                .buyerId(buyerIdTxt.getText())
+//                .buyerName(buyerNameTxt.getText())
+//                .build();
 
         try {
             boolean update=BuyerModel.update(buyer);

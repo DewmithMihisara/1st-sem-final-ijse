@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="672.0" prefWidth="1295.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.PackingFormController">
+<AnchorPane fx:id="pane" prefHeight="672.0" prefWidth="1295.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.PackingFormController">
    <children>
       <ImageView fitHeight="672.0" fitWidth="1295.0" layoutX="500.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -31,13 +31,12 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TableView layoutX="202.0" layoutY="336.0" prefHeight="302.0" prefWidth="907.0">
+      <TableView fx:id="tblPacking" layoutX="288.0" layoutY="332.0" prefHeight="302.0" prefWidth="719.0">
          <columns>
-            <TableColumn prefWidth="155.91506958007812" text="Date" />
-            <TableColumn prefWidth="186.9940185546875" text="Order Id" />
-            <TableColumn prefWidth="186.9940185546875" text="Colour" />
-            <TableColumn prefWidth="186.9940185546875" text="Size" />
-            <TableColumn prefWidth="186.9940185546875" text="Qty" />
+            <TableColumn fx:id="dateColm" prefWidth="155.91506958007812" text="Date" />
+            <TableColumn fx:id="clrColm" prefWidth="186.9940185546875" text="Colour" />
+            <TableColumn fx:id="sizeColm" prefWidth="186.9940185546875" text="Size" />
+            <TableColumn fx:id="qtyColm" prefWidth="186.9940185546875" text="Qty" />
          </columns>
       </TableView>
       <Button layoutX="1033.0" layoutY="81.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Add" textFill="WHITE" AnchorPane.rightAnchor="69.0">
@@ -46,11 +45,6 @@
          </font>
       </Button>
       <Button layoutX="1025.0" layoutY="152.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="69.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="1027.0" layoutY="221.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Update" textFill="WHITE" AnchorPane.rightAnchor="69.0">
          <font>
             <Font size="24.0" />
          </font>

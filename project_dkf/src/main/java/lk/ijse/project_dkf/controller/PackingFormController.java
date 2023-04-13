@@ -2,13 +2,27 @@ package lk.ijse.project_dkf.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class PackingFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class PackingFormController implements Initializable {
+
     @FXML
     private ComboBox<?> clrCmbBx;
+
+    @FXML
+    private TableColumn<?, ?> clrColm;
+
+    @FXML
+    private TableColumn<?, ?> dateColm;
 
     @FXML
     private Text dateTxt;
@@ -17,10 +31,22 @@ public class PackingFormController {
     private ComboBox<?> orderIdCmbBox;
 
     @FXML
+    private AnchorPane pane;
+
+    @FXML
+    private TableColumn<?, ?> qtyColm;
+
+    @FXML
     private TextField qtyTxt;
 
     @FXML
     private ComboBox<?> sizeCmbBx;
+
+    @FXML
+    private TableColumn<?, ?> sizeColm;
+
+    @FXML
+    private TableView<?> tblPacking;
 
     @FXML
     void addBtnOnAction(ActionEvent event) {
@@ -32,9 +58,8 @@ public class PackingFormController {
 
     }
 
-    @FXML
-    void updateBtnOnAction(ActionEvent event) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
 }
