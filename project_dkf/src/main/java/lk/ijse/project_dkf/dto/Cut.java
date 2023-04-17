@@ -1,4 +1,4 @@
-package lk.ijse.project_dkf.dto.tm;
+package lk.ijse.project_dkf.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,13 +7,14 @@ import lombok.Setter;
 
 import java.util.Date;
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
+@NoArgsConstructor
 @Setter
-
-public class PackingTM {
+public class Cut {
+    private String cutID;
     private Date date;
-    private String clr;
+    private int cutQty;
+    private String type;
     private String size;
-    private int qty;
+    private String clr;
 }

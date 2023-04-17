@@ -6,14 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-
-public class PackingTM {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CutTM {
     private Date date;
+    private String oID;
     private String clr;
     private String size;
+    private String type;
     private int qty;
 }

@@ -7,13 +7,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lk.ijse.project_dkf.dto.Buyer;
 import lk.ijse.project_dkf.dto.OrderRatio;
 import lk.ijse.project_dkf.dto.Output;
+import lk.ijse.project_dkf.dto.Pack;
 import lk.ijse.project_dkf.dto.tm.OrderRatioTM;
+import lk.ijse.project_dkf.dto.tm.PackingTM;
 import lk.ijse.project_dkf.model.*;
+import lk.ijse.project_dkf.util.Navigation;
+import lk.ijse.project_dkf.util.Rout;
+import lombok.Getter;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -22,7 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+@Getter
 public class OutputFormController implements Initializable {
+    @FXML
+    private AnchorPane root;
     @FXML
     private TableColumn<?, ?> clrCol;
 
@@ -52,8 +62,14 @@ public class OutputFormController implements Initializable {
     private ComboBox<String> sizeCmbBx;
 
     @FXML
+    void relodeBtnOnAction(ActionEvent event) throws IOException {
+        loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
+
+    }
+
+    @FXML
     void addBtnOnAction(ActionEvent event) {
-        Output output=new Output(
+        Output output = new Output(
                 orderIdCmbBox.getSelectionModel().getSelectedItem(),
                 Date.valueOf(dateTxt.getText()),
                 clrCmbBx.getSelectionModel().getSelectedItem(),
@@ -61,8 +77,8 @@ public class OutputFormController implements Initializable {
                 Integer.parseInt(qtyTxt.getText())
         );
         try {
-            boolean affectedRows= OutputModel.add(output);
-            if (affectedRows ) {
+            boolean affectedRows = OutputModel.add(output);
+            if (affectedRows) {
                 new Alert(Alert.AlertType.CONFIRMATION,
                         "Add!")
                         .show();
@@ -78,8 +94,8 @@ public class OutputFormController implements Initializable {
     void deleteBtnOnAction(ActionEvent event) {
         Output output = outTbl.getSelectionModel().getSelectedItem();
         try {
-            boolean delete=OutputModel.delete(output);
-            if (delete){
+            boolean delete = OutputModel.delete(output);
+            if (delete) {
                 new Alert(Alert.AlertType.CONFIRMATION,
                         "Deleted !")
                         .show();
@@ -91,8 +107,10 @@ public class OutputFormController implements Initializable {
                     .show();
         }
     }
+
     @FXML
     void orderIdOnAction(ActionEvent event) {
+        loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
         loadClr();
         clrCmbBx.setDisable(false);
     }
@@ -101,14 +119,13 @@ public class OutputFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setOrderDate();
         setCellValueFactory();
-        loadValues();
         loadOrderIds();
         loadSize();
     }
 
     private void loadSize() {
         ObservableList<String> obList = FXCollections.observableArrayList();
-        List<String>clr=new ArrayList<>();
+        List<String> clr = new ArrayList<>();
         clr.add("S");
         clr.add("M");
         clr.add("L");
@@ -148,14 +165,16 @@ public class OutputFormController implements Initializable {
         }
         orderIdCmbBox.setItems(obList);
     }
+
     private void setOrderDate() {
         dateTxt.setText(String.valueOf(LocalDate.now()));
     }
-    private void loadValues() {
+
+    private void loadValues(String id) {
         ObservableList<Output> outObj = FXCollections.observableArrayList();
         try {
-            List<Output> all = OutputModel.getAll(orderIdCmbBox.getSelectionModel().getSelectedItem());
-            for (Output output: all){
+            List<Output> all = OutputModel.getAll(id);
+            for (Output output : all) {
                 outObj.add(new Output(
                         output.getOId(),
                         output.getDate(),

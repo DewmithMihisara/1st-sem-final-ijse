@@ -1,9 +1,12 @@
 package lk.ijse.project_dkf.model;
 
+import lk.ijse.project_dkf.db.DBConnection;
 import lk.ijse.project_dkf.dto.Buyer;
 import lk.ijse.project_dkf.dto.User;
+import lk.ijse.project_dkf.dto.tm.BuyerTM;
 import lk.ijse.project_dkf.util.CrudUtil;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -57,9 +60,30 @@ public class BuyerModel {
         return result;
     }
 
-    public static boolean delete(Buyer buyer) throws SQLException {
+    public static boolean delete(BuyerTM buyer) throws SQLException {
         String sql="DELETE FROM Buyer WHERE BuyerID=?";
-        boolean result = CrudUtil.execute(sql,buyer.getBuyerId());
+        boolean result = CrudUtil.execute(sql,buyer.getId());
         return result;
+    }
+
+    public static String getNextOrderID() throws SQLException {
+        String sql="SELECT BuyerID FROM Buyer ORDER BY BuyerID DESC LIMIT 1";
+        ResultSet resultSet = CrudUtil.execute(sql);
+
+        if (resultSet.next()) {
+            return splitOrderId(resultSet.getString(1));
+        }
+        return splitOrderId(null);
+    }
+
+    private static String splitOrderId(String currentId) {
+
+        if(currentId != null) {
+            String[] strings = currentId.split("b");
+            int id = Integer.parseInt(strings[1]);
+            id++;
+            return "b" + id;
+        }
+        return "b10000";
     }
 }

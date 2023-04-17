@@ -31,4 +31,16 @@ public class IdModel {
         }
         return data;
     }
+
+    public static List<String> loadType(String selectedItem) throws SQLException {
+        String sql="SELECT Colour FROM TrimCard WHERE OrderID=?";
+        ResultSet resultSet = CrudUtil.execute(sql,selectedItem);
+
+        List<String>data=new ArrayList<>();
+
+        while (resultSet.next()){
+            data.add(resultSet.getString(1));
+        }
+        return data;
+    }
 }

@@ -15,7 +15,7 @@
    <children>
       <ImageView fitHeight="672.0" fitWidth="1295.0" layoutX="255.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../img/MaterialInput.png" />
+            <Image url="@../img/materials.png" />
          </image>
       </ImageView>
       <Button layoutX="-64.0" layoutY="527.0" mnemonicParsing="false" onAction="#cutInBtnOnAction" prefHeight="67.0" prefWidth="224.0" rotate="270.0" styleClass="signBtn" stylesheets="@../style/loginStyle.css" text="CUT" AnchorPane.bottomAnchor="78.0">
@@ -33,33 +33,26 @@
             <Font size="30.0" />
          </font>
       </Button>
-      <ComboBox fx:id="orderIdCmbBox" layoutX="187.0" layoutY="117.0" prefHeight="40.0" prefWidth="301.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
+      <ComboBox fx:id="orderIdCmbBox" layoutX="187.0" layoutY="117.0" onAction="#orderIdOnAction" prefHeight="40.0" prefWidth="301.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
       <Text fx:id="dateTxt" fill="WHITE" layoutX="732.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="229.37973022460938">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <ComboBox fx:id="clrCmbBx" layoutX="186.0" layoutY="238.0" prefHeight="40.0" prefWidth="193.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
-      <ComboBox fx:id="typeCmbBx1" layoutX="474.0" layoutY="238.0" prefHeight="40.0" prefWidth="188.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
+      <ComboBox fx:id="typeCmbBx1" layoutX="187.0" layoutY="238.0" prefHeight="40.0" prefWidth="475.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
       <TextField fx:id="qtyTxt" layoutX="757.0" layoutY="238.0" prefHeight="40.0" prefWidth="193.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TableView layoutX="221.0" layoutY="312.0" prefHeight="248.0" prefWidth="883.0">
+      <TableView fx:id="tblMetarial" layoutX="221.0" layoutY="312.0" prefHeight="248.0" prefWidth="883.0">
          <columns>
-            <TableColumn prefWidth="155.91506958007812" text="Date" />
-            <TableColumn prefWidth="186.9940185546875" text="Order Id" />
-            <TableColumn prefWidth="186.9940185546875" text="Colour" />
-            <TableColumn prefWidth="188.2364501953125" text="Type" />
-            <TableColumn prefWidth="163.1429443359375" text="Qty" />
+            <TableColumn fx:id="dateColm" prefWidth="155.91506958007812" text="Date" />
+            <TableColumn fx:id="orderColm" prefWidth="186.9940185546875" text="Order Id" />
+            <TableColumn fx:id="typeColm" prefWidth="332.0" text="Type" />
+            <TableColumn fx:id="qtyColm" prefWidth="207.0" text="Qty" />
          </columns>
       </TableView>
-      <Button layoutX="542.0" layoutY="602.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="25.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
       <Button layoutX="779.0" layoutY="602.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="25.0">
          <font>
             <Font size="24.0" />
@@ -69,6 +62,15 @@
          <font>
             <Font size="24.0" />
          </font>
+      </Button>
+      <Button layoutX="1193.0" layoutY="44.0" mnemonicParsing="false" onAction="#relodeBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo/resetLogo.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>

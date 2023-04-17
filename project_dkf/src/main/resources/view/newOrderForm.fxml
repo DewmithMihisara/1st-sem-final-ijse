@@ -17,12 +17,12 @@
             <Image url="@../img/NewOrder.png" />
          </image>
       </ImageView>
-      <Button layoutX="-33.0" layoutY="410.0" mnemonicParsing="false" onAction="#orderBtnOnAction" rotate="270.0" styleClass="signBtn" stylesheets="@../style/loginStyle.css" text="ORDER">
+      <Button layoutX="-33.0" layoutY="410.0" mnemonicParsing="false" onAction="#orderBtnOnAction" rotate="270.0" styleClass="signBtn" stylesheets="@../style/loginStyle.css" text="ORDER" AnchorPane.bottomAnchor="194.0" AnchorPane.leftAnchor="-33.0">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="-76.0" layoutY="205.0" mnemonicParsing="false" rotate="270.0" style="-fx-background-color: tranceparant; -fx-text-fill: white;" text="NEW ORDER">
+      <Button layoutX="-76.0" layoutY="205.0" mnemonicParsing="false" rotate="270.0" style="-fx-background-color: tranceparant; -fx-text-fill: white;" text="NEW ORDER" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="-76.0" AnchorPane.topAnchor="205.0">
          <font>
             <Font size="36.0" />
          </font>

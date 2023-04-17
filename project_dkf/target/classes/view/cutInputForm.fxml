@@ -33,28 +33,27 @@
             <Font size="30.0" />
          </font>
       </Button>
-      <ComboBox fx:id="orderIdCmbBox" layoutX="187.0" layoutY="116.0" prefHeight="40.0" prefWidth="301.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
-      <ComboBox fx:id="clrCmbBx" layoutX="187.0" layoutY="230.0" prefHeight="40.0" prefWidth="193.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
+      <ComboBox fx:id="orderIdCmbBox" layoutX="187.0" layoutY="116.0" onAction="#orderIdOnAction" prefHeight="40.0" prefWidth="301.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
+      <ComboBox fx:id="clrCmbBx" disable="true" layoutX="187.0" layoutY="230.0" prefHeight="40.0" prefWidth="193.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
       <ComboBox fx:id="sizeCmbBx" layoutX="489.0" layoutY="230.0" prefHeight="40.0" prefWidth="88.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
       <TextField fx:id="qtyTxt" layoutX="990.0" layoutY="225.0" prefHeight="40.0" prefWidth="193.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="typeCmbBx1" layoutX="688.0" layoutY="230.0" prefHeight="40.0" prefWidth="188.0" style="-fx-text-fill: white; -fx-background-color: tranceparent;" />
       <Text fx:id="dateTxt" fill="WHITE" layoutX="727.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="229.37973022460938">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <TableView layoutX="172.0" layoutY="304.0" prefHeight="248.0" prefWidth="1030.0">
+      <TableView fx:id="cutTbl" layoutX="172.0" layoutY="304.0" prefHeight="248.0" prefWidth="1030.0">
          <columns>
-            <TableColumn prefWidth="155.91506958007812" text="Date" />
-            <TableColumn prefWidth="186.9940185546875" text="Order Id" />
-            <TableColumn prefWidth="186.9940185546875" text="Colour" />
-            <TableColumn prefWidth="143.241943359375" text="Size" />
-            <TableColumn prefWidth="188.2364501953125" text="Type" />
-            <TableColumn prefWidth="163.1429443359375" text="Qty" />
+            <TableColumn fx:id="dateColm" prefWidth="155.91506958007812" text="Date" />
+            <TableColumn fx:id="oIdColm" prefWidth="186.9940185546875" text="Order Id" />
+            <TableColumn fx:id="clrColm" prefWidth="186.9940185546875" text="Colour" />
+            <TableColumn fx:id="sizeColm" prefWidth="143.241943359375" text="Size" />
+            <TableColumn fx:id="typeColm" prefWidth="188.2364501953125" text="Type" />
+            <TableColumn fx:id="qtyColm" prefWidth="163.1429443359375" text="Qty" />
          </columns>
       </TableView>
       <Button layoutX="1002.0" layoutY="592.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="35.0">
@@ -67,10 +66,19 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="532.0" layoutY="592.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="35.0">
+      <TextField fx:id="typeTxt" layoutX="687.0" layoutY="230.0" prefHeight="40.0" prefWidth="193.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
-            <Font size="24.0" />
+            <Font size="20.0" />
          </font>
+      </TextField>
+      <Button layoutX="1183.0" layoutY="34.0" mnemonicParsing="false" onAction="#relodeBtnOnAction" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo/resetLogo.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>
