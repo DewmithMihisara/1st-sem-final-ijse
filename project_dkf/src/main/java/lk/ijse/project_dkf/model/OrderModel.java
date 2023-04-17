@@ -4,6 +4,7 @@ import lk.ijse.project_dkf.db.DBConnection;
 import lk.ijse.project_dkf.util.CrudUtil;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class OrderModel {
@@ -54,4 +55,23 @@ public class OrderModel {
         boolean result = CrudUtil.execute(sql,selectedItem);
         return result;
     }
+
+    public static String getNextOrderID() throws SQLException {
+        String sql="SELECT BuyerID FROM Orders ORDER BY OrderID DESC LIMIT 1";
+        ResultSet resultSet = CrudUtil.execute(sql);
+
+        if (resultSet.next()) {
+            return splitOrderId(resultSet.getString(1));
+        }
+        return splitOrderId(null);
+    }
+
+    private static String splitOrderId(String currentId) {
+        if(currentId != null) {
+            String[] strings = currentId.split("o");
+            int id = Integer.parseInt(strings[1]);
+            id++;
+            return "o" + id;
+        }
+        return "o10000";    }
 }

@@ -1,6 +1,7 @@
 package lk.ijse.project_dkf.animation;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 public class defueltText {
@@ -16,4 +17,11 @@ public class defueltText {
                         "-fx-text-fill: white"
         );
     }
+    public static void Defuelt(DatePicker text){
+        text.setStyle(
+                "-fx-background-color:tranceparent; " +
+                        "-fx-text-fill: white"
+        );
+    }
+
 }

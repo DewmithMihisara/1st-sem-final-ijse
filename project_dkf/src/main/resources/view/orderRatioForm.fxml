@@ -92,5 +92,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="960.0" layoutY="37.0" mnemonicParsing="false" onAction="#backBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Done" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

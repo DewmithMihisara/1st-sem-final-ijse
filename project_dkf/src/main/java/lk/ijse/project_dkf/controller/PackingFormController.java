@@ -12,16 +12,10 @@ import javafx.scene.text.Text;
 import lk.ijse.project_dkf.animation.SetTime;
 import lk.ijse.project_dkf.animation.ShakeTextAnimation;
 import lk.ijse.project_dkf.animation.defueltText;
-import lk.ijse.project_dkf.dto.Buyer;
-import lk.ijse.project_dkf.dto.Output;
 import lk.ijse.project_dkf.dto.Pack;
-import lk.ijse.project_dkf.dto.TrimCard;
-import lk.ijse.project_dkf.dto.tm.BuyerTM;
 import lk.ijse.project_dkf.dto.tm.PackingTM;
-import lk.ijse.project_dkf.dto.tm.TrimCardTM;
 import lk.ijse.project_dkf.model.*;
-import lk.ijse.project_dkf.util.Navigation;
-import lk.ijse.project_dkf.util.Rout;
+import lk.ijse.project_dkf.validation.inputsValidation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -70,9 +64,10 @@ public class PackingFormController implements Initializable {
     }
     @FXML
     void addBtnOnAction(ActionEvent event) throws IOException {
-        clr=clr();
-        size=sizeCmb();
-        qty=qty();
+
+        qty=inputsValidation.isNumberOrNull(qtyTxt);
+        size= inputsValidation.isNullCmb(sizeCmbBx);
+        clr= inputsValidation.isNullCmb(clrCmbBx);
 
         if (clr && size && qty){
             Pack pack=new Pack(
@@ -204,36 +199,6 @@ public class PackingFormController implements Initializable {
         clrColm.setCellValueFactory(new PropertyValueFactory<>("clr"));
         sizeColm.setCellValueFactory(new PropertyValueFactory<>("size"));
         qtyColm.setCellValueFactory(new PropertyValueFactory<>("qty"));
-    }
-    boolean clr(){
-        if (clrCmbBx.getSelectionModel().getSelectedItem()==null) {
-            ShakeTextAnimation.ShakeText(clrCmbBx);
-        } else {
-            defueltText.Defuelt(clrCmbBx);
-            return true;
-        }
-        return false;
-    }
-    private boolean sizeCmb() {
-        if (sizeCmbBx.getSelectionModel().getSelectedItem()==null) {
-            ShakeTextAnimation.ShakeText(sizeCmbBx);
-        } else {
-            defueltText.Defuelt(sizeCmbBx);
-            return true;
-        }
-        return false;
-    }
-    private boolean qty() {
-        if (qtyTxt.getText().matches("^$")) {
-            ShakeTextAnimation.ShakeText(qtyTxt);
-        }
-        if (qtyTxt.getText().matches("^(\\d+)$")) {
-            defueltText.Defuelt(qtyTxt);
-            return true;
-        } else {
-            ShakeTextAnimation.ShakeText(qtyTxt);
-        }
-        return false;
     }
     void setTime(){
         SetTime.setTime(timeLbl);

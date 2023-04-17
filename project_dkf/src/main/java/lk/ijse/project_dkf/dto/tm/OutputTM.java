@@ -1,6 +1,9 @@
-package lk.ijse.project_dkf.dto;
+package lk.ijse.project_dkf.dto.tm;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Time;
 import java.util.Date;
@@ -8,9 +11,8 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
-public class Output {
-    private String oId;
+
+public class OutputTM {
     private Date date;
     private Time time;
     private String clr;

@@ -46,7 +46,6 @@ public class OrderRatioController implements Initializable {
     private TableColumn<?, ?> xlColm;
     @FXML
     private TableColumn<?, ?> xxlColm;
-    public static String setOrderId;
     @FXML
     private TextField clrTxt;
 
@@ -72,11 +71,14 @@ public class OrderRatioController implements Initializable {
     private TextField xxlSizeTxt;
     @FXML
     private TableView<OrderRatioTM> tblOrderRatio;
-
+    @FXML
+    void backBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.NEW_ORDER,pane);
+    }
     @FXML
     void addBtnOnAction(ActionEvent event) {
         OrderRatio orderRatio=new OrderRatio(
-                setOrderId,
+                NewOrderFormController.order.getOrderId(),
                 descriptionTxt.getText(),
                 clrTxt.getText(),
                 Integer.parseInt(sSizeTxt.getText()),
@@ -110,7 +112,7 @@ public class OrderRatioController implements Initializable {
     void deleteBtnOnAction(ActionEvent event) {
         OrderRatioTM selectedItem = tblOrderRatio.getSelectionModel().getSelectedItem();
         try {
-            boolean delete=OrderRatioModel.delete(selectedItem.getClr(),setOrderId);
+            boolean delete=OrderRatioModel.delete(selectedItem.getClr(),NewOrderFormController.order.getOrderId());
             if (delete){
                 new Alert(Alert.AlertType.CONFIRMATION,
                         "Deleted !")
@@ -143,7 +145,7 @@ public class OrderRatioController implements Initializable {
     private void loadValues() {
         ObservableList<OrderRatioTM> orderRatioObj = FXCollections.observableArrayList();
         try {
-            List<OrderRatio> all = OrderRatioModel.getAll(setOrderId);
+            List<OrderRatio> all = OrderRatioModel.getAll(NewOrderFormController.order.getOrderId());
             for (OrderRatio orderRatio: all){
                 orderRatioObj.add(new OrderRatioTM(
                         orderRatio.getColour(),
@@ -174,7 +176,7 @@ public class OrderRatioController implements Initializable {
     }
 
     private void setValues() {
-        orderIdTxt.setText(setOrderId);
+        orderIdTxt.setText(NewOrderFormController.order.getOrderId());
     }
 
 
