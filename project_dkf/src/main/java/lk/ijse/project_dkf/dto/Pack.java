@@ -2,6 +2,7 @@ package lk.ijse.project_dkf.dto;
 
 import lombok.*;
 
+import java.sql.Time;
 import java.util.Date;
 @Builder
 @Getter
@@ -11,6 +12,7 @@ import java.util.Date;
 public class Pack {
     private String packID;
     private Date date;
+    private Time time;
     private String clr;
     private String size;
     private int packQty;

@@ -9,6 +9,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import lk.ijse.project_dkf.animation.SetTime;
+import lk.ijse.project_dkf.animation.ShakeTextAnimation;
+import lk.ijse.project_dkf.animation.defueltText;
 import lk.ijse.project_dkf.dto.Buyer;
 import lk.ijse.project_dkf.dto.Output;
 import lk.ijse.project_dkf.dto.Pack;
@@ -24,6 +27,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,72 +35,79 @@ import java.util.ResourceBundle;
 
 
 public class PackingFormController implements Initializable {
-
+    @FXML
+    private Label timeLbl;
+    @FXML
+    private TableColumn<?, ?> timeColm;
     @FXML
     private ComboBox<String> clrCmbBx;
-
     @FXML
     private TableColumn<?, ?> clrColm;
-
     @FXML
     private TableColumn<?, ?> dateColm;
-
     @FXML
     private Text dateTxt;
-
     @FXML
     private ComboBox<String> orderIdCmbBox;
-
     @FXML
     private AnchorPane pane;
-
     @FXML
     private TableColumn<?, ?> qtyColm;
-
     @FXML
     private TextField qtyTxt;
-
     @FXML
     private ComboBox<String> sizeCmbBx;
-
     @FXML
     private TableColumn<?, ?> sizeColm;
-
     @FXML
     private TableView<PackingTM> tblPacking;
+    boolean clr,size,qty;
 
-    @FXML
-    void addBtnOnAction(ActionEvent event) {
-        Pack pack=new Pack(
-                orderIdCmbBox.getSelectionModel().getSelectedItem(),
-                Date.valueOf(dateTxt.getText()),
-                clrCmbBx.getSelectionModel().getSelectedItem(),
-                sizeCmbBx.getSelectionModel().getSelectedItem(),
-                Integer.parseInt(qtyTxt.getText())
-        );
-        try {
-            boolean affectedRows= PackingModel.add(pack);
-            if (affectedRows ) {
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "Add!")
-                        .show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
-        }
+    {
+        clr=false;
+        size=false;
+        qty=false;
     }
     @FXML
-    void relodeBtnOnAction(ActionEvent event) throws IOException {
-        String id= String.valueOf(orderIdCmbBox.getSelectionModel().getSelectedItem());
-        loadValues(id);
+    void addBtnOnAction(ActionEvent event) throws IOException {
+        clr=clr();
+        size=sizeCmb();
+        qty=qty();
+
+        if (clr && size && qty){
+            Pack pack=new Pack(
+                    orderIdCmbBox.getSelectionModel().getSelectedItem(),
+                    Date.valueOf(dateTxt.getText()),
+                    Time.valueOf(timeLbl.getText()),
+                    clrCmbBx.getSelectionModel().getSelectedItem(),
+                    sizeCmbBx.getSelectionModel().getSelectedItem(),
+                    Integer.parseInt(qtyTxt.getText())
+            );
+            try {
+                boolean affectedRows= PackingModel.add(pack);
+                if (affectedRows ) {
+                    new Alert(Alert.AlertType.CONFIRMATION,
+                            "Add!")
+                            .show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,
+                        "Something is wrong")
+                        .show();
+                e.printStackTrace();
+            }finally {
+                loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
+                clrCmbBx.setValue(null);
+                sizeCmbBx.setValue(null);
+                qtyTxt.setText("");
+            }
+        }
     }
     @FXML
     void deleteBtnOnAction(ActionEvent event) {
         PackingTM packingTM = tblPacking.getSelectionModel().getSelectedItem();
         try {
-            boolean delete=PackingModel.delete(packingTM,orderIdCmbBox.getSelectionModel().getSelectedItem());
+            boolean delete=PackingModel.delete(packingTM, orderIdCmbBox.getSelectionModel().getSelectedItem());
             if (delete){
                 new Alert(Alert.AlertType.CONFIRMATION,
                         "Deleted !")
@@ -107,6 +118,8 @@ public class PackingFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,
                     "Something is wrong")
                     .show();
+        }finally {
+            loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
         }
     }
     @FXML
@@ -123,6 +136,7 @@ public class PackingFormController implements Initializable {
         loadOrderIds();
         loadSize();
         setDate();
+        setTime();
     }
     private void loadClr() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -141,7 +155,6 @@ public class PackingFormController implements Initializable {
     private void setDate() {
         dateTxt.setText(String.valueOf(LocalDate.now()));
     }
-
     private void loadSize() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String>clr=new ArrayList<>();
@@ -153,7 +166,6 @@ public class PackingFormController implements Initializable {
         obList.addAll(clr);
         sizeCmbBx.setItems(obList);
     }
-
     private void loadOrderIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> ids = null;
@@ -166,7 +178,6 @@ public class PackingFormController implements Initializable {
         }
         orderIdCmbBox.setItems(obList);
     }
-
     private void loadValues(String id) {
         ObservableList<PackingTM> packingTMS = FXCollections.observableArrayList();
         try {
@@ -174,6 +185,7 @@ public class PackingFormController implements Initializable {
             for (Pack pack: all){
                 packingTMS.add(new PackingTM(
                         pack.getDate(),
+                        pack.getTime(),
                         pack.getClr(),
                         pack.getSize(),
                         pack.getPackQty()
@@ -188,8 +200,42 @@ public class PackingFormController implements Initializable {
     }
     private void setCellValueFactory() {
         dateColm.setCellValueFactory(new PropertyValueFactory<>("date"));
+        timeColm.setCellValueFactory(new PropertyValueFactory<>("time"));
         clrColm.setCellValueFactory(new PropertyValueFactory<>("clr"));
         sizeColm.setCellValueFactory(new PropertyValueFactory<>("size"));
         qtyColm.setCellValueFactory(new PropertyValueFactory<>("qty"));
+    }
+    boolean clr(){
+        if (clrCmbBx.getSelectionModel().getSelectedItem()==null) {
+            ShakeTextAnimation.ShakeText(clrCmbBx);
+        } else {
+            defueltText.Defuelt(clrCmbBx);
+            return true;
+        }
+        return false;
+    }
+    private boolean sizeCmb() {
+        if (sizeCmbBx.getSelectionModel().getSelectedItem()==null) {
+            ShakeTextAnimation.ShakeText(sizeCmbBx);
+        } else {
+            defueltText.Defuelt(sizeCmbBx);
+            return true;
+        }
+        return false;
+    }
+    private boolean qty() {
+        if (qtyTxt.getText().matches("^$")) {
+            ShakeTextAnimation.ShakeText(qtyTxt);
+        }
+        if (qtyTxt.getText().matches("^(\\d+)$")) {
+            defueltText.Defuelt(qtyTxt);
+            return true;
+        } else {
+            ShakeTextAnimation.ShakeText(qtyTxt);
+        }
+        return false;
+    }
+    void setTime(){
+        SetTime.setTime(timeLbl);
     }
 }

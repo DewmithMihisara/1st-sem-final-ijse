@@ -9,9 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lk.ijse.project_dkf.animation.SetTime;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 import lombok.Getter;
@@ -30,14 +32,12 @@ public class DashboardFormController implements Initializable {
     private AnchorPane midleStage;
     @FXML
     private Button logOutBtn;
-
     @FXML
     private AnchorPane root;
     @FXML
-    private Text timeTxt;
+    private Label timeTxt;
     @FXML
     private Button userBtn;
-
     @FXML
     private Button orderBtn;
     @FXML
@@ -72,26 +72,11 @@ public class DashboardFormController implements Initializable {
     void inputBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.RESEVED_IN,midleStage);
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setTime();
     }
     private void setTime() {
-        Thread thread=new Thread(() -> {
-            SimpleDateFormat simpleDateFormat =new SimpleDateFormat("hh:mm:ss");
-            while (true){
-                try{
-                    Thread.sleep(1000);
-                }catch (Exception e){
-                    System.out.println(e);
-                }
-                final String timeNow = simpleDateFormat.format(new Date());
-                Platform.runLater(()->{
-                    timeTxt.setText(timeNow);
-                });
-            }
-        });
-        thread.start();
+        SetTime.setTime(timeTxt);
     }
 }
