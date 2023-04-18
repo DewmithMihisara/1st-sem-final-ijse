@@ -5,14 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Time;
+import java.sql.Date;
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Material {
-    private String id;
-    private String type;
+    private String orderID;
+    private String mid;
+    private Time time;
     private int qty;
     private Date date;
 }

@@ -13,7 +13,7 @@ public class Pack {
     private String packID;
     private Date date;
     private Time time;
-    private String clr;
+    private String clId;
     private String size;
     private int packQty;
 }

@@ -20,8 +20,9 @@ public class IdModel {
         return data;
     }
 
-    public static List<String> loadClr(String id) throws SQLException {
-        String sql="SELECT Colour FROM OrderRatio WHERE OrderID=?";
+
+    public static List<String> loadClothId(String id) throws SQLException {
+        String sql="SELECT ClotheID FROM OrderRatio WHERE OrderID=?";
         ResultSet resultSet = CrudUtil.execute(sql,id);
 
         List<String>data=new ArrayList<>();
@@ -32,9 +33,9 @@ public class IdModel {
         return data;
     }
 
-    public static List<String> loadType(String selectedItem) throws SQLException {
-        String sql="SELECT Colour FROM TrimCard WHERE OrderID=?";
-        ResultSet resultSet = CrudUtil.execute(sql,selectedItem);
+    public static List<String> loadMaterialId(String id) throws SQLException {
+        String sql="SELECT TrimID FROM TrimCard WHERE OrderID=?";
+        ResultSet resultSet = CrudUtil.execute(sql,id);
 
         List<String>data=new ArrayList<>();
 

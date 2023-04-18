@@ -2,52 +2,56 @@ package lk.ijse.project_dkf.model;
 
 import lk.ijse.project_dkf.dto.Material;
 import lk.ijse.project_dkf.dto.Output;
+import lk.ijse.project_dkf.dto.tm.MaterialTM;
 import lk.ijse.project_dkf.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class MaterialModel {
     public static boolean add(Material material) throws SQLException {
-        String sql ="INSERT INTO Material (MaterialID, Type, MaterialQty, Date ) VALUES(?, ?, ?, ?)";
+        String sql ="INSERT INTO Material (OrderID, MatID, Time, MaterialQty ,Date ) VALUES(?, ?, ?, ?, ?)";
         return CrudUtil.execute(
                 sql,
-                material.getId(),
-                material.getType(),
+                material.getOrderID(),
+                material.getMid(),
+                material.getTime(),
                 material.getQty(),
                 material.getDate()
         );
     }
-
-    public static boolean delete(Material material) throws SQLException {
-        String sql="DELETE FROM Material WHERE MaterialID=? AND Type=? AND MaterialQty=? AND Date=? ";
+    public static boolean delete(MaterialTM materialTM, String selectedItem) throws SQLException {
+        String sql="DELETE FROM Material WHERE OrderId=? AND MatID=? AND Date=? AND Time=?";
         boolean result = CrudUtil.execute(
                 sql,
-                material.getId(),
-                material.getType(),
-                material.getQty(),
-                material.getDate()
+                selectedItem,
+                materialTM.getOid(),
+                materialTM.getDate(),
+                materialTM.getTime()
         );
         return result;
     }
-
     public static List<Material> getAll(String id) throws SQLException {
-        String sql = "SELECT * FROM Material WHERE MaterialID =?";
+        String sql = "SELECT * FROM Material WHERE OrderID =?";
         ResultSet resultSet = CrudUtil.execute(sql,id);
 
         ArrayList<Material> materials=new ArrayList<>();
         while (resultSet.next()){
-            String materialID= resultSet.getString(1);
-            String type=resultSet.getString(2);
-            int qty=resultSet.getInt(3);
-            Date date=resultSet.getDate(4);
+            String oId= resultSet.getString(1);
+            String mId=resultSet.getString(2);
+            Time time=resultSet.getTime(3);
+            int qty=resultSet.getInt(4);
+            Date date=resultSet.getDate(5);
 
-            Material material=new Material(materialID,type,qty,date);
+            Material material=new Material(oId,mId,time,qty,date);
             materials.add(material);
         }
         return materials;
     }
+
+
 }

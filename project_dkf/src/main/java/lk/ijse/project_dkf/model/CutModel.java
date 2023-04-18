@@ -7,53 +7,54 @@ import lk.ijse.project_dkf.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class CutModel {
     public static List<Cut> getAll(String id) throws SQLException {
-        String sql = "SELECT * FROM Cut WHERE CutID =?";
+        String sql = "SELECT * FROM Cut WHERE OrderId =?";
         ResultSet resultSet = CrudUtil.execute(sql,id);
 
         ArrayList<Cut> cuts=new ArrayList<>();
         while (resultSet.next()){
             String cutID = resultSet.getString(1);
-            Date date=resultSet.getDate(2);
-            int qty=resultSet.getInt(3);
-            String type= resultSet.getString(4);
-            String size=resultSet.getString(5);
-            String clr=resultSet.getString(6);
+            String clId=resultSet.getString(2);
+            Date date=resultSet.getDate(3);
+            Time time=resultSet.getTime(4);
+            int qty=resultSet.getInt(5);
+            String type= resultSet.getString(6);
+            String size=resultSet.getString(7);
 
-            Cut cut=new Cut(cutID, date, qty, type, size, clr);
+            Cut cut=new Cut(cutID, clId, date, time, qty, type, size);
             cuts.add(cut);
         }
         return cuts;
     }
 
     public static boolean add(Cut cut) throws SQLException {
-        String sql ="INSERT INTO Cut (CutID, Date, CutQty, Type, Size, Colour ) VALUES(?, ?, ?, ?, ?, ?)";
+        String sql ="INSERT INTO Cut (OrderId, ClotheID, Date, Time, CutQty, Type, Size ) VALUES(?, ?, ?, ?, ?, ?, ?)";
         return CrudUtil.execute(
                 sql,
                 cut.getCutID(),
+                cut.getClothId(),
                 cut.getDate(),
+                cut.getTime(),
                 cut.getCutQty(),
                 cut.getType(),
-                cut.getSize(),
-                cut.getClr()
+                cut.getSize()
         );
     }
 
     public static boolean delete(CutTM cutTM, String selectedItem) throws SQLException {
-        String sql="DELETE FROM Cut WHERE CutID=? AND Date=? AND CutQty=? AND Type=? AND Size=? AND Colour= ?";
+        String sql="DELETE FROM Cut WHERE OrderId=? AND ClotheId=? AND Date=? AND Time=?";
         boolean result = CrudUtil.execute(
                 sql,
                 selectedItem,
+                cutTM.getClothID(),
                 cutTM.getDate(),
-                cutTM.getQty(),
-                cutTM.getType(),
-                cutTM.getSize(),
-                cutTM.getClr()
+                cutTM.getTime()
         );
         return result;
     }

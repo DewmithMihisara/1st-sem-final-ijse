@@ -14,13 +14,13 @@ import java.util.List;
 
 public class OutputModel {
     public static boolean add(Output output) throws SQLException {
-        String sql ="INSERT INTO Output (OutputID, Day, Time, Colour, size, DailyOut ) VALUES(?, ?, ?, ?, ?, ?)";
+        String sql ="INSERT INTO Output (OutputID, Day, Time, ClotheID, size, DailyOut ) VALUES(?, ?, ?, ?, ?, ?)";
         return CrudUtil.execute(
                 sql,
                 output.getOId(),
                 output.getDate(),
                 output.getTime(),
-                output.getClr(),
+                output.getClId(),
                 output.getSize(),
                 output.getOut()
         );
@@ -34,11 +34,11 @@ public class OutputModel {
             String id= resultSet.getString(1);
             Date date=resultSet.getDate(2);
             Time time=resultSet.getTime(3);
-            String clr=resultSet.getString(4);
+            String clId=resultSet.getString(4);
             String size=resultSet.getString(5);
             int out=resultSet.getInt(6);
 
-            Output output=new Output(id,date,time,clr,size,out);
+            Output output=new Output(id,date,time,clId,size,out);
             outputs.add(output);
         }
         return outputs;

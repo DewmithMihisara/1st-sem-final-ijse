@@ -32,13 +32,13 @@ public class PackingModel {
     }
 
     public static boolean add(Pack pack) throws SQLException {
-        String sql ="INSERT INTO Packing (PackID, Date, Time, Colour, Size, PackQty ) VALUES(?, ?, ?, ?, ?, ?)";
+        String sql ="INSERT INTO Packing (PackID, Date, Time, ClotheID, Size, PackQty ) VALUES(?, ?, ?, ?, ?, ?)";
         return CrudUtil.execute(
                 sql,
                 pack.getPackID(),
                 pack.getDate(),
                 pack.getTime(),
-                pack.getClr(),
+                pack.getClId(),
                 pack.getSize(),
                 pack.getPackQty()
         );

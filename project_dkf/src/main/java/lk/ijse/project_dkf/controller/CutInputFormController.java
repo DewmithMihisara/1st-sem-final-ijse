@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import lk.ijse.project_dkf.animation.SetTime;
 import lk.ijse.project_dkf.dto.Cut;
 import lk.ijse.project_dkf.dto.Output;
 import lk.ijse.project_dkf.dto.Pack;
@@ -20,11 +21,13 @@ import lk.ijse.project_dkf.model.OutputModel;
 import lk.ijse.project_dkf.model.PackingModel;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
+import lk.ijse.project_dkf.validation.inputsValidation;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,66 +35,75 @@ import java.util.ResourceBundle;
 
 public class CutInputFormController implements Initializable {
     @FXML
-    private TableColumn<?, ?> clrColm;
-
+    private Label timeLbl;
+    @FXML
+    private TableColumn<?, ?> timeColm;
+    @FXML
+    private TableColumn<?, ?> clIdColm;
     @FXML
     private TableView<CutTM> cutTbl;
-
     @FXML
     private TableColumn<?, ?> dateColm;
-    @FXML
-    private TableColumn<?, ?> oIdColm;
     @FXML
     private TableColumn<?, ?> qtyColm;
     @FXML
     private TableColumn<?, ?> sizeColm;
-
     @FXML
     private TableColumn<?, ?> typeColm;
     @FXML
     private ComboBox<String> clrCmbBx;
-
     @FXML
     private Text dateTxt;
-
     @FXML
     private ComboBox<String> orderIdCmbBox;
-
     @FXML
     private AnchorPane pane;
-
     @FXML
     private TextField qtyTxt;
-
     @FXML
     private ComboBox<String> sizeCmbBx;
-
     @FXML
     private TextField typeTxt;
 
+    boolean clId, size, type, qty;
+    {
+        clId=false;
+        size=false;
+        type=false;
+        qty=false;
+    }
     @FXML
     void addBtnOnAction(ActionEvent event) {
-        Cut cut = new Cut(
-                orderIdCmbBox.getSelectionModel().getSelectedItem(),
-                Date.valueOf(dateTxt.getText()),
-                Integer.parseInt(qtyTxt.getText()),
-                typeTxt.getText(),
-                sizeCmbBx.getSelectionModel().getSelectedItem(),
-                clrCmbBx.getSelectionModel().getSelectedItem()
-        );
-        try {
-            boolean affectedRows = CutModel.add(cut);
-            if (affectedRows) {
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "Add!")
+        clId=inputsValidation.isNullCmb(clrCmbBx);
+        size=inputsValidation.isNullCmb(sizeCmbBx);
+        type=inputsValidation.isNullTxt(typeTxt);
+        qty=inputsValidation.isNumberOrNull(qtyTxt);
+
+        if(clId && size && type && qty){
+            Cut cut = new Cut(
+                    orderIdCmbBox.getSelectionModel().getSelectedItem(),
+                    clrCmbBx.getSelectionModel().getSelectedItem(),
+                    Date.valueOf(dateTxt.getText()),
+                    Time.valueOf(timeLbl.getText()),
+                    Integer.parseInt(qtyTxt.getText()),
+                    typeTxt.getText(),
+                    sizeCmbBx.getSelectionModel().getSelectedItem()
+            );
+            try {
+                boolean affectedRows = CutModel.add(cut);
+                if (affectedRows) {
+                    new Alert(Alert.AlertType.CONFIRMATION,
+                            "Add!")
+                            .show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,
+                        "Something is wrong")
                         .show();
+                e.printStackTrace();
+            } finally {
+                loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
-        }finally {
-            loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
         }
     }
 
@@ -110,7 +122,7 @@ public class CutInputFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,
                     "Something is wrong")
                     .show();
-        }finally {
+        } finally {
             loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
         }
     }
@@ -126,15 +138,25 @@ public class CutInputFormController implements Initializable {
     }
 
     @FXML
-    void relodeBtnOnAction(ActionEvent event) {
-        loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
-    }
-
-    @FXML
     void orderIdOnAction(ActionEvent event) {
         loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
-        loadClr();
+        loadClotheId();
         clrCmbBx.setDisable(false);
+    }
+
+    private void loadClotheId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        List<String> ids = null;
+        try {
+            ids = IdModel.loadClothId(orderIdCmbBox.getSelectionModel().getSelectedItem());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        for (String id : ids) {
+            obList.add(id);
+        }
+        clrCmbBx.setItems(obList);
     }
 
     @Override
@@ -143,6 +165,7 @@ public class CutInputFormController implements Initializable {
         loadOrderIds();
         setOrderDate();
         setCellValueFactory();
+        setTime();
     }
 
     private void loadSize() {
@@ -157,7 +180,6 @@ public class CutInputFormController implements Initializable {
         obList.addAll(clr);
         sizeCmbBx.setItems(obList);
     }
-
     private void loadOrderIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> ids = null;
@@ -172,7 +194,6 @@ public class CutInputFormController implements Initializable {
         }
         orderIdCmbBox.setItems(obList);
     }
-
     private void loadValues(String id) {
         ObservableList<CutTM> cutTMS = FXCollections.observableArrayList();
         try {
@@ -180,8 +201,8 @@ public class CutInputFormController implements Initializable {
             for (Cut cut : all) {
                 cutTMS.add(new CutTM(
                         cut.getDate(),
-                        cut.getCutID(),
-                        cut.getClr(),
+                        cut.getTime(),
+                        cut.getClothId(),
                         cut.getSize(),
                         cut.getType(),
                         cut.getCutQty()
@@ -194,32 +215,18 @@ public class CutInputFormController implements Initializable {
                     .show();
         }
     }
-
-    private void loadClr() {
-        ObservableList<String> obList = FXCollections.observableArrayList();
-        List<String> ids = null;
-        try {
-            ids = IdModel.loadClr(orderIdCmbBox.getSelectionModel().getSelectedItem());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        for (String id : ids) {
-            obList.add(id);
-        }
-        clrCmbBx.setItems(obList);
-    }
-
     private void setCellValueFactory() {
         dateColm.setCellValueFactory(new PropertyValueFactory<>("date"));
-        oIdColm.setCellValueFactory(new PropertyValueFactory<>("oID"));
-        clrColm.setCellValueFactory(new PropertyValueFactory<>("clr"));
+        timeColm.setCellValueFactory(new PropertyValueFactory<>("time"));
+        clIdColm.setCellValueFactory(new PropertyValueFactory<>("clothID"));
         sizeColm.setCellValueFactory(new PropertyValueFactory<>("size"));
         typeColm.setCellValueFactory(new PropertyValueFactory<>("type"));
         qtyColm.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
-
     private void setOrderDate() {
         dateTxt.setText(String.valueOf(LocalDate.now()));
+    }
+    void setTime(){
+        SetTime.setTime(timeLbl);
     }
 }

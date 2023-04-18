@@ -31,7 +31,7 @@
          <columns>
             <TableColumn fx:id="dateCol" prefWidth="155.91506958007812" text="Date" />
             <TableColumn fx:id="timeCol" prefWidth="186.9940185546875" text="Time" />
-            <TableColumn fx:id="clrCol" prefWidth="186.9940185546875" text="Colour" />
+            <TableColumn fx:id="clrCol" prefWidth="186.9940185546875" text="Clothe Id" />
             <TableColumn fx:id="sizeCol" prefWidth="186.9940185546875" text="Size" />
             <TableColumn fx:id="qtyCol" prefWidth="186.9940185546875" text="Qty" />
          </columns>

@@ -5,17 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
 import java.sql.Time;
-import java.util.Date;
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-
-public class OutputTM {
+@NoArgsConstructor
+@AllArgsConstructor
+public class MaterialTM {
     private Date date;
     private Time time;
-    private String clId;
-    private String size;
-    private int out;
+    private String oid;
+    private int qty;
 }

@@ -15,7 +15,7 @@ import java.util.Date;
 public class PackingTM {
     private Date date;
     private Time time;
-    private String clr;
+    private String clId;
     private String size;
     private int qty;
 }

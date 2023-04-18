@@ -13,7 +13,7 @@ public class Output {
     private String oId;
     private Date date;
     private Time time;
-    private String clr;
+    private String clId;
     private String size;
     private int out;
 }

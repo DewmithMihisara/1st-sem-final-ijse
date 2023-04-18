@@ -55,10 +55,10 @@ public class PackingFormController implements Initializable {
     private TableColumn<?, ?> sizeColm;
     @FXML
     private TableView<PackingTM> tblPacking;
-    boolean clr,size,qty;
+    boolean clId,size,qty;
 
     {
-        clr=false;
+        clId=false;
         size=false;
         qty=false;
     }
@@ -67,9 +67,9 @@ public class PackingFormController implements Initializable {
 
         qty=inputsValidation.isNumberOrNull(qtyTxt);
         size= inputsValidation.isNullCmb(sizeCmbBx);
-        clr= inputsValidation.isNullCmb(clrCmbBx);
+        clId= inputsValidation.isNullCmb(clrCmbBx);
 
-        if (clr && size && qty){
+        if (clId && size && qty){
             Pack pack=new Pack(
                     orderIdCmbBox.getSelectionModel().getSelectedItem(),
                     Date.valueOf(dateTxt.getText()),
@@ -121,23 +121,15 @@ public class PackingFormController implements Initializable {
     void idOnAction(ActionEvent event) {
         String id= String.valueOf(orderIdCmbBox.getSelectionModel().getSelectedItem());
         loadValues(id);
-        loadClr();
+        loadClotheId();
         clrCmbBx.setDisable(false);
 
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        setCellValueFactory();
-        loadOrderIds();
-        loadSize();
-        setDate();
-        setTime();
-    }
-    private void loadClr() {
+    private void loadClotheId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> ids = null;
         try {
-            ids = IdModel.loadClr(orderIdCmbBox.getSelectionModel().getSelectedItem());
+            ids = IdModel.loadClothId(orderIdCmbBox.getSelectionModel().getSelectedItem());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -146,6 +138,14 @@ public class PackingFormController implements Initializable {
             obList.add(id);
         }
         clrCmbBx.setItems(obList);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setCellValueFactory();
+        loadOrderIds();
+        loadSize();
+        setDate();
+        setTime();
     }
     private void setDate() {
         dateTxt.setText(String.valueOf(LocalDate.now()));
@@ -181,7 +181,7 @@ public class PackingFormController implements Initializable {
                 packingTMS.add(new PackingTM(
                         pack.getDate(),
                         pack.getTime(),
-                        pack.getClr(),
+                        pack.getClId(),
                         pack.getSize(),
                         pack.getPackQty()
                 ));
@@ -196,7 +196,7 @@ public class PackingFormController implements Initializable {
     private void setCellValueFactory() {
         dateColm.setCellValueFactory(new PropertyValueFactory<>("date"));
         timeColm.setCellValueFactory(new PropertyValueFactory<>("time"));
-        clrColm.setCellValueFactory(new PropertyValueFactory<>("clr"));
+        clrColm.setCellValueFactory(new PropertyValueFactory<>("clId"));
         sizeColm.setCellValueFactory(new PropertyValueFactory<>("size"));
         qtyColm.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }

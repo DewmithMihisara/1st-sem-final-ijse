@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Time;
 import java.util.Date;
 @AllArgsConstructor
 @Getter
@@ -12,9 +13,11 @@ import java.util.Date;
 @Setter
 public class Cut {
     private String cutID;
+    private String clothId;
     private Date date;
+    private Time time;
     private int cutQty;
     private String type;
     private String size;
-    private String clr;
+
 }

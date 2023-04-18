@@ -66,20 +66,20 @@ public class OutputFormController implements Initializable {
 
     @FXML
     private ComboBox<String> sizeCmbBx;
-    boolean clr,size,qty;
+    boolean clId,size,qty;
 
     {
-        clr=false;
+        clId=false;
         size=false;
         qty=false;
     }
     @FXML
     void addBtnOnAction(ActionEvent event) {
-        clr= inputsValidation.isNullCmb(clrCmbBx);
+        clId= inputsValidation.isNullCmb(clrCmbBx);
         size=inputsValidation.isNullCmb(sizeCmbBx);
         qty=inputsValidation.isNumberOrNull(qtyTxt);
 
-        if (clr && size && qty){
+        if (clId && size && qty){
             Output output = new Output(
                     orderIdCmbBox.getSelectionModel().getSelectedItem(),
                     Date.valueOf(dateTxt.getText()),
@@ -130,7 +130,7 @@ public class OutputFormController implements Initializable {
     @FXML
     void orderIdOnAction(ActionEvent event) {
         loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
-        loadClr();
+        loadClotheId();
         clrCmbBx.setDisable(false);
     }
     @Override
@@ -155,11 +155,11 @@ public class OutputFormController implements Initializable {
         sizeCmbBx.setItems(obList);
     }
 
-    private void loadClr() {
+    private void loadClotheId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> ids = null;
         try {
-            ids = IdModel.loadClr(orderIdCmbBox.getSelectionModel().getSelectedItem());
+            ids = IdModel.loadClothId(orderIdCmbBox.getSelectionModel().getSelectedItem());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -169,7 +169,6 @@ public class OutputFormController implements Initializable {
         }
         clrCmbBx.setItems(obList);
     }
-
     private void loadOrderIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> ids = null;
@@ -197,7 +196,7 @@ public class OutputFormController implements Initializable {
                 outputTMS.add(new OutputTM(
                         output.getDate(),
                         output.getTime(),
-                        output.getClr(),
+                        output.getClId(),
                         output.getSize(),
                         output.getOut()
                 ));
@@ -212,7 +211,7 @@ public class OutputFormController implements Initializable {
     private void setCellValueFactory() {
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
-        clrCol.setCellValueFactory(new PropertyValueFactory<>("clr"));
+        clrCol.setCellValueFactory(new PropertyValueFactory<>("clId"));
         sizeCol.setCellValueFactory(new PropertyValueFactory<>("size"));
         qtyCol.setCellValueFactory(new PropertyValueFactory<>("out"));
     }
