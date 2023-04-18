@@ -93,21 +93,21 @@ public class OrderFormController implements Initializable {
     private AnchorPane root;
     @FXML
     void deleteBtnOnAction(ActionEvent event) {
-        try {
-            boolean delete = OrderModel.delete(orderIdCmbBox.getSelectionModel().getSelectedItem());
-            if (delete) {
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "Deleted !")
-                        .show();
-            }
-
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
-        }finally {
-            loadOrderIds();
-        }
+//        try {
+//            boolean delete = OrderModel.delete(orderIdCmbBox.getSelectionModel().getSelectedItem());
+//            if (delete) {
+//                new Alert(Alert.AlertType.CONFIRMATION,
+//                        "Deleted !")
+//                        .show();
+//            }
+//
+//        } catch (SQLException e) {
+//            new Alert(Alert.AlertType.ERROR,
+//                    "Something is wrong")
+//                    .show();
+//        }finally {
+//            loadOrderIds();
+//        }
     }
     @FXML
     void newOrderBtnOnAction(ActionEvent event) throws IOException {
@@ -123,57 +123,57 @@ public class OrderFormController implements Initializable {
         String oId= orderIdCmbBox.getSelectionModel().getSelectedItem();
         String clr= clrCmbBx.getSelectionModel().getSelectedItem();
 
-        loadOrderQty(oId,clr);
-        loadFinishQty(oId,clr);
-        loadReqAndExtra(oId,clr);
+        //loadOrderQty(oId,clr);
+        //loadFinishQty(oId,clr);
+        //loadReqAndExtra(oId,clr);
     }
 
-    private void loadReqAndExtra(String oId, String clr) {
-        try {
-            OrderRatio orderRatio= LoadSizesModel.ratio(oId,clr);
-
-            if (orderRatio != null && (orderRatio.getSQty()) <= s) {
-                reqS_Txt.setText("0");
-                exS_Txt.setText(String.valueOf(s - orderRatio.getSQty()));
-            }else {
-                assert orderRatio != null;
-                reqS_Txt.setText(String.valueOf(orderRatio.getSQty() - s));
-                exS_Txt.setText("0");
-            }
-            if (orderRatio.getMQty() <= m) {
-                reqM_Txt.setText("0");
-//                reqM_Txt.setFill(Color.GREEN);
-                exM_Txt.setText(String.valueOf(m - orderRatio.getMQty()));
-            }else {
-                reqM_Txt.setText(String.valueOf(orderRatio.getMQty() - m));
-                exM_Txt.setText("0");
-            }
-            if (orderRatio.getLQty() <= l) {
-                reqL_Txt.setText("0");
-                exL_Txt.setText(String.valueOf(l - orderRatio.getLQty()));
-            }else {
-                reqL_Txt.setText(String.valueOf(orderRatio.getLQty() - l));
-                exL_Txt.setText("0");
-            }
-            if (orderRatio.getXlQty() <= xl) {
-                reqXL_Txt.setText("0");
-                exXL_Txt.setText(String.valueOf(xl - orderRatio.getXlQty()));
-            }else {
-                reqXL_Txt.setText(String.valueOf(orderRatio.getXlQty() - xl));
-                exXL_Txt.setText("0");
-            }
-            if (orderRatio.getXxlty() <= xxl) {
-                reqXXL_Txt.setText("0");
-                exXXL_Txt.setText(String.valueOf(xxl - orderRatio.getXxlty()));
-            }else {
-                reqXXL_Txt.setText(String.valueOf(orderRatio.getXxlty() - xxl));
-                exXXL_Txt.setText("0");
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    private void loadReqAndExtra(String oId, String clr) {
+//        try {
+//            OrderRatio orderRatio= LoadSizesModel.ratio(oId,clr);
+//
+//            if (orderRatio != null && (orderRatio.getSQty()) <= s) {
+//                reqS_Txt.setText("0");
+//                exS_Txt.setText(String.valueOf(s - orderRatio.getSQty()));
+//            }else {
+//                assert orderRatio != null;
+//                reqS_Txt.setText(String.valueOf(orderRatio.getSQty() - s));
+//                exS_Txt.setText("0");
+//            }
+//            if (orderRatio.getMQty() <= m) {
+//                reqM_Txt.setText("0");
+////                reqM_Txt.setFill(Color.GREEN);
+//                exM_Txt.setText(String.valueOf(m - orderRatio.getMQty()));
+//            }else {
+//                reqM_Txt.setText(String.valueOf(orderRatio.getMQty() - m));
+//                exM_Txt.setText("0");
+//            }
+//            if (orderRatio.getLQty() <= l) {
+//                reqL_Txt.setText("0");
+//                exL_Txt.setText(String.valueOf(l - orderRatio.getLQty()));
+//            }else {
+//                reqL_Txt.setText(String.valueOf(orderRatio.getLQty() - l));
+//                exL_Txt.setText("0");
+//            }
+//            if (orderRatio.getXlQty() <= xl) {
+//                reqXL_Txt.setText("0");
+//                exXL_Txt.setText(String.valueOf(xl - orderRatio.getXlQty()));
+//            }else {
+//                reqXL_Txt.setText(String.valueOf(orderRatio.getXlQty() - xl));
+//                exXL_Txt.setText("0");
+//            }
+//            if (orderRatio.getXxlty() <= xxl) {
+//                reqXXL_Txt.setText("0");
+//                exXXL_Txt.setText(String.valueOf(xxl - orderRatio.getXxlty()));
+//            }else {
+//                reqXXL_Txt.setText(String.valueOf(orderRatio.getXxlty() - xxl));
+//                exXXL_Txt.setText("0");
+//            }
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     private void loadFinishQty(String oId, String clr) {
 
@@ -203,24 +203,24 @@ public class OrderFormController implements Initializable {
         }
 
     }
-    void loadOrderQty(String oId,String clr){
-        try {
-            OrderRatio orderRatio= LoadSizesModel.ratio(oId,clr);
-
-            orderS_Txt.setText(String.valueOf(orderRatio.getSQty()));
-            orderM_Txt.setText(String.valueOf(orderRatio.getMQty()));
-            orderL_Txt.setText(String.valueOf(orderRatio.getLQty()));
-            orderXL_Txt.setText(String.valueOf(orderRatio.getXlQty()));
-            orderXXL_Txt.setText(String.valueOf(orderRatio.getXxlty()));
-
-
-
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
-        }
-    }
+//    void loadOrderQty(String oId,String clr){
+//        try {
+//            OrderRatio orderRatio= LoadSizesModel.ratio(oId,clr);
+//
+//            orderS_Txt.setText(String.valueOf(orderRatio.getSQty()));
+//            orderM_Txt.setText(String.valueOf(orderRatio.getMQty()));
+//            orderL_Txt.setText(String.valueOf(orderRatio.getLQty()));
+//            orderXL_Txt.setText(String.valueOf(orderRatio.getXlQty()));
+//            orderXXL_Txt.setText(String.valueOf(orderRatio.getXxlty()));
+//
+//
+//
+//        } catch (SQLException e) {
+//            new Alert(Alert.AlertType.ERROR,
+//                    "Something is wrong")
+//                    .show();
+//        }
+//    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadOrderIds();

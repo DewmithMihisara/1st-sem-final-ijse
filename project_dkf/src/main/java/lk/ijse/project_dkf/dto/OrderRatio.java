@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 public class OrderRatio {
     private String orderId;
+    private String clotheId;
     private String disc;
     private String colour;
     private int sQty;

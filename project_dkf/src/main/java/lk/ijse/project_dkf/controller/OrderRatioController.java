@@ -16,9 +16,11 @@ import lk.ijse.project_dkf.dto.OrderRatio;
 import lk.ijse.project_dkf.dto.tm.BuyerTM;
 import lk.ijse.project_dkf.dto.tm.OrderRatioTM;
 import lk.ijse.project_dkf.model.BuyerModel;
+import lk.ijse.project_dkf.model.OrderModel;
 import lk.ijse.project_dkf.model.OrderRatioModel;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
+import lk.ijse.project_dkf.validation.inputsValidation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,7 +33,9 @@ public class OrderRatioController implements Initializable {
     @FXML
     private AnchorPane pane;
     @FXML
-    private Button dnBtn;
+    private Label clothIDTxt;
+    @FXML
+    private TableColumn<?, ?> idColm;
     @FXML
     private TableColumn<?, ?> clrColm;
     @FXML
@@ -71,101 +75,118 @@ public class OrderRatioController implements Initializable {
     private TextField xxlSizeTxt;
     @FXML
     private TableView<OrderRatioTM> tblOrderRatio;
+    public static ObservableList<OrderRatioTM> orderRatioTM=FXCollections.observableArrayList();
+
+    boolean desc,clr,s,m,l,xl,xxl;
+    {
+        desc=false;
+        clr=false;
+        s=false;
+        m=false;
+        l=false;
+        xl=false;
+        xxl=false;
+    }
     @FXML
     void backBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.NEW_ORDER,pane);
+        Navigation.navigation(Rout.NEW_ORDER, pane);
     }
     @FXML
     void addBtnOnAction(ActionEvent event) {
-        OrderRatio orderRatio=new OrderRatio(
-                NewOrderFormController.order.getOrderId(),
-                descriptionTxt.getText(),
-                clrTxt.getText(),
-                Integer.parseInt(sSizeTxt.getText()),
-                Integer.parseInt(mSizeTxt.getText()),
-                Integer.parseInt(lSizeTxt.getText()),
-                Integer.parseInt(xlSizeTxt.getText()),
-                Integer.parseInt(xxlSizeTxt.getText())
-        );
-        try {
-            boolean add=OrderRatioModel.addRatio(orderRatio);
-            tblOrderRatio.refresh();
-            if (add ) {
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "Add")
-                        .show();
-                descriptionTxt.clear();
-                clrTxt.clear();
-                sSizeTxt.clear();
-                mSizeTxt.clear();
-                lSizeTxt.clear();
-                xlSizeTxt.clear();
-                xxlSizeTxt.clear();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+        desc= inputsValidation.isNullTxt(descriptionTxt);
+        clr=inputsValidation.isNullTxt(clrTxt);
+        s=inputsValidation.isNumberOrNull(sSizeTxt);
+        m=inputsValidation.isNumberOrNull(mSizeTxt);
+        l=inputsValidation.isNumberOrNull(lSizeTxt);
+        xl=inputsValidation.isNumberOrNull(xlSizeTxt);
+        xxl=inputsValidation.isNumberOrNull(xxlSizeTxt);
+
+        if (desc && clr && s && m && l && xl && xxl){
+            orderRatioTM.add(new OrderRatioTM(
+                    clothIDTxt.getText(),
+                    clrTxt.getText(),
+                    descriptionTxt.getText(),
+                    Integer.parseInt(sSizeTxt.getText()),
+                    Integer.parseInt(mSizeTxt.getText()),
+                    Integer.parseInt(lSizeTxt.getText()),
+                    Integer.parseInt(xlSizeTxt.getText()),
+                    Integer.parseInt(xxlSizeTxt.getText())
+            ));
+            tblOrderRatio.setItems(orderRatioTM);
+
+            String[]strings=clothIDTxt.getText().split("Cl-");
+            int id= Integer.parseInt(strings[1]);
+            id++;
+
+            String num=String.valueOf(id);
+            String txt="Cl-"+num;
+            clothIDTxt.setText(txt);
+
+            clrTxt.clear();
+            descriptionTxt.setText("");
+            sSizeTxt.setText("");
+            mSizeTxt.setText("");
+            lSizeTxt.setText("");
+            xlSizeTxt.setText("");
+            xxlSizeTxt.setText("");
         }
     }
+
     @FXML
     void deleteBtnOnAction(ActionEvent event) {
         OrderRatioTM selectedItem = tblOrderRatio.getSelectionModel().getSelectedItem();
-        try {
-            boolean delete=OrderRatioModel.delete(selectedItem.getClr(),NewOrderFormController.order.getOrderId());
-            if (delete){
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "Deleted !")
-                        .show();
+        String id=selectedItem.getId();
+        for (int i = 0; i < orderRatioTM.size(); i++) {
+            if (orderRatioTM.get(i).getId().equals(id)){
+                orderRatioTM.remove(i);
+                break;
             }
-
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
         }
     }
+
     @FXML
-    void relodeBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.ORDER_RATIO,pane);
-    }
-    @FXML
-    void doneBtnOnAction(ActionEvent event) {
-        Stage stage = (Stage) dnBtn.getScene().getWindow();
-        stage.close();
+    void nxtBtnOnAction(ActionEvent event) throws IOException {
+        if (orderRatioTM.size()==0){
+            new Alert(Alert.AlertType.WARNING,
+                    "Plese add Order Ratio")
+                    .show();
+        }else {
+            Navigation.navigation(Rout.TRIM_CARD,pane);
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setValues();
         setCellValueFactory();
-        loadValues();
-    }
-
-    private void loadValues() {
-        ObservableList<OrderRatioTM> orderRatioObj = FXCollections.observableArrayList();
-        try {
-            List<OrderRatio> all = OrderRatioModel.getAll(NewOrderFormController.order.getOrderId());
-            for (OrderRatio orderRatio: all){
-                orderRatioObj.add(new OrderRatioTM(
-                        orderRatio.getColour(),
-                        orderRatio.getDisc(),
-                        orderRatio.getSQty(),
-                        orderRatio.getMQty(),
-                        orderRatio.getLQty(),
-                        orderRatio.getXlQty(),
-                        orderRatio.getXxlty()
-                ));
-            }
-            tblOrderRatio.setItems(orderRatioObj);
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+        if (orderRatioTM.size()==0){
+            generateOrderID();
+        }else {
+            generateOrderIDByArray();
+        }
+        if (orderRatioTM !=null){
+            loadValues();
         }
     }
 
+    private void generateOrderIDByArray() {
+        OrderRatioTM orderRatio=orderRatioTM.get(orderRatioTM.size()-1);
+        String string=orderRatio.getId();
+        String [] ar=string.split("Cl-");
+        int id= Integer.parseInt(ar[1]);
+        id++;
+
+        String num=String.valueOf(id);
+        String txt="Cl-"+num;
+        clothIDTxt.setText(txt);
+    }
+
+    private void loadValues() {
+        tblOrderRatio.setItems(orderRatioTM);
+    }
+
     private void setCellValueFactory() {
+        idColm.setCellValueFactory(new PropertyValueFactory<>("id"));
         clrColm.setCellValueFactory(new PropertyValueFactory<>("clr"));
         descColm.setCellValueFactory(new PropertyValueFactory<>("desc"));
         sColm.setCellValueFactory(new PropertyValueFactory<>("s"));
@@ -179,5 +200,13 @@ public class OrderRatioController implements Initializable {
         orderIdTxt.setText(NewOrderFormController.order.getOrderId());
     }
 
+    private void generateOrderID() {
+        try {
+            String id = OrderRatioModel.getNextOrderRatioID();
+            clothIDTxt.setText(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

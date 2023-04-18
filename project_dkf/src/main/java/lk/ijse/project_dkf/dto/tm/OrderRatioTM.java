@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderRatioTM {
+    private String id;
     private String clr;
     private String desc;
     private int s;

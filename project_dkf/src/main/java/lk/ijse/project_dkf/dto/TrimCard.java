@@ -8,7 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TrimCard {
-    private String id;
+    private String orderId;
+    private String trimId;
     private String typ;
     private String clr;
     private int qty;

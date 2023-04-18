@@ -41,7 +41,7 @@ public class inputsValidation {
     }
 
     public static boolean isNullDate(DatePicker dedlineDate) {
-        if (Date.valueOf(dedlineDate.getValue()) ==null) {
+        if (dedlineDate.getValue()==null) {
             ShakeTextAnimation.ShakeText(dedlineDate);
         } else {
             defueltText.Defuelt(dedlineDate);
