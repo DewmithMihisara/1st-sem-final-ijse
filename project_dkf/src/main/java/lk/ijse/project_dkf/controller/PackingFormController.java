@@ -13,6 +13,7 @@ import lk.ijse.project_dkf.animation.SetTime;
 import lk.ijse.project_dkf.animation.ShakeTextAnimation;
 import lk.ijse.project_dkf.animation.defueltText;
 import lk.ijse.project_dkf.dto.Pack;
+import lk.ijse.project_dkf.dto.Stock;
 import lk.ijse.project_dkf.dto.tm.PackingTM;
 import lk.ijse.project_dkf.model.*;
 import lk.ijse.project_dkf.validation.inputsValidation;
@@ -78,13 +79,14 @@ public class PackingFormController implements Initializable {
                     sizeCmbBx.getSelectionModel().getSelectedItem(),
                     Integer.parseInt(qtyTxt.getText())
             );
+            Stock stock =new Stock(
+                    clrCmbBx.getSelectionModel().getSelectedItem(),
+                    orderIdCmbBox.getSelectionModel().getSelectedItem(),
+                    sizeCmbBx.getSelectionModel().getSelectedItem(),
+                    Integer.parseInt(qtyTxt.getText())
+            );
             try {
-                boolean affectedRows= PackingModel.add(pack);
-                if (affectedRows ) {
-                    new Alert(Alert.AlertType.CONFIRMATION,
-                            "Add!")
-                            .show();
-                }
+                boolean affectedRows= StockPlaceModel.add(pack,stock);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,
                         "Something is wrong")

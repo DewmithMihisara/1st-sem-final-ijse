@@ -35,7 +35,6 @@ public class OrderRatioModel {
         }
         return false;
     }
-
     public static String getNextOrderRatioID() throws SQLException {
         String sql = "SELECT ClotheID FROM OrderRatio ORDER BY ClotheID DESC LIMIT 1";
         ResultSet resultSet = CrudUtil.execute(sql);
@@ -45,7 +44,6 @@ public class OrderRatioModel {
         }
         return splitOrderId(null);
     }
-
     private static String splitOrderId(String currentId) {
         if (currentId != null) {
             String[] strings = currentId.split("Cl-");

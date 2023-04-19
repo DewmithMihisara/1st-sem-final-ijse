@@ -16,6 +16,7 @@ public class Navigation {
         switch (rout) {
             case LOGIN -> initUi("logInForm.fxml");
             case NEW_AC -> initUi("newAcForm.fxml");
+            case MAIN_DASHBOARD -> initUi("mainDashBoard.fxml");
             case DASHBOARD -> initUi("dashboardForm.fxml");
             case USER_SETTINGS -> initUi("settingForm.fxml");
             case ORDER -> initUi("orderForm.fxml");
@@ -25,9 +26,9 @@ public class Navigation {
             case PAKING -> initUi("packingForm.fxml");
             case CUT_IN -> initUi("cutInputForm.fxml");
             case MATERIAL_IN -> initUi("materialInputForm.fxml");
-            case RESEVED_IN -> initUi("resevedInForm.fxml");
             case ORDER_RATIO -> initUi("orderRatioForm.fxml");
             case TRIM_CARD -> initUi("trimCardForm.fxml");
+            case SHIP -> initUi("shipingForm.fxml");
         }
     }
     private static void initUi(String location) throws IOException {

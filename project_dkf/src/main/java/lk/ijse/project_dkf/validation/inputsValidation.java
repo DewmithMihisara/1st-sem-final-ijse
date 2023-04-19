@@ -39,9 +39,8 @@ public class inputsValidation {
         }
         return false;
     }
-
-    public static boolean isNullDate(DatePicker dedlineDate) {
-        if (dedlineDate.getValue()==null) {
+    public static boolean isNullDate(DatePicker dedlineDate, Date date) {
+        if (dedlineDate.getValue()==null ||  date.after(Date.valueOf(dedlineDate.getValue()))) {
             ShakeTextAnimation.ShakeText(dedlineDate);
         } else {
             defueltText.Defuelt(dedlineDate);

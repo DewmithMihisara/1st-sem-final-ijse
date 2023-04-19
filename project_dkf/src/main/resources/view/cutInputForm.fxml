@@ -19,17 +19,12 @@
             <Image url="@../img/CutInput.png" />
          </image>
       </ImageView>
-      <Button layoutX="-64.0" layoutY="526.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="224.0" rotate="270.0" style="-fx-background-color: TRANCEPARENT; -fx-text-fill: white;" text="CUT">
+      <Button layoutX="-63.0" layoutY="406.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="224.0" rotate="270.0" style="-fx-background-color: TRANCEPARENT; -fx-text-fill: white;" text="CUT" AnchorPane.bottomAnchor="198.0" AnchorPane.leftAnchor="-63.0">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="-64.0" layoutY="302.0" mnemonicParsing="false" onAction="#materialBtnOnAction" prefHeight="67.0" prefWidth="224.0" rotate="270.0" styleClass="signBtn" stylesheets="@../style/loginStyle.css" text="MATERIALS">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Button>
-      <Button layoutX="-64.0" layoutY="79.0" mnemonicParsing="false" onAction="#resevedBtnOnAction" prefHeight="67.0" prefWidth="224.0" rotate="270.0" styleClass="signBtn" stylesheets="@../style/loginStyle.css" text="RESEVED">
+      <Button layoutX="-48.0" layoutY="123.0" mnemonicParsing="false" onAction="#materialBtnOnAction" prefHeight="67.0" prefWidth="224.0" rotate="270.0" styleClass="signBtn" stylesheets="@../style/loginStyle.css" text="MATERIALS" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="-63.0" AnchorPane.topAnchor="205.0">
          <font>
             <Font size="30.0" />
          </font>

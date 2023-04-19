@@ -48,7 +48,7 @@ public class LogInFormController {
             try {
                 user= LogInModel.isCorrect(usrName);
                 if (user.getUserName().equals(usrName) && user.getPassword().equals(password)){
-                    Navigation.navigation(Rout.DASHBOARD,root);
+                    Navigation.navigation(Rout.MAIN_DASHBOARD,root);
                 }else {
                     new Alert(Alert.AlertType.ERROR,
                             "Password is wrong!")

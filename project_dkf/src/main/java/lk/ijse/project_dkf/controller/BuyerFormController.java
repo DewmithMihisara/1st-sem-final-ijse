@@ -35,13 +35,10 @@ public class BuyerFormController implements Initializable {
     private AnchorPane midleStage;
     @FXML
     private TableColumn<?, ?> colAddress;
-
     @FXML
     private TableColumn<?, ?> colContact;
-
     @FXML
     private TableColumn<?, ?> colId;
-
     @FXML
     private TableColumn<?, ?> colName;
     @FXML
@@ -50,10 +47,8 @@ public class BuyerFormController implements Initializable {
     private Label buyerIdTxt;
     @FXML
     private TextField BuyerCnTxt;
-
     @FXML
     private TextField buyerAddTxt;
-
     @FXML
     private TextField buyerNameTxt;
     @FXML

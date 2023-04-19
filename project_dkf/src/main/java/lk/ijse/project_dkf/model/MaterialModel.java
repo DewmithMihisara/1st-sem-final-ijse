@@ -52,6 +52,4 @@ public class MaterialModel {
         }
         return materials;
     }
-
-
 }

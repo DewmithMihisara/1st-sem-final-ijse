@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 public class OutputModel {
-    public static boolean add(Output output) throws SQLException {
+    public static boolean add(Output output) throws SQLException{
         String sql ="INSERT INTO Output (OutputID, Day, Time, ClotheID, size, DailyOut ) VALUES(?, ?, ?, ?, ?, ?)";
         return CrudUtil.execute(
                 sql,

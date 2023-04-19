@@ -24,27 +24,20 @@ public class NewAcFormController {
     private AnchorPane root;
     @FXML
     private TextField PhoneTxt;
-
     @FXML
     private TextField eMailTxt;
-
     @FXML
     private TextField pwTxt;
-
     @FXML
     private Button signInBtn;
-
     @FXML
     private Button signUpMainBtn;
-
     @FXML
     private TextField usrTxt;
-
     @FXML
     void signInBtnOnActon(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.LOGIN,root);
     }
-
     @FXML
     void signUpMainBtnOnActon(ActionEvent event) throws IOException {
         if (usrTxt.getText().equals("") || eMailTxt.getText().equals("") || pwTxt.getText().equals("") || PhoneTxt.getText().equals("")){

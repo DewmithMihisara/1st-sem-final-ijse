@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class PlaceOrderModel {
-
     public static boolean placeOrder() throws SQLException {
         Connection con = null;
         try {

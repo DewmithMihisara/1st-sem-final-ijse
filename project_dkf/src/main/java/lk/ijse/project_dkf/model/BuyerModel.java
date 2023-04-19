@@ -39,10 +39,9 @@ public class BuyerModel {
         }
         return buyers;
     }
-
-    public static Buyer search(Buyer buyer) throws SQLException {
+    public static Buyer search(String id) throws SQLException {
         String sql = "SELECT * FROM Buyer WHERE BuyerID=?";
-        ResultSet resultSet = CrudUtil.execute(sql,buyer.getBuyerId());
+        ResultSet resultSet = CrudUtil.execute(sql,id);
         if (resultSet.next()){
             return new Buyer(
                     resultSet.getString(1),
@@ -53,19 +52,16 @@ public class BuyerModel {
         }
         return null;
     }
-
     public static boolean update(Buyer buyer) throws SQLException {
         String sql = "UPDATE Buyer SET BuyerName = ?, BuyerCN = ?, BuyerAddress = ? WHERE BuyerID = ?";
         boolean result = CrudUtil.execute(sql,buyer.getBuyerName(),buyer.getBuyerCn(),buyer.getBuyerAddress(),buyer.getBuyerId());
         return result;
     }
-
     public static boolean delete(BuyerTM buyer) throws SQLException {
         String sql="DELETE FROM Buyer WHERE BuyerID=?";
         boolean result = CrudUtil.execute(sql,buyer.getId());
         return result;
     }
-
     public static String getNextOrderID() throws SQLException {
         String sql="SELECT BuyerID FROM Buyer ORDER BY BuyerID DESC LIMIT 1";
         ResultSet resultSet = CrudUtil.execute(sql);
@@ -75,7 +71,6 @@ public class BuyerModel {
         }
         return splitOrderId(null);
     }
-
     private static String splitOrderId(String currentId) {
 
         if(currentId != null) {

@@ -30,7 +30,6 @@ public class PackingModel {
         }
         return packs;
     }
-
     public static boolean add(Pack pack) throws SQLException {
         String sql ="INSERT INTO Packing (PackID, Date, Time, ClotheID, Size, PackQty ) VALUES(?, ?, ?, ?, ?, ?)";
         return CrudUtil.execute(
@@ -43,7 +42,6 @@ public class PackingModel {
                 pack.getPackQty()
         );
     }
-
     public static boolean delete(PackingTM packingTM, String id) throws SQLException {
         String sql="DELETE FROM Packing WHERE PackID=? AND Date=? AND Time=?";
         boolean result = CrudUtil.execute(

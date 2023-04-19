@@ -50,7 +50,7 @@ public class DashboardFormController implements Initializable {
     }
     @FXML
     void bkBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.DASHBOARD,root);
+        Navigation.navigation(Rout.MAIN_DASHBOARD,root);
     }
     @FXML
     void orderBtnOnAction(ActionEvent event) throws IOException {
@@ -70,11 +70,12 @@ public class DashboardFormController implements Initializable {
     }
     @FXML
     void inputBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.RESEVED_IN,midleStage);
+        Navigation.navigation(Rout.CUT_IN,midleStage);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setTime();
+
+        //setTime();
     }
     private void setTime() {
         SetTime.setTime(timeTxt);

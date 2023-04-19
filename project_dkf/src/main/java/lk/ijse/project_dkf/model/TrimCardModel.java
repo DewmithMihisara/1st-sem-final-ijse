@@ -51,7 +51,5 @@ public class TrimCardModel {
         }
         return "Tr-10000";
     }
-
-
 }
 

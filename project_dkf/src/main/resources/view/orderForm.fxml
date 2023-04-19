@@ -136,5 +136,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="987.0" layoutY="569.0" mnemonicParsing="false" onAction="#shipBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Ship" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

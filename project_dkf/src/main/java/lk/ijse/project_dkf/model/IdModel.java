@@ -19,8 +19,6 @@ public class IdModel {
         }
         return data;
     }
-
-
     public static List<String> loadClothId(String id) throws SQLException {
         String sql="SELECT ClotheID FROM OrderRatio WHERE OrderID=?";
         ResultSet resultSet = CrudUtil.execute(sql,id);
@@ -32,7 +30,6 @@ public class IdModel {
         }
         return data;
     }
-
     public static List<String> loadMaterialId(String id) throws SQLException {
         String sql="SELECT TrimID FROM TrimCard WHERE OrderID=?";
         ResultSet resultSet = CrudUtil.execute(sql,id);

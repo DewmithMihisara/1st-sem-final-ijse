@@ -23,5 +23,4 @@ public class LogInModel {
         }
         return new User();
     }
-
 }

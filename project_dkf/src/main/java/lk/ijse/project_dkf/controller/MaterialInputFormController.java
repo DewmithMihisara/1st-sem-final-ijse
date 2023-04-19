@@ -36,47 +36,39 @@ import java.util.ResourceBundle;
 public class MaterialInputFormController implements Initializable {
     @FXML
     private TableColumn<?, ?> dateColm;
-
     @FXML
     private Text dateTxt;
-
     @FXML
     private TableColumn<?, ?> orderColm;
-
     @FXML
     private ComboBox<String> orderIdCmbBox;
-
     @FXML
     private AnchorPane pane;
-
     @FXML
     private TableColumn<?, ?> qtyColm;
-
     @FXML
     private TextField qtyTxt;
-
     @FXML
     private TableView<MaterialTM> tblMetarial;
-
     @FXML
     private TableColumn<?, ?> timeColm;
-
     @FXML
     private Label timeLbl;
-
     @FXML
     private ComboBox<String> typeCmbBx1;
-    boolean mid,qty;
+    boolean mid, qty;
+
     {
-        mid=false;
-        qty=false;
+        mid = false;
+        qty = false;
     }
+
     @FXML
     void addBtnOnAction(ActionEvent event) {
-        mid= inputsValidation.isNullCmb(typeCmbBx1);
-        qty=inputsValidation.isNumberOrNull(qtyTxt);
+        mid = inputsValidation.isNullCmb(typeCmbBx1);
+        qty = inputsValidation.isNumberOrNull(qtyTxt);
 
-        if (mid && qty){
+        if (mid && qty) {
             Material material = new Material(
                     orderIdCmbBox.getSelectionModel().getSelectedItem(),
                     typeCmbBx1.getSelectionModel().getSelectedItem(),
@@ -122,18 +114,13 @@ public class MaterialInputFormController implements Initializable {
     }
     @FXML
     void cutInBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.CUT_IN,pane);
-    }
-    @FXML
-    void resevedBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.RESEVED_IN,pane);
+        Navigation.navigation(Rout.CUT_IN, pane);
     }
     @FXML
     void orderIdOnAction(ActionEvent event) {
         loadMaterials();
         loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
     }
-
     private void loadMaterials() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> ids = null;
@@ -167,7 +154,6 @@ public class MaterialInputFormController implements Initializable {
                     .show();
         }
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadOrderIds();
@@ -175,7 +161,6 @@ public class MaterialInputFormController implements Initializable {
         setTime();
         setCellValueFactory();
     }
-
     private void loadOrderIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> ids = null;
@@ -190,7 +175,6 @@ public class MaterialInputFormController implements Initializable {
         }
         orderIdCmbBox.setItems(obList);
     }
-
     private void setOrderDate() {
         dateTxt.setText(String.valueOf(LocalDate.now()));
     }
@@ -200,7 +184,7 @@ public class MaterialInputFormController implements Initializable {
         orderColm.setCellValueFactory(new PropertyValueFactory<>("oid"));
         qtyColm.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
-    void setTime(){
+    void setTime() {
         SetTime.setTime(timeLbl);
     }
 }

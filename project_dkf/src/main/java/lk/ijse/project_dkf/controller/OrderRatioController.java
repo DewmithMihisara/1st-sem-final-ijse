@@ -52,31 +52,23 @@ public class OrderRatioController implements Initializable {
     private TableColumn<?, ?> xxlColm;
     @FXML
     private TextField clrTxt;
-
     @FXML
     private TextField descriptionTxt;
-
     @FXML
     private TextField lSizeTxt;
-
     @FXML
     private TextField mSizeTxt;
-
     @FXML
     private Text orderIdTxt;
-
     @FXML
     private TextField sSizeTxt;
-
     @FXML
     private TextField xlSizeTxt;
-
     @FXML
     private TextField xxlSizeTxt;
     @FXML
     private TableView<OrderRatioTM> tblOrderRatio;
     public static ObservableList<OrderRatioTM> orderRatioTM=FXCollections.observableArrayList();
-
     boolean desc,clr,s,m,l,xl,xxl;
     {
         desc=false;
@@ -131,7 +123,6 @@ public class OrderRatioController implements Initializable {
             xxlSizeTxt.setText("");
         }
     }
-
     @FXML
     void deleteBtnOnAction(ActionEvent event) {
         OrderRatioTM selectedItem = tblOrderRatio.getSelectionModel().getSelectedItem();
@@ -143,7 +134,6 @@ public class OrderRatioController implements Initializable {
             }
         }
     }
-
     @FXML
     void nxtBtnOnAction(ActionEvent event) throws IOException {
         if (orderRatioTM.size()==0){
@@ -154,7 +144,6 @@ public class OrderRatioController implements Initializable {
             Navigation.navigation(Rout.TRIM_CARD,pane);
         }
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setValues();
@@ -168,7 +157,6 @@ public class OrderRatioController implements Initializable {
             loadValues();
         }
     }
-
     private void generateOrderIDByArray() {
         OrderRatioTM orderRatio=orderRatioTM.get(orderRatioTM.size()-1);
         String string=orderRatio.getId();
@@ -180,11 +168,9 @@ public class OrderRatioController implements Initializable {
         String txt="Cl-"+num;
         clothIDTxt.setText(txt);
     }
-
     private void loadValues() {
         tblOrderRatio.setItems(orderRatioTM);
     }
-
     private void setCellValueFactory() {
         idColm.setCellValueFactory(new PropertyValueFactory<>("id"));
         clrColm.setCellValueFactory(new PropertyValueFactory<>("clr"));
@@ -195,11 +181,9 @@ public class OrderRatioController implements Initializable {
         xlColm.setCellValueFactory(new PropertyValueFactory<>("xl"));
         xxlColm.setCellValueFactory(new PropertyValueFactory<>("xxl"));
     }
-
     private void setValues() {
         orderIdTxt.setText(NewOrderFormController.order.getOrderId());
     }
-
     private void generateOrderID() {
         try {
             String id = OrderRatioModel.getNextOrderRatioID();

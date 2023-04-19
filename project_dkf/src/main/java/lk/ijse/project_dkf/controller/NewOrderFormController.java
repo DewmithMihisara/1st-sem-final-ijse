@@ -44,33 +44,27 @@ public class NewOrderFormController implements Initializable {
     private ComboBox<String> companyCmbBox;
     @FXML
     private TextField companyNameTxt;
-
     @FXML
     private TextField daylyOutTxt;
-
     @FXML
     private DatePicker dedlineDate;
-
     @FXML
     private Text orderDateTxt;
     @FXML
     private TextField paymentTermTxt;
     @FXML
     private AnchorPane root;
-
     @FXML
     private TextField ttlQtyTxt;
     boolean cmpId, ttl, daily, pay, dedline;
-
     public static Order order;
-
     @FXML
     void nextBtnOnAction(ActionEvent event) throws IOException {
         cmpId = inputsValidation.isNullCmb(companyCmbBox);
         ttl = inputsValidation.isNumberOrNull(ttlQtyTxt);
         daily=inputsValidation.isNumberOrNull(daylyOutTxt);
         pay=inputsValidation.isNullTxt(paymentTermTxt);
-        dedline=inputsValidation.isNullDate(dedlineDate);
+        dedline=inputsValidation.isNullDate(dedlineDate , Date.valueOf(orderDateTxt.getText()));
 
         if (cmpId && ttl && daily && pay && dedline) {
             if (Integer.parseInt(ttlQtyTxt.getText()) >= Integer.parseInt(daylyOutTxt.getText())) {

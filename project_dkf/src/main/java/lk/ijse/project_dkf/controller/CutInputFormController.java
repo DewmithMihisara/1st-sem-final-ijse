@@ -106,7 +106,6 @@ public class CutInputFormController implements Initializable {
             }
         }
     }
-
     @FXML
     void deleteBtnOnAction(ActionEvent event) {
         CutTM cutTM = cutTbl.getSelectionModel().getSelectedItem();
@@ -126,24 +125,16 @@ public class CutInputFormController implements Initializable {
             loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
         }
     }
-
     @FXML
     void materialBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.MATERIAL_IN, pane);
     }
-
-    @FXML
-    void resevedBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.RESEVED_IN, pane);
-    }
-
     @FXML
     void orderIdOnAction(ActionEvent event) {
         loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
         loadClotheId();
         clrCmbBx.setDisable(false);
     }
-
     private void loadClotheId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> ids = null;
@@ -158,7 +149,6 @@ public class CutInputFormController implements Initializable {
         }
         clrCmbBx.setItems(obList);
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadSize();
@@ -167,7 +157,6 @@ public class CutInputFormController implements Initializable {
         setCellValueFactory();
         setTime();
     }
-
     private void loadSize() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> clr = new ArrayList<>();

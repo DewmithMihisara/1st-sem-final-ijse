@@ -23,7 +23,6 @@ public class OrderModel {
                 order.getOrderDate()
         );
     }
-
     public static String getNextOrderID() throws SQLException {
         String sql="SELECT OrderID FROM Orders ORDER BY OrderID DESC LIMIT 1";
         ResultSet resultSet = CrudUtil.execute(sql);
@@ -33,7 +32,6 @@ public class OrderModel {
         }
         return splitOrderId(null);
     }
-
     private static String splitOrderId(String currentId) {
         if(currentId != null) {
             String[] strings = currentId.split("o");
@@ -42,5 +40,13 @@ public class OrderModel {
             return "o" + id;
         }
         return "o10000";
+    }
+    public static boolean delete(String id) throws SQLException {
+        String sql="DELETE FROM Orders WHERE OrderID=? ";
+        boolean result = CrudUtil.execute(
+                sql,
+                id
+        );
+        return result;
     }
 }

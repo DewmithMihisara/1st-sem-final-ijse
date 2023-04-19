@@ -54,7 +54,6 @@ public class TrimCardFormController implements Initializable {
     @FXML
     private TableColumn<?, ?> typeColm;
     public static ObservableList<TrimCardTM> trimCardObj = FXCollections.observableArrayList();
-
     boolean material, clr, qty;
     {
         material=false;
@@ -89,7 +88,6 @@ public class TrimCardFormController implements Initializable {
             reqTtlTxt.setText("");
         }
     }
-
     @FXML
     void deleteBtnOnAction(ActionEvent event) {
         TrimCardTM selectedItem = tblTrimCard.getSelectionModel().getSelectedItem();
@@ -153,7 +151,6 @@ public class TrimCardFormController implements Initializable {
             loadValues();
         }
     }
-
     private void generateTrimIdByArray() {
         TrimCardTM trimCardTM=trimCardObj.get(trimCardObj.size()-1);
         String string=trimCardTM.getId();
@@ -165,18 +162,15 @@ public class TrimCardFormController implements Initializable {
         String txt="Cl-"+num;
         trimIDTxt.setText(txt);
     }
-
     private void loadValues() {
         tblTrimCard.setItems(trimCardObj);
     }
-
     private void setCellValueFactory() {
         trimIdColm.setCellValueFactory(new PropertyValueFactory<>("id"));
         clrColm.setCellValueFactory(new PropertyValueFactory<>("clr"));
         typeColm.setCellValueFactory(new PropertyValueFactory<>("type"));
         qtyColm.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
-
     private void setValues() {
         orderIdTxt.setText(NewOrderFormController.order.getOrderId());
     }

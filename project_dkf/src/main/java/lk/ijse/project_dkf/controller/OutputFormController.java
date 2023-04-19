@@ -41,7 +41,6 @@ public class OutputFormController implements Initializable {
     private AnchorPane root;
     @FXML
     private TableColumn<?, ?> clrCol;
-
     @FXML
     private TableColumn<?, ?> dateCol;
     @FXML
@@ -54,16 +53,12 @@ public class OutputFormController implements Initializable {
     private TableView<OutputTM> outTbl;
     @FXML
     private ComboBox<String> clrCmbBx;
-
     @FXML
     private Text dateTxt;
-
     @FXML
     private ComboBox<String> orderIdCmbBox;
-
     @FXML
     private TextField qtyTxt;
-
     @FXML
     private ComboBox<String> sizeCmbBx;
     boolean clId,size,qty;
@@ -141,7 +136,6 @@ public class OutputFormController implements Initializable {
         loadSize();
         setTime();
     }
-
     private void loadSize() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> clr = new ArrayList<>();
@@ -154,7 +148,6 @@ public class OutputFormController implements Initializable {
         obList.addAll(clr);
         sizeCmbBx.setItems(obList);
     }
-
     private void loadClotheId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         List<String> ids = null;
@@ -183,11 +176,9 @@ public class OutputFormController implements Initializable {
         }
         orderIdCmbBox.setItems(obList);
     }
-
     private void setOrderDate() {
         dateTxt.setText(String.valueOf(LocalDate.now()));
     }
-
     private void loadValues(String id) {
         ObservableList<OutputTM> outputTMS = FXCollections.observableArrayList();
         try {
