@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,29 +13,12 @@
             <Image url="@../img/DashboardForm.png" />
          </image>
       </ImageView>
-      <Button fx:id="bkBtn" layoutX="289.0" layoutY="16.0" mnemonicParsing="false" onAction="#bkBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Home" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="16.0">
-         <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/logo/HomeIcon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
       <AnchorPane fx:id="midleStage" layoutX="72.0" layoutY="156.0" prefHeight="672.0" prefWidth="1295.0" style="-fx-background-color: tranceperant;" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="156.0">
          <children>
             <Button fx:id="logOutBtn" layoutX="1177.0" layoutY="578.0" mnemonicParsing="false" onAction="#logOutBtnOnAction" styleClass="iconBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="65.0" />
             <Button fx:id="userBtn" layoutX="1077.0" layoutY="574.0" mnemonicParsing="false" onAction="#userBtnOnAction" styleClass="iconBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.bottomAnchor="55.0" />
-            <Label fx:id="timeTxt" layoutX="648.0" layoutY="56.0" text="Label" textFill="WHITE">
-               <font>
-                  <Font size="50.0" />
-               </font>
-            </Label>
          </children></AnchorPane>
-      <Button fx:id="orderBtn" layoutX="1185.0" layoutY="14.0" mnemonicParsing="false" onAction="#orderBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Order" AnchorPane.leftAnchor="655.0" AnchorPane.topAnchor="16.0">
+      <Button fx:id="orderBtn" layoutX="479.0" layoutY="15.0" mnemonicParsing="false" onAction="#orderBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Order" AnchorPane.leftAnchor="479.0" AnchorPane.topAnchor="15.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,19 +30,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="1055.0" layoutY="16.0" mnemonicParsing="false" onAction="#buyerBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Buyer" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="16.0">
-         <graphic>
-            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/logo/CustomerLogo.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="931.0" layoutY="19.0" mnemonicParsing="false" onAction="#outputBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Output" AnchorPane.leftAnchor="1055.0" AnchorPane.topAnchor="16.0">
+      <Button layoutX="909.0" layoutY="16.0" mnemonicParsing="false" onAction="#outputBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Output" AnchorPane.leftAnchor="909.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -72,7 +42,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="600.0" layoutY="13.0" mnemonicParsing="false" onAction="#packingBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Packing" AnchorPane.leftAnchor="1255.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="16.0">
+      <Button layoutX="1103.0" layoutY="15.0" mnemonicParsing="false" onAction="#packingBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Packing" AnchorPane.leftAnchor="1103.0" AnchorPane.rightAnchor="162.0" AnchorPane.topAnchor="15.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -84,11 +54,23 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="448.0" layoutY="16.0" mnemonicParsing="false" onAction="#inputBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Input" AnchorPane.leftAnchor="855.0" AnchorPane.topAnchor="16.0">
+      <Button layoutX="703.0" layoutY="16.0" mnemonicParsing="false" onAction="#inputBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Input" AnchorPane.leftAnchor="703.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/logo/input.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="bkBtn" layoutX="1341.0" layoutY="26.0" mnemonicParsing="false" onAction="#bkBtnOnAction" prefHeight="51.0" prefWidth="62.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="16.0">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo/HomeIcon.png" />
                </image>
             </ImageView>
          </graphic>

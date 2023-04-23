@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 import java.util.ResourceBundle;
+
 @Getter
 public class DashboardFormController implements Initializable {
     @FXML
@@ -35,49 +36,53 @@ public class DashboardFormController implements Initializable {
     @FXML
     private AnchorPane root;
     @FXML
-    private Label timeTxt;
-    @FXML
     private Button userBtn;
     @FXML
     private Button orderBtn;
+
     @FXML
     void logOutBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.LOGIN,root);
+        Navigation.navigation(Rout.LOGIN, root);
     }
+
     @FXML
     void userBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.USER_SETTINGS,midleStage);
+        Navigation.navigation(Rout.USER_SETTINGS, midleStage);
     }
+
     @FXML
     void bkBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.MAIN_DASHBOARD,root);
+        Navigation.navigation(Rout.MAIN_DASHBOARD, root);
     }
+
     @FXML
-    void orderBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.ORDER,midleStage);
-    }
-    @FXML
-    void buyerBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.BUYER,midleStage);
+    void orderBtnOnAction(ActionEvent event) {
+        Thread thread = new Thread(() -> Platform.runLater(() -> {
+            try {
+                Navigation.navigation(Rout.ORDER, midleStage);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }));
+        thread.start();
     }
     @FXML
     void outputBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.OUTPUT,midleStage);
+        Navigation.navigation(Rout.OUTPUT, midleStage);
     }
+
     @FXML
     void packingBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.PAKING,midleStage);
+        Navigation.navigation(Rout.PAKING, midleStage);
     }
+
     @FXML
     void inputBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.CUT_IN,midleStage);
+        Navigation.navigation(Rout.CUT_IN, midleStage);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        //setTime();
-    }
-    private void setTime() {
-        SetTime.setTime(timeTxt);
+        orderBtn.fire();
     }
 }

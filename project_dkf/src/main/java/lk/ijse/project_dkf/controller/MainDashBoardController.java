@@ -4,7 +4,10 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.project_dkf.animation.SetTime;
 import lk.ijse.project_dkf.util.Navigation;
@@ -16,41 +19,46 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import static lk.ijse.project_dkf.util.Rout.DASHBOARD;
-import static lk.ijse.project_dkf.util.Rout.ORDER;
+import static lk.ijse.project_dkf.util.Rout.*;
 
-public class MainDashBoardController implements Initializable {
+public class MainDashBoardController implements Initializable{
+
     @FXML
-    private AnchorPane root;
-    @FXML
-    public static AnchorPane stage2;
+    private Button bkBtn;
     @FXML
     private Label timeTxt;
     @FXML
-    void buyerBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.BUYER,stage2);
-    }
+    private AnchorPane midleStage;
+
     @FXML
-    void logOutBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.LOGIN,root);
-    }
+    private AnchorPane root;
     @FXML
-    void orderBtnOnAction(ActionEvent event) throws IOException, InterruptedException {
+    private ImageView settingImg;
+
+    @FXML
+    void testBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(DASHBOARD,root);
     }
     @FXML
-    void retailBtnOnAction(ActionEvent event) {
-
+    void buyerBtnOnAction(ActionEvent event) throws IOException {
+        bkBtn.setVisible(true);
+        Navigation.navigation(BUYER,midleStage);
     }
     @FXML
-    void userBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.USER_SETTINGS,stage2);
+    void settingMouseEnterOnAction(MouseEvent event) {
+        new animatefx.animation.RotateIn(settingImg).play();
     }
+    @FXML
+    void bkBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(MAIN_DASHBOARD,root);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //setTime();
+        setTimeLbl();
     }
-    private void setTime() {
+
+    private void setTimeLbl() {
         SetTime.setTime(timeTxt);
     }
 }
