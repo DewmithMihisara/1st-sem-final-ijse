@@ -39,22 +39,18 @@ public class DashboardFormController implements Initializable {
     private Button userBtn;
     @FXML
     private Button orderBtn;
-
     @FXML
     void logOutBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.LOGIN, root);
     }
-
     @FXML
     void userBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.USER_SETTINGS, midleStage);
     }
-
     @FXML
     void bkBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.MAIN_DASHBOARD, root);
     }
-
     @FXML
     void orderBtnOnAction(ActionEvent event) {
         Thread thread = new Thread(() -> Platform.runLater(() -> {
@@ -70,17 +66,14 @@ public class DashboardFormController implements Initializable {
     void outputBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.OUTPUT, midleStage);
     }
-
     @FXML
     void packingBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.PAKING, midleStage);
     }
-
     @FXML
     void inputBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.CUT_IN, midleStage);
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         orderBtn.fire();

@@ -2,6 +2,7 @@ package lk.ijse.project_dkf.animation;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class ShakeTextAnimation {
@@ -32,5 +33,4 @@ public class ShakeTextAnimation {
         );
         new animatefx.animation.Shake(text).play();
     }
-
 }

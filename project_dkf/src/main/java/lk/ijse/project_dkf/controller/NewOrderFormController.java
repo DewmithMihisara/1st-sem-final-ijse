@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lk.ijse.project_dkf.animation.ShakeTextAnimation;
@@ -67,7 +68,7 @@ public class NewOrderFormController implements Initializable {
         dedline=inputsValidation.isNullDate(dedlineDate , Date.valueOf(orderDateTxt.getText()));
 
         if (cmpId && ttl && daily && pay && dedline) {
-            if (Integer.parseInt(ttlQtyTxt.getText()) >= Integer.parseInt(daylyOutTxt.getText())) {
+            if (Integer.parseInt(ttlQtyTxt.getText()) > Integer.parseInt(daylyOutTxt.getText())) {
                 if (Date.valueOf(dedlineDate.getValue()).after(Date.valueOf(orderDateTxt.getText()))) {
                     order=new Order(
                             oIdLbl.getText(),

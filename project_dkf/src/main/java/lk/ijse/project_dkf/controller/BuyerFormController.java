@@ -1,7 +1,6 @@
 package lk.ijse.project_dkf.controller;
 
-import javafx.animation.Animation;
-import javafx.application.Platform;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +23,6 @@ import lk.ijse.project_dkf.model.BuyerModel;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 
-import javax.swing.table.DefaultTableModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;

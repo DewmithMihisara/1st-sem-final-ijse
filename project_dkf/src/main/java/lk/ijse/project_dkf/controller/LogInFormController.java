@@ -1,5 +1,6 @@
 package lk.ijse.project_dkf.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,5 +68,10 @@ public class LogInFormController {
     @FXML
     void signUpBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(Rout.NEW_AC,root);
+    }
+    @FXML
+    void clzBtnOnAction(ActionEvent event) {
+        Platform.exit();
+        System.exit(0);
     }
 }

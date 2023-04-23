@@ -68,7 +68,7 @@ public class ShipingFormController implements Initializable {
         qty=inputsValidation.isNumberOrNull(qtyTxt);
 
         if(cid && sz && qty){
-            if(Integer.parseInt(AvalabilityLbl.getText()) >= Integer.parseInt(qtyTxt.getText())){
+            if(Integer.parseInt(AvalabilityLbl.getText()) >= Integer.parseInt(qtyTxt.getText()) && Integer.parseInt(AvalabilityLbl.getText()) != 0){
                 String detail;
                 try {
                     detail=ShipModel.searchClothDetail(clothIdCmbBox.getSelectionModel().getSelectedItem());

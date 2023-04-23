@@ -43,7 +43,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button layoutX="734.0" layoutY="27.0" mnemonicParsing="false" prefHeight="598.0" prefWidth="261.0" styleClass="menuBtn" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="667.0" AnchorPane.topAnchor="38.0">
+            <Button fx:id="employeeBtn" layoutX="734.0" layoutY="27.0" mnemonicParsing="false" onAction="#employeeBtnOnAction" prefHeight="598.0" prefWidth="261.0" styleClass="menuBtn" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="667.0" AnchorPane.topAnchor="38.0">
                <font>
                   <Font size="43.0" />
                </font>
@@ -55,7 +55,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="978.0" layoutY="320.0" mnemonicParsing="false" prefHeight="104.0" prefWidth="261.0" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="974.0" AnchorPane.topAnchor="532.0">
+            <Button layoutX="978.0" layoutY="320.0" mnemonicParsing="false" onAction="#logOutBtnOnAction" prefHeight="104.0" prefWidth="261.0" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="974.0" AnchorPane.topAnchor="532.0">
                <graphic>
                   <ImageView fitHeight="70.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -63,7 +63,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button layoutX="988.0" layoutY="330.0" mnemonicParsing="false" onMouseEntered="#settingMouseEnterOnAction" prefHeight="178.0" prefWidth="261.0" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="974.0" AnchorPane.topAnchor="316.0">
+            <Button layoutX="988.0" layoutY="330.0" mnemonicParsing="false" onAction="#settingBtnOnActon" onMouseEntered="#settingMouseEnterOnAction" prefHeight="178.0" prefWidth="261.0" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="974.0" AnchorPane.topAnchor="316.0">
                <graphic>
                   <ImageView fx:id="settingImg" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -71,7 +71,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Label fx:id="timeTxt" layoutX="981.0" layoutY="141.0" text="00 : 00 : 00" textFill="WHITE">
+            <Label fx:id="timeTxt" layoutX="998.0" layoutY="152.0" text="00:00:00" textFill="WHITE">
                <font>
                   <Font size="51.0" />
                </font>
@@ -89,6 +89,15 @@
          <font>
             <Font size="24.0" />
          </font>
+      </Button>
+      <Button layoutX="1391.0" layoutY="15.0" minHeight="29.0" minWidth="29.0" mnemonicParsing="false" onAction="#clzBtnOnAction" prefHeight="35.0" prefWidth="35.0" stylesheets="@../style/menuBtn.css">
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo/close.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>

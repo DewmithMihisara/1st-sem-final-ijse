@@ -62,7 +62,6 @@ public class MaterialInputFormController implements Initializable {
         mid = false;
         qty = false;
     }
-
     @FXML
     void addBtnOnAction(ActionEvent event) {
         mid = inputsValidation.isNullCmb(typeCmbBx1);
