@@ -11,12 +11,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.project_dkf.animation.SetTime;
+import lk.ijse.project_dkf.model.LogHistoryModel;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -61,6 +63,8 @@ public class MainDashBoardController implements Initializable{
     }
     @FXML
     void logOutBtnOnAction(ActionEvent event) throws IOException {
+        LogInFormController.logHistory.setLogOut(LocalDateTime.now());
+        LogHistoryModel.save(LogInFormController.logHistory);
         Navigation.navigation(LOGIN,root);
     }
     @FXML

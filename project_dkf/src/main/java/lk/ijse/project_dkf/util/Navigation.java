@@ -29,6 +29,8 @@ public class Navigation {
             case ORDER_RATIO -> initUi("orderRatioForm.fxml");
             case TRIM_CARD -> initUi("trimCardForm.fxml");
             case SHIP -> initUi("shipingForm.fxml");
+            case PASSWORD -> initUi("passwordForm.fxml");
+            case GMAIL -> initUi("gmailConfirmForm.fxml");
         }
     }
     private static void initUi(String location) throws IOException {

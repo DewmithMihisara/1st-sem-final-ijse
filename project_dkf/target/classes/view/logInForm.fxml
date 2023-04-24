@@ -16,7 +16,7 @@
             <Image url="@../img/LogInForm.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usrTxt" layoutX="545.0" layoutY="393.0" prefHeight="40.0" prefWidth="355.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="usrTxt" layoutX="545.0" layoutY="393.0" onAction="#usrOnAction" prefHeight="40.0" prefWidth="355.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
@@ -41,7 +41,7 @@
          </font>
       </Button>
       <Line endX="77.0" layoutX="524.99" layoutY="305.0" startX="24.0" stroke="WHITE" strokeWidth="3.0" />
-      <PasswordField fx:id="pwTxt" layoutX="544.0" layoutY="490.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css" />
+      <PasswordField fx:id="pwTxt" layoutX="544.0" layoutY="490.0" onAction="#pwOnAction" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css" />
       <Button layoutX="1394.0" layoutY="9.0" minHeight="29.0" minWidth="29.0" mnemonicParsing="false" onAction="#clzBtnOnAction" prefHeight="35.0" prefWidth="35.0" stylesheets="@../style/menuBtn.css">
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">

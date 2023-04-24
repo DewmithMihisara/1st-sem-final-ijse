@@ -15,32 +15,32 @@
             <Image url="@../img/signUpForm.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usrTxt" layoutX="545.0" layoutY="384.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="usrTxt" layoutX="545.0" layoutY="384.0" onAction="#usrTxtOnAction" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="eMailTxt" layoutX="545.0" layoutY="458.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="jobTxt" layoutX="545.0" layoutY="458.0" onAction="#jobTxtOnAction" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="PhoneTxt" layoutX="545.0" layoutY="531.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="PhoneTxt" layoutX="545.0" layoutY="531.0" onAction="#PhoneTxtOnAction" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="pwTxt" layoutX="545.0" layoutY="608.0" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
+      <TextField fx:id="addressTxt" layoutX="545.0" layoutY="608.0" onAction="#addressTxtOnAction" prefHeight="40.0" prefWidth="355.0" styleClass="textBox" stylesheets="@../style/loginStyle.css">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Button fx:id="signUpMainBtn" layoutX="620.0" layoutY="693.0" mnemonicParsing="false" onAction="#signUpMainBtnOnActon" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Sign Up" textFill="WHITE">
+      <Button fx:id="nxtBtn" layoutX="620.0" layoutY="693.0" mnemonicParsing="false" onAction="#nextBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Next" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="signInBtn" layoutX="529.0" layoutY="269.0" mnemonicParsing="false" onAction="#signInBtnOnActon" styleClass="signBtn" stylesheets="@../style/loginStyle.css" text="SIGN IN">
+      <Button layoutX="529.0" layoutY="269.0" mnemonicParsing="false" onAction="#signInBtnOnActon" styleClass="signBtn" stylesheets="@../style/loginStyle.css" text="SIGN IN">
          <font>
             <Font size="20.0" />
          </font>

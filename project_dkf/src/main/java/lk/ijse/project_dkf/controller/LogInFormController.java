@@ -11,13 +11,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.project_dkf.dto.LogHistory;
 import lk.ijse.project_dkf.dto.User;
 import lk.ijse.project_dkf.model.LogInModel;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
+import lk.ijse.project_dkf.validation.inputsValidation;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class LogInFormController {
     @FXML
@@ -32,25 +36,28 @@ public class LogInFormController {
     private Button signUpBtn;
     @FXML
     private TextField usrTxt;
+
     public static User user;
+    public static LogHistory logHistory;
+    boolean uName,pw;
     @FXML
     void frgtPwBtnOnActon(ActionEvent event) {
     }
+
     @FXML
     void sgnMainBtnOnAction(ActionEvent event) throws IOException {
-        String usrName =usrTxt.getText();
-        String password = pwTxt.getText();
+        pw= inputsValidation.isNullTxt(pwTxt);
+        uName=inputsValidation.isNullTxt(usrTxt);
 
-        if (usrName.equals("") ||password.equals("")){
-            new Alert(Alert.AlertType.ERROR,
-                    "Please fill all Details!")
-                    .show();
-        }else {
+        if (pw && uName){
             try {
-                user= LogInModel.isCorrect(usrName);
-                if (user.getUserName().equals(usrName) && user.getPassword().equals(password)){
-                    Navigation.navigation(Rout.MAIN_DASHBOARD,root);
-                }else {
+                user = LogInModel.isCorrect(usrTxt.getText());
+                if (user.getPassword().equals(pwTxt.getText())) {
+                    Navigation.navigation(Rout.MAIN_DASHBOARD, root);
+                    logHistory=new LogHistory();
+                    logHistory.setUsrName(usrTxt.getText());
+                    logHistory.setLogIn(LocalDateTime.now());
+                } else {
                     new Alert(Alert.AlertType.ERROR,
                             "Password is wrong!")
                             .show();
@@ -65,13 +72,25 @@ public class LogInFormController {
             }
         }
     }
+
     @FXML
     void signUpBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.NEW_AC,root);
+        Navigation.navigation(Rout.NEW_AC, root);
     }
+
     @FXML
     void clzBtnOnAction(ActionEvent event) {
         Platform.exit();
         System.exit(0);
+    }
+
+    @FXML
+    void pwOnAction(ActionEvent event) {
+        sgnMainBtn.fire();
+    }
+
+    @FXML
+    void usrOnAction(ActionEvent event) {
+        pwTxt.requestFocus();
     }
 }

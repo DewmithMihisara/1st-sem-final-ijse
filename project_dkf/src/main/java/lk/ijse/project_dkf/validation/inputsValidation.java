@@ -1,5 +1,4 @@
 package lk.ijse.project_dkf.validation;
-
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -7,7 +6,6 @@ import lk.ijse.project_dkf.animation.ShakeTextAnimation;
 import lk.ijse.project_dkf.animation.defueltText;
 
 import java.sql.Date;
-
 public class inputsValidation {
     public static boolean isNullCmb(ComboBox cmb) {
         if (cmb.getSelectionModel().getSelectedItem()==null) {
@@ -45,6 +43,14 @@ public class inputsValidation {
         } else {
             defueltText.Defuelt(dedlineDate);
             return true;
+        }
+        return false;
+    }
+    public static boolean email(TextField emailTxt) {
+        if (emailTxt.getText().matches("^$") || emailTxt.getText().matches("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")){
+            ShakeTextAnimation.ShakeText(emailTxt);
+        }else {
+            defueltText.Defuelt(emailTxt);
         }
         return false;
     }
