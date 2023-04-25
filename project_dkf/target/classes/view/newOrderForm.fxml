@@ -43,17 +43,17 @@
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="paymentTermTxt" layoutX="153.0" layoutY="449.0" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="paymentTermTxt" layoutX="153.0" layoutY="449.0" onAction="#paymentTermTxtOnAction" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="ttlQtyTxt" layoutX="707.0" layoutY="225.0" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="ttlQtyTxt" layoutX="707.0" layoutY="225.0" onAction="#ttlQtyTxtOnAction" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="daylyOutTxt" layoutX="706.0" layoutY="337.0" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="daylyOutTxt" layoutX="706.0" layoutY="337.0" onAction="#daylyOutTxtOnAction" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>

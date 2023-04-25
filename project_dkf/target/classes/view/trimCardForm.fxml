@@ -23,17 +23,17 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="materialTxt" layoutX="106.0" layoutY="215.0" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="materialTxt" layoutX="106.0" layoutY="215.0" onAction="#materialTxtOnAction" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="clrTxt" layoutX="409.0" layoutY="215.0" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="clrTxt" layoutX="409.0" layoutY="215.0" onAction="#clrTxtOnAction" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="reqTtlTxt" layoutX="718.0" layoutY="215.0" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="reqTtlTxt" layoutX="718.0" layoutY="215.0" onAction="#reqTtlTxtOnAction" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
@@ -51,7 +51,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="680.0" layoutY="587.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
+      <Button fx:id="addBtn" layoutX="680.0" layoutY="587.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
          <font>
             <Font size="24.0" />
          </font>

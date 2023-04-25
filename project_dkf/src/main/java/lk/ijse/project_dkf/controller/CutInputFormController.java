@@ -19,6 +19,8 @@ import lk.ijse.project_dkf.model.CutModel;
 import lk.ijse.project_dkf.model.IdModel;
 import lk.ijse.project_dkf.model.OutputModel;
 import lk.ijse.project_dkf.model.PackingModel;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 import lk.ijse.project_dkf.validation.inputsValidation;
@@ -89,18 +91,14 @@ public class CutInputFormController implements Initializable {
                     typeTxt.getText(),
                     sizeCmbBx.getSelectionModel().getSelectedItem()
             );
+            String string= "Cut input of "+cut.getCutID();
             try {
                 boolean affectedRows = CutModel.add(cut);
                 if (affectedRows) {
-                    new Alert(Alert.AlertType.CONFIRMATION,
-                            "Add!")
-                            .show();
+                    PopUps.popUps(AlertTypes.CONFORMATION, "Cut Added" ,string);
                 }
             } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR,
-                        "Something is wrong")
-                        .show();
-                e.printStackTrace();
+                PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when add cut.");
             } finally {
                 loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
             }
@@ -109,18 +107,15 @@ public class CutInputFormController implements Initializable {
     @FXML
     void deleteBtnOnAction(ActionEvent event) {
         CutTM cutTM = cutTbl.getSelectionModel().getSelectedItem();
+        String string=cutTM.getClothID() +" is delete";
         try {
             boolean delete = CutModel.delete(cutTM, orderIdCmbBox.getSelectionModel().getSelectedItem());
             if (delete) {
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "Deleted !")
-                        .show();
+                PopUps.popUps(AlertTypes.CONFORMATION, "Cut Added" ,string);
             }
 
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when delete cut.");
         } finally {
             loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
         }
@@ -199,9 +194,7 @@ public class CutInputFormController implements Initializable {
             }
             cutTbl.setItems(cutTMS);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when load cut-in details.");
         }
     }
     private void setCellValueFactory() {

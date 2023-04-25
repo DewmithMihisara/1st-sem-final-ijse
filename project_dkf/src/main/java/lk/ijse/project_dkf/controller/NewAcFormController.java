@@ -14,6 +14,8 @@ import lk.ijse.project_dkf.animation.ShakeTextAnimation;
 import lk.ijse.project_dkf.dto.User;
 import lk.ijse.project_dkf.model.LogInModel;
 import lk.ijse.project_dkf.model.NewACModel;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 import lk.ijse.project_dkf.validation.inputsValidation;
@@ -56,9 +58,7 @@ public class NewAcFormController {
 
         if (usr && adr && phn && jb_role){
             if (jobTxt.getText().equals("owner")){
-                new Alert(Alert.AlertType.ERROR,
-                        "This job roll can not enter")
-                        .show();
+                PopUps.popUps(AlertTypes.INFORMATION, "Attention", "This user name can not add.");
                 jobTxt.setText("");
                 ShakeTextAnimation.ShakeText(jobTxt);
             }else {

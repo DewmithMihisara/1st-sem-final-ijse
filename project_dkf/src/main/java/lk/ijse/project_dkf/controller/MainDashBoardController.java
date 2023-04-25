@@ -12,11 +12,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.project_dkf.animation.SetTime;
 import lk.ijse.project_dkf.model.LogHistoryModel;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -57,14 +60,16 @@ public class MainDashBoardController implements Initializable{
     @FXML
     void employeeBtnOnAction(ActionEvent event) {
         new animatefx.animation.Shake(employeeBtn).play();
-        new Alert(Alert.AlertType.ERROR,
-                "this Option under Dewelopment")
-                .show();
+        PopUps.popUps(AlertTypes.ERROR,"Under Development","This option is in under development. Expect this feature in a future update.");
     }
     @FXML
     void logOutBtnOnAction(ActionEvent event) throws IOException {
         LogInFormController.logHistory.setLogOut(LocalDateTime.now());
-        LogHistoryModel.save(LogInFormController.logHistory);
+        try {
+            LogHistoryModel.save(LogInFormController.logHistory);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         Navigation.navigation(LOGIN,root);
     }
     @FXML

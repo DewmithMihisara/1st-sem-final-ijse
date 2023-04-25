@@ -19,6 +19,8 @@ import lk.ijse.project_dkf.model.CutModel;
 import lk.ijse.project_dkf.model.IdModel;
 import lk.ijse.project_dkf.model.MaterialModel;
 import lk.ijse.project_dkf.model.OutputModel;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 import lk.ijse.project_dkf.validation.inputsValidation;
@@ -75,17 +77,14 @@ public class MaterialInputFormController implements Initializable {
                     Integer.parseInt(qtyTxt.getText()),
                     Date.valueOf(dateTxt.getText())
             );
+            String string= "Cut added of order "+material.getOrderID();
             try {
                 boolean affectedRows = MaterialModel.add(material);
                 if (affectedRows) {
-                    new Alert(Alert.AlertType.CONFIRMATION,
-                            "Add!")
-                            .show();
+                    PopUps.popUps(AlertTypes.CONFORMATION, "Cut Added" ,string);
                 }
             } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR,
-                        "Something is wrong")
-                        .show();
+                PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when add cut.");
                 e.printStackTrace();
             } finally {
                 loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
@@ -98,15 +97,11 @@ public class MaterialInputFormController implements Initializable {
         try {
             boolean delete = MaterialModel.delete(materialTM, orderIdCmbBox.getSelectionModel().getSelectedItem());
             if (delete) {
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "Deleted !")
-                        .show();
+                PopUps.popUps(AlertTypes.CONFORMATION, "Cut Delete" ,"Cut is deleted.");
             }
 
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when delete cut.");
         } finally {
             loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
         }
@@ -148,9 +143,7 @@ public class MaterialInputFormController implements Initializable {
             }
             tblMetarial.setItems(materialTMS);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when load cut.");
         }
     }
     @Override

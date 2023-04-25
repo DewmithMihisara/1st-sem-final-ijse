@@ -16,6 +16,8 @@ import lk.ijse.project_dkf.dto.Pack;
 import lk.ijse.project_dkf.dto.Stock;
 import lk.ijse.project_dkf.dto.tm.PackingTM;
 import lk.ijse.project_dkf.model.*;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.validation.inputsValidation;
 
 import java.io.IOException;
@@ -87,11 +89,11 @@ public class PackingFormController implements Initializable {
             );
             try {
                 boolean affectedRows= StockPlaceModel.add(pack,stock);
+                if (affectedRows){
+                    PopUps.popUps(AlertTypes.CONFORMATION, "Pack add", "Packing details is add properly.");
+                }
             } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR,
-                        "Something is wrong")
-                        .show();
-                e.printStackTrace();
+                PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when add packing.");
             }finally {
                 loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
                 clrCmbBx.setValue(null);
@@ -106,15 +108,11 @@ public class PackingFormController implements Initializable {
         try {
             boolean delete=PackingModel.delete(packingTM, orderIdCmbBox.getSelectionModel().getSelectedItem());
             if (delete){
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "Deleted !")
-                        .show();
+                PopUps.popUps(AlertTypes.CONFORMATION, "Pack Delete", "Packing details is delete properly.");
             }
 
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when delete packing.");
         }finally {
             loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
         }
@@ -190,9 +188,7 @@ public class PackingFormController implements Initializable {
             }
             tblPacking.setItems(packingTMS);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when load values.");
         }
     }
     private void setCellValueFactory() {

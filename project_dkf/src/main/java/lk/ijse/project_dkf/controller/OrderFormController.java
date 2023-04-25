@@ -16,6 +16,8 @@ import lk.ijse.project_dkf.dto.Pack;
 import lk.ijse.project_dkf.dto.tm.CutTM;
 import lk.ijse.project_dkf.dto.tm.PackingTM;
 import lk.ijse.project_dkf.model.*;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 
@@ -78,15 +80,11 @@ public class OrderFormController implements Initializable {
         try {
             boolean delete = OrderModel.delete(orderIdCmbBox.getSelectionModel().getSelectedItem());
             if (delete) {
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "Deleted !")
-                        .show();
+                PopUps.popUps(AlertTypes.CONFORMATION, "Delete", "This order is deleted.");
             }
 
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when delete order.");
         }finally {
             loadOrderIds();
         }
@@ -212,9 +210,7 @@ public class OrderFormController implements Initializable {
 
 
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when load values.");
         }
     }
     @FXML

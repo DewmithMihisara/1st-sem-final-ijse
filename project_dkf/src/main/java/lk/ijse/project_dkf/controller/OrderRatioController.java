@@ -18,6 +18,8 @@ import lk.ijse.project_dkf.dto.tm.OrderRatioTM;
 import lk.ijse.project_dkf.model.BuyerModel;
 import lk.ijse.project_dkf.model.OrderModel;
 import lk.ijse.project_dkf.model.OrderRatioModel;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 import lk.ijse.project_dkf.validation.inputsValidation;
@@ -30,6 +32,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class OrderRatioController implements Initializable {
+    @FXML
+    private Button addBtn;
     @FXML
     private AnchorPane pane;
     @FXML
@@ -78,6 +82,34 @@ public class OrderRatioController implements Initializable {
         l=false;
         xl=false;
         xxl=false;
+    }
+    @FXML
+    void descriptionTxtOnAction(ActionEvent event) {
+        clrTxt.requestFocus();
+    }
+    @FXML
+    void clrTxtOnAction(ActionEvent event) {
+        sSizeTxt.requestFocus();
+    }
+    @FXML
+    void sSizeTxtOnAction(ActionEvent event) {
+        mSizeTxt.requestFocus();
+    }
+    @FXML
+    void mSizeTxtOnAction(ActionEvent event) {
+        lSizeTxt.requestFocus();
+    }
+    @FXML
+    void lSizeTxtOnAction(ActionEvent event) {
+        xlSizeTxt.requestFocus();
+    }
+    @FXML
+    void xlSizeTxtOnAction(ActionEvent event) {
+        xxlSizeTxt.requestFocus();
+    }
+    @FXML
+    void xxlSizeTxtOnAction(ActionEvent event) {
+        addBtn.fire();
     }
     @FXML
     void backBtnOnAction(ActionEvent event) throws IOException {
@@ -137,9 +169,7 @@ public class OrderRatioController implements Initializable {
     @FXML
     void nxtBtnOnAction(ActionEvent event) throws IOException {
         if (orderRatioTM.size()==0){
-            new Alert(Alert.AlertType.WARNING,
-                    "Plese add Order Ratio")
-                    .show();
+            PopUps.popUps(AlertTypes.INFORMATION, "Attention", "Please add order ratio.");
         }else {
             Navigation.navigation(Rout.TRIM_CARD,pane);
         }

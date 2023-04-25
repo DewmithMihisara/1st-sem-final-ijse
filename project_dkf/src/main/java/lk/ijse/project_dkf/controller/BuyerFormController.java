@@ -20,6 +20,8 @@ import lk.ijse.project_dkf.dto.Buyer;
 import lk.ijse.project_dkf.dto.tm.BuyerTM;
 import lk.ijse.project_dkf.dto.tm.CutTM;
 import lk.ijse.project_dkf.model.BuyerModel;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 
@@ -62,6 +64,18 @@ public class BuyerFormController implements Initializable {
         cuntact = false;
     }
     @FXML
+    void buyerNameTxtOnAction(ActionEvent event) {
+        buyerAddTxt.requestFocus();
+    }
+    @FXML
+    void buyerAddTxtOnAction(ActionEvent event) {
+        BuyerCnTxt.requestFocus();
+    }
+    @FXML
+    void BuyerCnTxtOnAction(ActionEvent event) {
+        addBtn.fire();
+    }
+    @FXML
     void addBtnOnAction(ActionEvent event) throws IOException {
         name = buyerName();
         address = address();
@@ -69,6 +83,7 @@ public class BuyerFormController implements Initializable {
 
         if (name && address && cuntact) {
             Buyer buyer = new Buyer(buyerIdTxt.getText(), buyerNameTxt.getText(), BuyerCnTxt.getText(), buyerAddTxt.getText());
+            String text="Buyer "+buyerNameTxt.getText()+" added.";
             try {
                 boolean affectedRows = BuyerModel.addBuyer(buyer);
                 tblBuyer.refresh();
@@ -78,14 +93,10 @@ public class BuyerFormController implements Initializable {
                     buyerAddTxt.clear();
                     BuyerCnTxt.clear();
 
-                    new Alert(Alert.AlertType.CONFIRMATION,
-                            "Buyer Add!")
-                            .show();
+                    PopUps.popUps(AlertTypes.CONFORMATION, "Add Buyer", text);
                 }
             } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR,
-                        "Something is wrong")
-                        .show();
+                PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when add buyer.");
             } finally {
                 Navigation.navigation(Rout.BUYER, midleStage);
             }
@@ -95,13 +106,14 @@ public class BuyerFormController implements Initializable {
     @FXML
     void deleteBtnOnAction(ActionEvent event) throws IOException {
         BuyerTM buyer = (BuyerTM) tblBuyer.getSelectionModel().getSelectedItem();
+        String text="Buyer "+buyer.getName()+" delete.";
         try {
             boolean delete = BuyerModel.delete(buyer);
             if (delete) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Buyer Deleted ! :)").show();
+                PopUps.popUps(AlertTypes.CONFORMATION, "Delete Buyer", text);
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.WARNING, "Something happened :(").show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when delete buyer.");
             e.printStackTrace();
         } finally {
             Navigation.navigation(Rout.BUYER,midleStage);
@@ -136,10 +148,11 @@ public class BuyerFormController implements Initializable {
                 try {
                     boolean update = BuyerModel.update(buyer);
                     if (update) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "Buyer updated ! :)").show();
+                        String text="Buyer "+buyer.getBuyerName()+" update";
+                        PopUps.popUps(AlertTypes.CONFORMATION, "Update Buyer", text);
                     }
                 } catch (SQLException e) {
-                    new Alert(Alert.AlertType.WARNING, "something happened ! :(").show();
+                    PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when update buyer.");
                     e.printStackTrace();
                 } finally {
                     btnUpdate.setText("Select");
@@ -177,9 +190,7 @@ public class BuyerFormController implements Initializable {
             }
             tblBuyer.setItems(object);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when load buyers.");
         }
     }
     private void setCelValueFactory() {

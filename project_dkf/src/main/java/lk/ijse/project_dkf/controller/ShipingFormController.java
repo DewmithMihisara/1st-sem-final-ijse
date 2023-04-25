@@ -15,6 +15,8 @@ import lk.ijse.project_dkf.dto.Shipment;
 import lk.ijse.project_dkf.dto.tm.ShipmentTM;
 import lk.ijse.project_dkf.dto.tm.TrimCardTM;
 import lk.ijse.project_dkf.model.*;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.validation.inputsValidation;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
@@ -129,7 +131,7 @@ public class ShipingFormController implements Initializable {
     void placeOnAction(ActionEvent event) throws JRException {
         try {
             boolean isPlaced= ShippinPlaceModel.shipmentPlace(shipments);
-            System.out.println(isPlaced);
+            PopUps.popUps(AlertTypes.CONFORMATION, "Shipped", "Shipment is done properly.");
             if (isPlaced){
                 InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/Invoice.jrxml");
                 JasperReport compile =  JasperCompileManager.compileReport(rpt);
@@ -140,7 +142,7 @@ public class ShipingFormController implements Initializable {
                 JasperViewer.viewReport(report,false);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when shiping transaction.");
         }
     }
     @FXML

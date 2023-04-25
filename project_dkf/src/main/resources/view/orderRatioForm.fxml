@@ -18,37 +18,37 @@
             <Image url="@../img/OrderRatio.png" />
          </image>
       </ImageView>
-      <TextField fx:id="clrTxt" layoutX="105.0" layoutY="231.0" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="clrTxt" layoutX="105.0" layoutY="231.0" onAction="#clrTxtOnAction" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="sSizeTxt" layoutX="358.0" layoutY="230.0" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="sSizeTxt" layoutX="358.0" layoutY="230.0" onAction="#sSizeTxtOnAction" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="mSizeTxt" layoutX="533.0" layoutY="231.0" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="mSizeTxt" layoutX="533.0" layoutY="231.0" onAction="#mSizeTxtOnAction" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="lSizeTxt" layoutX="707.0" layoutY="231.0" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="lSizeTxt" layoutX="707.0" layoutY="231.0" onAction="#lSizeTxtOnAction" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField layoutX="881.0" layoutY="231.0" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;" fx:id="xlSizeTxt">
+      <TextField layoutX="881.0" layoutY="231.0" onAction="#xlSizeTxtOnAction" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;" fx:id="xlSizeTxt">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField layoutX="1060.0" layoutY="231.0" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;" fx:id="xxlSizeTxt">
+      <TextField layoutX="1060.0" layoutY="231.0" onAction="#xxlSizeTxtOnAction" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;" fx:id="xxlSizeTxt">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="descriptionTxt" layoutX="714.0" layoutY="131.0" prefHeight="40.0" prefWidth="467.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="descriptionTxt" layoutX="714.0" layoutY="131.0" onAction="#descriptionTxtOnAction" prefHeight="40.0" prefWidth="467.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
@@ -70,7 +70,7 @@
             <TableColumn prefWidth="110.0" text="Size XXL" fx:id="xxlColm" />
          </columns>
       </TableView>
-      <Button layoutX="744.0" layoutY="602.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Add" textFill="WHITE">
+      <Button fx:id="addBtn" layoutX="744.0" layoutY="602.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Add" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>

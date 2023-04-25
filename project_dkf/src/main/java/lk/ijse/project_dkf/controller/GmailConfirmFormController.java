@@ -9,6 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.project_dkf.animation.ShakeTextAnimation;
 import lk.ijse.project_dkf.model.BuyerModel;
 import lk.ijse.project_dkf.model.UserModel;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 import lk.ijse.project_dkf.validation.inputsValidation;
@@ -49,21 +51,18 @@ public class GmailConfirmFormController {
     void finishBtnOnAction(ActionEvent event) throws IOException {
         mail= inputsValidation.email(emailTxt);
         if (emailTxt.getText().equals(conEmailTxt.getText())){
-            if (Integer.parseInt(otpTxt.getText()) == PasswordFormController.random){
+            if (Integer.parseInt(otpTxt.getText()) == PasswordFormController.otpNum){
                 NewAcFormController.user.setUserEmail(emailTxt.getText());
                 try {
                     boolean affectedRows = UserModel.addUser(NewAcFormController.user);
                     if (affectedRows){
-                        new Alert(Alert.AlertType.CONFIRMATION,
-                                "User Add")
-                                .show();
+                        String string="New user add. ("+NewAcFormController.user.getUserName()+")";
+                        PopUps.popUps(AlertTypes.CONFORMATION, "User", string);;
                         Navigation.navigation(Rout.LOGIN,root);
-                        PasswordFormController.random= 0;
+                        PasswordFormController.otpNum= 0;
                     }
                 } catch (SQLException e) {
-                    new Alert(Alert.AlertType.ERROR,
-                            "SQL error")
-                            .show();
+                    PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when add user.");
                 }
             }else {
                 ShakeTextAnimation.ShakeText(otpTxt);

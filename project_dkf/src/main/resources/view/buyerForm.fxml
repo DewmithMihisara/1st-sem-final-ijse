@@ -17,7 +17,7 @@
             <Image url="@../img/BuyerManagement.png" />
          </image>
       </ImageView>
-      <TextField fx:id="buyerNameTxt" layoutX="108.0" layoutY="234.0" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="buyerNameTxt" layoutX="108.0" layoutY="234.0" onAction="#buyerNameTxtOnAction" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
@@ -27,12 +27,12 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <TextField fx:id="buyerAddTxt" layoutX="108.0" layoutY="343.0" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="buyerAddTxt" layoutX="108.0" layoutY="343.0" onAction="#buyerAddTxtOnAction" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="BuyerCnTxt" layoutX="108.0" layoutY="453.0" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
+      <TextField fx:id="BuyerCnTxt" layoutX="108.0" layoutY="453.0" onAction="#BuyerCnTxtOnAction" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: tranceparent; -fx-text-fill: #FFFF;">
          <font>
             <Font size="20.0" />
          </font>

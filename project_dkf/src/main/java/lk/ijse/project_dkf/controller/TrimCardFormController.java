@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class TrimCardFormController implements Initializable {
+    @FXML
+    private Button addBtn;
     public static String setOrderId;
     @FXML
     private TableColumn<?, ?> clrColm;
@@ -59,6 +61,18 @@ public class TrimCardFormController implements Initializable {
         material=false;
         clr=false;
         qty=false;
+    }
+    @FXML
+    void materialTxtOnAction(ActionEvent event) {
+        clrTxt.requestFocus();
+    }
+    @FXML
+    void clrTxtOnAction(ActionEvent event) {
+        reqTtlTxt.requestFocus();
+    }
+    @FXML
+    void reqTtlTxtOnAction(ActionEvent event) {
+        addBtn.fire();
     }
     @FXML
     void addBtnOnAction(ActionEvent event) {

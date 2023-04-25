@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import lk.ijse.project_dkf.dto.LogHistory;
 import lk.ijse.project_dkf.dto.User;
 import lk.ijse.project_dkf.model.LogInModel;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 import lk.ijse.project_dkf.validation.inputsValidation;
@@ -58,15 +60,11 @@ public class LogInFormController {
                     logHistory.setUsrName(usrTxt.getText());
                     logHistory.setLogIn(LocalDateTime.now());
                 } else {
-                    new Alert(Alert.AlertType.ERROR,
-                            "Password is wrong!")
-                            .show();
+                    PopUps.popUps(AlertTypes.ERROR, "Password is Wrong", "Your password is wrong. Try again");
                     pwTxt.clear();
                 }
             } catch (Exception e) {
-                new Alert(Alert.AlertType.ERROR,
-                        "User name is wrong!")
-                        .show();
+                PopUps.popUps(AlertTypes.ERROR, "User-name is Wrong", "Your user-name is wrong. Try again");
                 usrTxt.clear();
                 pwTxt.clear();
             }

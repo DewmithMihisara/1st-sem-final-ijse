@@ -18,6 +18,8 @@ import lk.ijse.project_dkf.dto.tm.OrderRatioTM;
 import lk.ijse.project_dkf.dto.tm.OutputTM;
 import lk.ijse.project_dkf.dto.tm.PackingTM;
 import lk.ijse.project_dkf.model.*;
+import lk.ijse.project_dkf.notification.PopUps;
+import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 import lk.ijse.project_dkf.validation.inputsValidation;
@@ -86,14 +88,10 @@ public class OutputFormController implements Initializable {
             try {
                 boolean affectedRows = OutputModel.add(output);
                 if (affectedRows) {
-                    new Alert(Alert.AlertType.CONFIRMATION,
-                            "Add!")
-                            .show();
+                    PopUps.popUps(AlertTypes.CONFORMATION, "Output Add", "Output is add properly.");
                 }
             } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR,
-                        "Something is wrong")
-                        .show();
+                PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when add output.");
             }finally {
                 loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
                 clrCmbBx.setValue(null);
@@ -109,15 +107,11 @@ public class OutputFormController implements Initializable {
         try {
             boolean delete = OutputModel.delete(output, orderIdCmbBox.getSelectionModel().getSelectedItem());
             if (delete) {
-                new Alert(Alert.AlertType.CONFIRMATION,
-                        "Deleted !")
-                        .show();
+                PopUps.popUps(AlertTypes.CONFORMATION, "Output Add", "Output is delete properly.");
             }
 
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when delete output.");
         }finally {
             loadValues(orderIdCmbBox.getSelectionModel().getSelectedItem());
         }
@@ -194,10 +188,7 @@ public class OutputFormController implements Initializable {
             }
             outTbl.setItems(outputTMS);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,
-                    "Something is wrong")
-                    .show();
-        }
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when load values.");        }
     }
     private void setCellValueFactory() {
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));

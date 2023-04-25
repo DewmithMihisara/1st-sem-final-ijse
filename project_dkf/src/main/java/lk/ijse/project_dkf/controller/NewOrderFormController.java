@@ -60,6 +60,19 @@ public class NewOrderFormController implements Initializable {
     boolean cmpId, ttl, daily, pay, dedline;
     public static Order order;
     @FXML
+    void paymentTermTxtOnAction(ActionEvent event) {
+        ttlQtyTxt.requestFocus();
+    }
+    @FXML
+    void ttlQtyTxtOnAction(ActionEvent event) {
+        daylyOutTxt.requestFocus();
+    }
+    @FXML
+    void daylyOutTxtOnAction(ActionEvent event) {
+        dedlineDate.requestFocus();
+    }
+
+    @FXML
     void nextBtnOnAction(ActionEvent event) throws IOException {
         cmpId = inputsValidation.isNullCmb(companyCmbBox);
         ttl = inputsValidation.isNumberOrNull(ttlQtyTxt);

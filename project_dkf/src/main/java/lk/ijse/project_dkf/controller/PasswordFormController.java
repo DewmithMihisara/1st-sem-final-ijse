@@ -9,8 +9,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+
+import java.sql.SQLException;
 import java.util.Random;
 import lk.ijse.project_dkf.animation.ShakeTextAnimation;
+import lk.ijse.project_dkf.model.UserModel;
+import lk.ijse.project_dkf.util.Gmail;
 import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 import lk.ijse.project_dkf.validation.inputsValidation;
@@ -35,7 +39,7 @@ public class PasswordFormController {
     @FXML
     private Label nbLbl;
     private boolean pw, cnfPw;
-    public static int random;
+    public static int otpNum;
 
     {
         pw = false;
@@ -48,11 +52,17 @@ public class PasswordFormController {
     @FXML
     void nextBtnOnAction(ActionEvent event) throws IOException {
         cnfPw = inputsValidation.isNullTxt(pwConformTxt);
-
+        String ownerMail;
         if (pw) {
             if (cnfPw && pw) {
                 if (pwTxt.getText().equals(pwConformTxt.getText())) {
                     NewAcFormController.user.setPassword(pwTxt.getText());
+                    try {
+                        ownerMail= UserModel.getOwnerMail();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    otpNum=Gmail.getOtp(ownerMail);
                     Navigation.navigation(Rout.GMAIL, root);
                 } else {
                     ShakeTextAnimation.ShakeText(pwConformTxt);
