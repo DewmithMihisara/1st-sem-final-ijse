@@ -31,6 +31,7 @@ public class Navigation {
             case SHIP -> initUi("shipingForm.fxml");
             case PASSWORD -> initUi("passwordForm.fxml");
             case GMAIL -> initUi("gmailConfirmForm.fxml");
+            case FORGOT_PASS -> initUi("fogotPwForm.fxml");
         }
     }
     private static void initUi(String location) throws IOException {

@@ -142,7 +142,7 @@ public class ShipingFormController implements Initializable {
                 JasperViewer.viewReport(report,false);
             }
         } catch (SQLException e) {
-            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when shiping transaction.");
+            PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when shipping transaction.");
         }
     }
     @FXML

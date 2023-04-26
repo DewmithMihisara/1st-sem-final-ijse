@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.project_dkf.animation.ShakeTextAnimation;
 import lk.ijse.project_dkf.dto.LogHistory;
 import lk.ijse.project_dkf.dto.User;
 import lk.ijse.project_dkf.model.LogInModel;
@@ -41,9 +42,23 @@ public class LogInFormController {
 
     public static User user;
     public static LogHistory logHistory;
+    public static String usrName;
     boolean uName,pw;
     @FXML
-    void frgtPwBtnOnActon(ActionEvent event) {
+    void frgtPwBtnOnActon(ActionEvent event) throws IOException {
+        uName=inputsValidation.isNullTxt(usrTxt);
+        try {
+            boolean isUsr=LogInModel.isCorrextusr(usrTxt.getText());
+            if (isUsr){
+                usrName=usrTxt.getText();
+            }else {
+                PopUps.popUps(AlertTypes.ERROR,"User Name","Input user name is wrong.\n Try with correct one.");
+                ShakeTextAnimation.ShakeText(usrTxt);
+            }
+        } catch (SQLException e) {
+            PopUps.popUps(AlertTypes.WARNING,"SQL Warning","Database error when search user.");
+        }
+        Navigation.navigation(Rout.FORGOT_PASS,root);
     }
 
     @FXML

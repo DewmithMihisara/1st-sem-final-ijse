@@ -22,7 +22,7 @@ public class PopUps {
                 .title(title)
                 .text(test)
                 .graphic(new ImageView(img))
-                .hideAfter(Duration.seconds(4))
+                .hideAfter(Duration.seconds(3))
                 .position(Pos.CENTER_RIGHT)
                 .onAction(new EventHandler<ActionEvent>() {
                     @Override

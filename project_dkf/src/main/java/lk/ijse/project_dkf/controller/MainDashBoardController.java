@@ -29,6 +29,8 @@ import static lk.ijse.project_dkf.util.Rout.*;
 
 public class MainDashBoardController implements Initializable{
     @FXML
+    private Button logOutBtn;
+    @FXML
     private Button bkBtn;
     @FXML
     private Label timeTxt;
@@ -79,6 +81,7 @@ public class MainDashBoardController implements Initializable{
     }
     @FXML
     void clzBtnOnAction(ActionEvent event) {
+        logOutBtn.fire();
         Platform.exit();
         System.exit(0);
     }

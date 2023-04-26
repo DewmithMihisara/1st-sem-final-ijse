@@ -55,7 +55,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="978.0" layoutY="320.0" mnemonicParsing="false" onAction="#logOutBtnOnAction" prefHeight="104.0" prefWidth="261.0" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="974.0" AnchorPane.topAnchor="532.0">
+            <Button fx:id="logOutBtn" layoutX="978.0" layoutY="320.0" mnemonicParsing="false" onAction="#logOutBtnOnAction" prefHeight="104.0" prefWidth="261.0" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="974.0" AnchorPane.topAnchor="532.0">
                <graphic>
                   <ImageView fitHeight="70.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
                      <image>

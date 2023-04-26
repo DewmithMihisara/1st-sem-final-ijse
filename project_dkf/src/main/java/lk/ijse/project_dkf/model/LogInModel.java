@@ -9,10 +9,10 @@ import java.sql.SQLException;
 public class LogInModel {
     public static User isCorrect(String usrName) throws SQLException {
 
-        String sql="SELECT * FROM User WHERE UserName = ?";
-        ResultSet resultSet = CrudUtil.execute(sql,usrName);
+        String sql = "SELECT * FROM User WHERE UserName = ?";
+        ResultSet resultSet = CrudUtil.execute(sql, usrName);
 
-        if (resultSet.next()){
+        if (resultSet.next()) {
             return new User(
                     resultSet.getString(1),
                     resultSet.getString(2),
@@ -24,5 +24,15 @@ public class LogInModel {
 
         }
         return new User();
+    }
+
+    public static boolean isCorrextusr(String text) throws SQLException {
+        String sql = "SELECT * FROM User WHERE USERNAME=?";
+        ResultSet resultSet = CrudUtil.execute(sql,text);
+
+        if (resultSet.next()) {
+            return true;
+        }
+        return false;
     }
 }
