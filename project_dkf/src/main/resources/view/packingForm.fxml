@@ -56,5 +56,10 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <Button layoutX="1023.0" layoutY="59.0" mnemonicParsing="false" onAction="#pkBtnOnAction" prefHeight="44.0" prefWidth="200.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Get Packing" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

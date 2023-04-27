@@ -135,27 +135,32 @@
 				<reportElement x="20" y="0" width="98" height="50" uuid="749292d1-8bd0-4824-b23a-a692ed5de29e"/>
 				<imageExpression><![CDATA["/Users/dewmithmihisara/final-project-sem-1-dkf/project_dkf/src/main/resources/img/Logo.png"]]></imageExpression>
 			</image>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="92" y="111" width="92" height="20" uuid="16748677-1c7d-49ea-b11a-eb3b68d4690c">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa116d68-fb16-4fc8-916c-8013def4883c"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{OutputID}]]></textFieldExpression>
-			</textField>
 			<line>
 				<reportElement x="0" y="195" width="556" height="1" uuid="a5a483cc-1c24-4946-8b5d-8d907ec5c86a">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 			</line>
+			<textField>
+				<reportElement x="80" y="131" width="100" height="30" uuid="907fb606-11d6-4706-a806-54b60c097aa7"/>
+				<textFieldExpression><![CDATA[$P{orderId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="90" width="210" height="25" uuid="f788b18e-8a6a-4312-b08d-5c4decbf109d">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Today Output]]></text>
+			</staticText>
 		</band>
 	</title>
 	<columnHeader>
 		<band height="26">
 			<staticText>
-				<reportElement style="Column header" positionType="Float" x="0" y="-90" width="92" height="20" forecolor="#000000" uuid="f5de8d0e-c9e4-493d-8219-7e8de6012273">
+				<reportElement style="Column header" positionType="Float" x="0" y="-70" width="92" height="20" forecolor="#000000" uuid="f5de8d0e-c9e4-493d-8219-7e8de6012273">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa116d68-fb16-4fc8-916c-8013def4883c"/>
 				</reportElement>
 				<textElement>

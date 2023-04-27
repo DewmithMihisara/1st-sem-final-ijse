@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import lk.ijse.project_dkf.animation.SetTime;
 import lk.ijse.project_dkf.animation.ShakeTextAnimation;
 import lk.ijse.project_dkf.animation.defueltText;
+import lk.ijse.project_dkf.db.DBConnection;
 import lk.ijse.project_dkf.dto.Pack;
 import lk.ijse.project_dkf.dto.Stock;
 import lk.ijse.project_dkf.dto.tm.PackingTM;
@@ -19,16 +20,17 @@ import lk.ijse.project_dkf.model.*;
 import lk.ijse.project_dkf.notification.PopUps;
 import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.validation.inputsValidation;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class PackingFormController implements Initializable {
@@ -64,6 +66,17 @@ public class PackingFormController implements Initializable {
         clId=false;
         size=false;
         qty=false;
+    }
+    @FXML
+    void pkBtnOnAction(ActionEvent event) throws JRException, SQLException {
+        if (inputsValidation.isNullCmb(orderIdCmbBox)){
+            InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/packing.jrxml");
+            JasperReport compile =  JasperCompileManager.compileReport(rpt);
+            Map<String,Object> data = new HashMap<>();
+            data.put("orderId",orderIdCmbBox.getSelectionModel().getSelectedItem());
+            JasperPrint report = JasperFillManager.fillReport(compile,data, DBConnection.getInstance().getConnection());
+            JasperViewer.viewReport(report,false);
+        }
     }
     @FXML
     void addBtnOnAction(ActionEvent event) throws IOException {
