@@ -55,7 +55,7 @@ public class MainDashBoardController implements Initializable{
     @FXML
     void assistantOnAction(ActionEvent event) throws IOException {
         assistant = new Assistant();
-        String command = assistant.assistant();
+        String command = Assistant.assistant();
 
 
         if (command !=null){

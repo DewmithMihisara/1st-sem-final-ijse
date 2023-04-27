@@ -131,6 +131,7 @@ public class TrimCardFormController implements Initializable {
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "Order Not Placed").show();
             }finally {
+                OrderRatioController.addQty=0;
                 NewOrderFormController.order=null;
                 OrderRatioController.orderRatioTM=FXCollections.observableArrayList();
                 TrimCardFormController.trimCardObj=FXCollections.observableArrayList();

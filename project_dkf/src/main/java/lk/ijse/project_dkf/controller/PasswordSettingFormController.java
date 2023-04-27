@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import lk.ijse.project_dkf.animation.ShakeTextAnimation;
 import lk.ijse.project_dkf.dto.User;
 import lk.ijse.project_dkf.model.UserModel;
@@ -57,34 +58,31 @@ public class PasswordSettingFormController {
 
     @FXML
     void dnBtnOnAction(ActionEvent event) {
-        try {
-           User user= UserModel.getUser(LogInFormController.usrName);
-
-            if (user.getPassword().equals(oldPwTxt.getText())){
-                oldPw=true;
-            }else {
-                ShakeTextAnimation.ShakeText(oldPwTxt);
-            }
-            if (newPwTxt.getText().equals(confrmTxt.getText())){
-                cnPw=true;
-                if (pw && oldPw && cnPw){
-                    LogInFormController.user.setPassword(newPwTxt.getText());
-                    try {
-                        boolean isUpdate=UserModel.update(LogInFormController.user);
-                        if (isUpdate){
-                            PopUps.popUps(AlertTypes.CONFORMATION, "Update User", "Password update properly.");
-                        }
-                    } catch (SQLException e) {
-                        PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when update user.");
-                    }
-                }
-            }else {
-                ShakeTextAnimation.ShakeText(confrmTxt);
-            }
-        } catch (SQLException e) {
-
+        if (LogInFormController.user.getPassword().equals(oldPwTxt.getText())){
+            oldPw=true;
+            System.out.println("ok");
+        }else {
+            ShakeTextAnimation.ShakeText(oldPwTxt);
         }
-
+        if (newPwTxt.getText().equals(confrmTxt.getText())){
+            cnPw=true;
+            if (pw && oldPw && cnPw){
+                LogInFormController.user.setPassword(newPwTxt.getText());
+                try {
+                    boolean isUpdate=UserModel.update(LogInFormController.user);
+                    if (isUpdate){
+                        PopUps.popUps(AlertTypes.CONFORMATION, "Update User", "Password update properly.");
+                        oldPwTxt.setText("");
+                        newPwTxt.setText("");
+                        confrmTxt.setText("");
+                    }
+                } catch (SQLException e) {
+                    PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when update user.");
+                }
+            }
+        }else {
+            ShakeTextAnimation.ShakeText(confrmTxt);
+        }
     }
 
     @FXML

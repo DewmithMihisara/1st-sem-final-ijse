@@ -8,8 +8,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lk.ijse.project_dkf.animation.ShakeTextAnimation;
 import lk.ijse.project_dkf.dto.Buyer;
 import lk.ijse.project_dkf.dto.Order;
 import lk.ijse.project_dkf.dto.OrderRatio;
@@ -32,6 +34,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class OrderRatioController implements Initializable {
+    @FXML
+    private Text addQtyTxt;
+    @FXML
+    private Text orderQtyTxt;
+    @FXML
+    private Text reqQtyTxt;
     @FXML
     private Button addBtn;
     @FXML
@@ -73,7 +81,8 @@ public class OrderRatioController implements Initializable {
     @FXML
     private TableView<OrderRatioTM> tblOrderRatio;
     public static ObservableList<OrderRatioTM> orderRatioTM=FXCollections.observableArrayList();
-    boolean desc,clr,s,m,l,xl,xxl;
+    public static int addQty;
+    boolean desc,clr,s,m,l,xl,xxl,reqDone;
     {
         desc=false;
         clr=false;
@@ -82,6 +91,7 @@ public class OrderRatioController implements Initializable {
         l=false;
         xl=false;
         xxl=false;
+        reqDone=false;
     }
     @FXML
     void descriptionTxtOnAction(ActionEvent event) {
@@ -154,6 +164,31 @@ public class OrderRatioController implements Initializable {
             xlSizeTxt.setText("");
             xxlSizeTxt.setText("");
         }
+        addTtl();
+    }
+    void addTtl(){
+        int sSize=0,mSize=0,lSize=0,xlSize=0,xxlSize=0,req=0;
+        for (int i = 0; i < orderRatioTM.size(); i++) {
+            OrderRatioTM orders=orderRatioTM.get(i);
+            sSize+=orders.getS();
+            mSize+=orders.getM();
+            lSize+=orders.getL();
+            xlSize+=orders.getXl();
+            xxlSize+=orders.getXxl();
+        }
+        addQty= (sSize+mSize+lSize+xlSize+xxlSize);
+        addQtyTxt.setText(String.valueOf(addQty));
+        req=(NewOrderFormController.order.getTtlQty()-addQty);
+        reqQtyTxt.setText(String.valueOf(req));
+        if (req>0){
+            reqQtyTxt.setFill(Color.GREEN);
+        }
+        if (req<0){
+            reqQtyTxt.setFill(Color.RED);
+        }
+        if (req==0){
+            reqDone=true;
+        }
     }
     @FXML
     void deleteBtnOnAction(ActionEvent event) {
@@ -165,13 +200,18 @@ public class OrderRatioController implements Initializable {
                 break;
             }
         }
+        addTtl();
     }
     @FXML
     void nxtBtnOnAction(ActionEvent event) throws IOException {
         if (orderRatioTM.size()==0){
             PopUps.popUps(AlertTypes.INFORMATION, "Attention", "Please add order ratio.");
-        }else {
+        }
+        if (reqDone){
             Navigation.navigation(Rout.TRIM_CARD,pane);
+        }else {
+            PopUps.popUps(AlertTypes.ERROR,"Order Error","You have to add order ratio." +
+                    "\nOrder ratio must equal to order qty.");
         }
     }
     @Override
@@ -186,6 +226,9 @@ public class OrderRatioController implements Initializable {
         if (orderRatioTM !=null){
             loadValues();
         }
+        orderQtyTxt.setText(String.valueOf(NewOrderFormController.order.getTtlQty()));
+        reqQtyTxt.setText(String.valueOf(NewOrderFormController.order.getTtlQty()));
+        addQtyTxt.setText(String.valueOf(addQty));
     }
     private void generateOrderIDByArray() {
         OrderRatioTM orderRatio=orderRatioTM.get(orderRatioTM.size()-1);
