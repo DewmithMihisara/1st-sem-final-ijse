@@ -130,10 +130,6 @@
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Ransiriuyana, Ranapanadeniya, Rathgama.]]></text>
 			</staticText>
-			<image>
-				<reportElement x="20" y="0" width="98" height="50" uuid="8631f9f5-bcf7-4e84-ac8b-4f1a2569947d"/>
-				<imageExpression><![CDATA["/Users/dewmithmihisara/final-project-sem-1-dkf/project_dkf/src/main/resources/img/Logo.png"]]></imageExpression>
-			</image>
 			<textField>
 				<reportElement x="92" y="136" width="100" height="30" uuid="e3699f78-0dc9-4599-b63f-14e0c07562ea"/>
 				<textFieldExpression><![CDATA[$P{orderId}]]></textFieldExpression>
@@ -148,6 +144,10 @@
 				</textElement>
 				<text><![CDATA[Today Packing]]></text>
 			</staticText>
+			<image>
+				<reportElement x="10" y="0" width="109" height="50" uuid="ff6907e5-8d1d-4a70-beb5-f389dd13fe8d"/>
+				<imageExpression><![CDATA["/Users/dewmithmihisara/gdse-66-dewmith-mihisara/final-project-sem-1-dkf/project_dkf/src/main/resources/img/Logo.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>

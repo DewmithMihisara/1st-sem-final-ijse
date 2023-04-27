@@ -104,10 +104,6 @@
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Ransiriuyana, Ranapanadeniya, Rathgama.]]></text>
 			</staticText>
-			<image>
-				<reportElement x="20" y="0" width="98" height="50" uuid="fc0008b0-1187-4012-a49b-e4dbc1616dcf"/>
-				<imageExpression><![CDATA["/Users/dewmithmihisara/final-project-sem-1-dkf/project_dkf/src/main/resources/img/Logo.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="160" y="120" width="210" height="25" uuid="d1f8ecd0-c8d0-4650-b752-8a7c6800d9ff">
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -118,6 +114,10 @@
 				</textElement>
 				<text><![CDATA[LOGING HISTORY]]></text>
 			</staticText>
+			<image>
+				<reportElement x="10" y="0" width="109" height="50" uuid="100853f2-eb97-4680-ad3d-4dcd0f9b76d9"/>
+				<imageExpression><![CDATA["/Users/dewmithmihisara/gdse-66-dewmith-mihisara/final-project-sem-1-dkf/project_dkf/src/main/resources/img/Logo.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>

@@ -36,7 +36,6 @@ public class Assistant {
             SpeechResult r = recognizer.getResult();
             if (r != null) {
                 result = r.getHypothesis();
-                System.out.println("Recognized: " + result);
                 return result;
             }
         }

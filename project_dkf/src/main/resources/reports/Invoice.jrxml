@@ -171,8 +171,8 @@ FROM `Shipment`]]>
 				<textFieldExpression><![CDATA[$P{adrs}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="20" y="0" width="98" height="50" uuid="b9b358dd-063b-417d-a56c-050ceb6d19e1"/>
-				<imageExpression><![CDATA["/Users/dewmithmihisara/final-project-sem-1-dkf/project_dkf/src/main/resources/img/Logo.png"]]></imageExpression>
+				<reportElement x="10" y="0" width="109" height="50" uuid="667af272-243c-4977-899b-ec7793583686"/>
+				<imageExpression><![CDATA["/Users/dewmithmihisara/gdse-66-dewmith-mihisara/final-project-sem-1-dkf/project_dkf/src/main/resources/img/Logo.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
