@@ -60,6 +60,10 @@ public class FogotPwFormController implements Initializable {
         cnPwTxt.requestFocus();
     }
     @FXML
+    void bkBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.LOGIN,root);
+    }
+    @FXML
     void okBtnOnAction(ActionEvent event) {
         if (Integer.parseInt(otpTxt.getText())==otp){
             newPwTxt.setDisable(false);

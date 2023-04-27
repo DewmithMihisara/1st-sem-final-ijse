@@ -18,7 +18,7 @@
             <Button fx:id="logOutBtn" layoutX="1177.0" layoutY="578.0" mnemonicParsing="false" onAction="#logOutBtnOnAction" styleClass="iconBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="65.0" />
             <Button fx:id="userBtn" layoutX="1077.0" layoutY="574.0" mnemonicParsing="false" onAction="#userBtnOnAction" styleClass="iconBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.bottomAnchor="55.0" />
          </children></AnchorPane>
-      <Button fx:id="orderBtn" layoutX="479.0" layoutY="15.0" mnemonicParsing="false" onAction="#orderBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Order" AnchorPane.leftAnchor="479.0" AnchorPane.topAnchor="15.0">
+      <Button fx:id="orderBtn" layoutX="416.0" layoutY="16.0" mnemonicParsing="false" onAction="#orderBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Order" AnchorPane.leftAnchor="416.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -30,7 +30,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="909.0" layoutY="16.0" mnemonicParsing="false" onAction="#outputBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Output" AnchorPane.leftAnchor="909.0" AnchorPane.topAnchor="16.0">
+      <Button layoutX="909.0" layoutY="16.0" mnemonicParsing="false" onAction="#outputBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Output" AnchorPane.leftAnchor="834.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -42,7 +42,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="1103.0" layoutY="15.0" mnemonicParsing="false" onAction="#packingBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Packing" AnchorPane.leftAnchor="1103.0" AnchorPane.rightAnchor="162.0" AnchorPane.topAnchor="15.0">
+      <Button layoutX="1103.0" layoutY="15.0" mnemonicParsing="false" onAction="#packingBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Packing" AnchorPane.leftAnchor="1043.0" AnchorPane.topAnchor="15.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,7 +54,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="703.0" layoutY="16.0" mnemonicParsing="false" onAction="#inputBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Input" AnchorPane.leftAnchor="703.0" AnchorPane.topAnchor="16.0">
+      <Button layoutX="625.0" layoutY="22.0" mnemonicParsing="false" onAction="#inputBtnOnAction" prefWidth="175.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" text="Input" AnchorPane.leftAnchor="625.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -66,7 +66,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="bkBtn" layoutX="1341.0" layoutY="26.0" mnemonicParsing="false" onAction="#bkBtnOnAction" prefHeight="51.0" prefWidth="62.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="16.0">
+      <Button fx:id="bkBtn" layoutX="1341.0" layoutY="26.0" mnemonicParsing="false" onAction="#bkBtnOnAction" prefHeight="51.0" prefWidth="62.0" styleClass="bkBtn" stylesheets="@../style/dashboardStyle.css" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="16.0">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>

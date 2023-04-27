@@ -31,13 +31,12 @@ public class GmailConfirmFormController {
     private TextField otpTxt;
     boolean mail;
     @FXML
-    void clzBtnOnAction(ActionEvent event) {
-        Platform.exit();
-        System.exit(0);
-    }
-    @FXML
     void emailTxtOnAction(ActionEvent event) {
         conEmailTxt.requestFocus();
+    }
+    @FXML
+    void bkBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.PASSWORD,root);
     }
     @FXML
     void conEmailTxtOnAction(ActionEvent event) {

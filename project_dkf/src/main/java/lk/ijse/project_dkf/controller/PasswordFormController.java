@@ -3,6 +3,7 @@ package lk.ijse.project_dkf.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -10,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Random;
 import lk.ijse.project_dkf.animation.ShakeTextAnimation;
@@ -21,8 +23,9 @@ import lk.ijse.project_dkf.util.Rout;
 import lk.ijse.project_dkf.validation.inputsValidation;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
-public class PasswordFormController {
+public class PasswordFormController implements Initializable {
     @FXML
     private AnchorPane root;
     @FXML
@@ -76,9 +79,8 @@ public class PasswordFormController {
     }
 
     @FXML
-    void clzBtnOnAction(ActionEvent event) {
-        Platform.exit();
-        System.exit(0);
+    void bkBtnOnAction(ActionEvent event) throws IOException {
+        Navigation.navigation(Rout.NEW_AC,root);
     }
 
     @FXML
@@ -120,5 +122,17 @@ public class PasswordFormController {
         if (cc && capL && nb && sc) {
             pw = true;
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (NewAcFormController.user!=null){
+            setValues();
+        }
+    }
+
+    private void setValues() {
+        pwTxt.setText(NewAcFormController.user.getPassword());
+        pwConformTxt.setText(NewAcFormController.user.getPassword());
     }
 }

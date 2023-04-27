@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="root" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.project_dkf.controller.MainDashBoardController">
    <children>
-      <ImageView fitHeight="900.0" fitWidth="1440.0" layoutX="137.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="900.0" fitWidth="1440.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../img/DashboardForm.png" />
          </image>
@@ -35,7 +35,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button layoutX="397.0" layoutY="303.0" mnemonicParsing="false" prefHeight="280.0" prefWidth="261.0" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="356.0">
+            <Button fx:id="retailBtn" layoutX="397.0" layoutY="303.0" mnemonicParsing="false" onAction="#retailBtnOnAction" prefHeight="280.0" prefWidth="261.0" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="356.0">
                <graphic>
                   <ImageView fitHeight="235.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -90,14 +90,19 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="1391.0" layoutY="15.0" minHeight="29.0" minWidth="29.0" mnemonicParsing="false" onAction="#clzBtnOnAction" prefHeight="35.0" prefWidth="35.0" stylesheets="@../style/menuBtn.css">
+      <Button fx:id="assBtn" layoutX="72.0" layoutY="99.0" minHeight="29.0" minWidth="29.0" mnemonicParsing="false" onAction="#assistantOnAction" prefHeight="36.0" prefWidth="39.0" stylesheets="@../style/menuBtn.css">
          <graphic>
-            <ImageView fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/logo/close.png" />
+                  <Image url="@../img/logo/microphone.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="assLbl" layoutX="129.0" layoutY="105.0" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

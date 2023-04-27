@@ -12,8 +12,10 @@ public class NewWindowNavigation {
     public static void windowNavi(Rout rout) throws IOException {
         switch (rout) {
             case BUYER -> initUi("buyerForm.fxml");
-            case ORDER_RATIO -> initUi("orderRatioForm.fxml");
-            case TRIM_CARD -> initUi("trimCardForm.fxml");
+            case CUT_IN -> initUi("cutInputForm.fxml");
+            case OUTPUT -> initUi("outputForm.fxml");
+            case PAKING -> initUi("packingForm.fxml");
+            case NEW_ORDER -> initUi("newOrderForm.fxml");
         }
     }
     private static void initUi(String location) throws IOException {

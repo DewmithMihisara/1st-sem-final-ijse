@@ -10,6 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lk.ijse.project_dkf.animation.SetTime;
+import lk.ijse.project_dkf.animation.ShakeTextAnimation;
+import lk.ijse.project_dkf.db.DBConnection;
 import lk.ijse.project_dkf.dto.Buyer;
 import lk.ijse.project_dkf.dto.OrderRatio;
 import lk.ijse.project_dkf.dto.Output;
@@ -24,16 +26,17 @@ import lk.ijse.project_dkf.util.Navigation;
 import lk.ijse.project_dkf.util.Rout;
 import lk.ijse.project_dkf.validation.inputsValidation;
 import lombok.Getter;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 @Getter
 public class OutputFormController implements Initializable {
@@ -98,6 +101,22 @@ public class OutputFormController implements Initializable {
                 sizeCmbBx.setValue(null);
                 qtyTxt.setText("");
             }
+        }
+
+    }
+    @FXML
+    void reportOnAction(ActionEvent event) throws JRException, SQLException {
+        if (inputsValidation.isNullCmb(orderIdCmbBox)){
+            InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/DailyOut.jrxml");
+            JasperReport compile =  JasperCompileManager.compileReport(rpt);
+            Map<String,Object> data = new HashMap<>();
+            data.put("orderId",orderIdCmbBox.getSelectionModel().getSelectedItem());
+            data.put("date",Date.valueOf(dateTxt.getText()));
+            JasperPrint report = JasperFillManager.fillReport(compile,data, DBConnection.getInstance().getConnection());
+            JasperViewer.viewReport(report,false);
+        }else {
+            ShakeTextAnimation.ShakeText(orderIdCmbBox);
+            PopUps.popUps(AlertTypes.ERROR, "REPORTS", "Report cant print.");
         }
 
     }

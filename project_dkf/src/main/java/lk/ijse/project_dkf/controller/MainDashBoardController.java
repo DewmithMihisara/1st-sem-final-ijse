@@ -15,7 +15,10 @@ import lk.ijse.project_dkf.model.LogHistoryModel;
 import lk.ijse.project_dkf.notification.PopUps;
 import lk.ijse.project_dkf.util.AlertTypes;
 import lk.ijse.project_dkf.util.Navigation;
+import lk.ijse.project_dkf.util.NewWindowNavigation;
 import lk.ijse.project_dkf.util.Rout;
+import lk.ijse.project_dkf.voiceAssistant.Assistant;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +31,10 @@ import java.util.ResourceBundle;
 import static lk.ijse.project_dkf.util.Rout.*;
 
 public class MainDashBoardController implements Initializable{
+    @FXML
+    private Label assLbl;
+    @FXML
+    private Button retailBtn;
     @FXML
     private Button logOutBtn;
     @FXML
@@ -43,8 +50,40 @@ public class MainDashBoardController implements Initializable{
     @FXML
     private Button employeeBtn;
     @FXML
+    private Button assBtn;
+    Assistant assistant;
+    @FXML
+    void assistantOnAction(ActionEvent event) throws IOException {
+        assistant = new Assistant();
+        String command = assistant.assistant();
+
+
+        if (command !=null){
+            assLbl.setText("can't catch it. say again");
+        } else if (command.contains("SETTINGS")) {
+            Navigation.navigation(Rout.USER_SETTINGS,midleStage);
+        } else if (command.contains("ORDER")) {
+            Navigation.navigation(ORDER,root);
+        } else if (command.contains("NEW ORDER")) {
+            NewWindowNavigation.windowNavi(NEW_ORDER);
+        } else if (command.contains("INPUT")) {
+            NewWindowNavigation.windowNavi(CUT_IN);
+        }else if (command.contains("OUTPUT")){
+            NewWindowNavigation.windowNavi(OUTPUT);
+        } else if (command.contains("PACKING")) {
+            NewWindowNavigation.windowNavi(PAKING);
+        }else {
+            assLbl.setText("No command Found, Bye!");
+        }
+    }
+    @FXML
     void testBtnOnAction(ActionEvent event) throws IOException {
         Navigation.navigation(DASHBOARD,root);
+    }
+    @FXML
+    void retailBtnOnAction(ActionEvent event) {
+        new animatefx.animation.Shake(retailBtn).play();
+        PopUps.popUps(AlertTypes.ERROR,"Under Development","This option is in under development. \nExpect this feature in a future update.");
     }
     @FXML
     void buyerBtnOnAction(ActionEvent event) throws IOException {
@@ -62,7 +101,7 @@ public class MainDashBoardController implements Initializable{
     @FXML
     void employeeBtnOnAction(ActionEvent event) {
         new animatefx.animation.Shake(employeeBtn).play();
-        PopUps.popUps(AlertTypes.ERROR,"Under Development","This option is in under development. Expect this feature in a future update.");
+        PopUps.popUps(AlertTypes.ERROR,"Under Development","This option is in under development. \nExpect this feature in a future update.");
     }
     @FXML
     void logOutBtnOnAction(ActionEvent event) throws IOException {
@@ -79,15 +118,11 @@ public class MainDashBoardController implements Initializable{
         bkBtn.setVisible(true);
         Navigation.navigation(USER_SETTINGS,midleStage);
     }
-    @FXML
-    void clzBtnOnAction(ActionEvent event) {
-        logOutBtn.fire();
-        Platform.exit();
-        System.exit(0);
-    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setTimeLbl();
+
     }
     private void setTimeLbl() {
         SetTime.setTime(timeTxt);

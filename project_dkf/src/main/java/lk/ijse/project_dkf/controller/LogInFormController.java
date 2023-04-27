@@ -92,12 +92,6 @@ public class LogInFormController {
     }
 
     @FXML
-    void clzBtnOnAction(ActionEvent event) {
-        Platform.exit();
-        System.exit(0);
-    }
-
-    @FXML
     void pwOnAction(ActionEvent event) {
         sgnMainBtn.fire();
     }

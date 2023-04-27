@@ -51,11 +51,11 @@
          </font>
       </Button>
       <Line endX="77.0" layoutX="608.99" layoutY="305.0" startX="24.0" stroke="WHITE" strokeWidth="3.0" />
-      <Button layoutX="1404.0" layoutY="19.0" minHeight="29.0" minWidth="29.0" mnemonicParsing="false" onAction="#clzBtnOnAction" prefHeight="35.0" prefWidth="35.0" stylesheets="@../style/menuBtn.css" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="9.0">
+      <Button layoutX="489.0" layoutY="124.0" minHeight="29.0" minWidth="29.0" mnemonicParsing="false" onAction="#bkBtnOnAction" prefHeight="36.0" prefWidth="39.0" stylesheets="@../style/menuBtn.css" AnchorPane.leftAnchor="479.0" AnchorPane.topAnchor="114.0">
          <graphic>
-            <ImageView fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/logo/close.png" />
+                  <Image url="@../img/logo/previous.png" />
                </image>
             </ImageView>
          </graphic>

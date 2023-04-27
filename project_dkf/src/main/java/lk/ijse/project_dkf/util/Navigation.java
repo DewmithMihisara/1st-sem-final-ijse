@@ -32,6 +32,7 @@ public class Navigation {
             case PASSWORD -> initUi("passwordForm.fxml");
             case GMAIL -> initUi("gmailConfirmForm.fxml");
             case FORGOT_PASS -> initUi("fogotPwForm.fxml");
+            case PASSWORD_SETTING -> initUi("passwordSettingForm.fxml");
         }
     }
     private static void initUi(String location) throws IOException {
