@@ -14,7 +14,6 @@ import java.io.IOException;
 
 public class Assistant {
     private static LiveSpeechRecognizer recognizer;
-
     public static String assistant() {
         Configuration configuration = new Configuration();
         configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
