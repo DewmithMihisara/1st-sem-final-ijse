@@ -1,7 +1,6 @@
 package lk.ijse.project_dkf.model;
 
 import lk.ijse.project_dkf.dto.Cut;
-import lk.ijse.project_dkf.dto.Pack;
 import lk.ijse.project_dkf.dto.tm.CutTM;
 import lk.ijse.project_dkf.util.CrudUtil;
 
