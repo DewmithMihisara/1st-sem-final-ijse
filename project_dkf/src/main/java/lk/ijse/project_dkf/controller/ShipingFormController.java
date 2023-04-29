@@ -132,15 +132,22 @@ public class ShipingFormController implements Initializable {
         try {
             boolean isPlaced= ShippinPlaceModel.shipmentPlace(shipments);
             PopUps.popUps(AlertTypes.CONFORMATION, "Shipped", "Shipment is done properly.");
-            if (isPlaced){
-                InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/Invoice.jrxml");
-                JasperReport compile =  JasperCompileManager.compileReport(rpt);
-                Map<String,Object> data = new HashMap<>();
-                data.put("name",shipments.get(0).getBuyerName());
-                data.put("adrs",shipments.get(0).getBuyerAddress());
-                JasperPrint report = JasperFillManager.fillReport(compile,data, DBConnection.getInstance().getConnection());
-                JasperViewer.viewReport(report,false);
-            }
+            Thread printThread = new Thread(() -> {
+                try {
+                    if (isPlaced){
+                        InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/Invoice.jrxml");
+                        JasperReport compile =  JasperCompileManager.compileReport(rpt);
+                        Map<String,Object> data = new HashMap<>();
+                        data.put("name",shipments.get(0).getBuyerName());
+                        data.put("adrs",shipments.get(0).getBuyerAddress());
+                        JasperPrint report = JasperFillManager.fillReport(compile,data, DBConnection.getInstance().getConnection());
+                        JasperViewer.viewReport(report,false);
+                    }
+                } catch (JRException | SQLException e){
+                    e.printStackTrace();
+                }
+            });
+            printThread.start();
         } catch (SQLException e) {
             PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Database error when shipping transaction.");
         }

@@ -28,7 +28,7 @@ public class Assistant {
         }
 
         recognizer.startRecognition(true);
-        System.out.println("Lisining");
+        System.out.println("listening");
 
         String result = null;
         long startTime = System.currentTimeMillis();

@@ -69,14 +69,21 @@ public class PackingFormController implements Initializable {
     }
     @FXML
     void pkBtnOnAction(ActionEvent event) throws JRException, SQLException {
-        if (inputsValidation.isNullCmb(orderIdCmbBox)){
-            InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/packing.jrxml");
-            JasperReport compile =  JasperCompileManager.compileReport(rpt);
-            Map<String,Object> data = new HashMap<>();
-            data.put("orderId",orderIdCmbBox.getSelectionModel().getSelectedItem());
-            JasperPrint report = JasperFillManager.fillReport(compile,data, DBConnection.getInstance().getConnection());
-            JasperViewer.viewReport(report,false);
-        }
+        Thread printThread = new Thread(() -> {
+            try {
+                if (inputsValidation.isNullCmb(orderIdCmbBox)){
+                    InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/packing.jrxml");
+                    JasperReport compile =  JasperCompileManager.compileReport(rpt);
+                    Map<String,Object> data = new HashMap<>();
+                    data.put("orderId",orderIdCmbBox.getSelectionModel().getSelectedItem());
+                    JasperPrint report = JasperFillManager.fillReport(compile,data, DBConnection.getInstance().getConnection());
+                    JasperViewer.viewReport(report,false);
+                }
+            } catch (JRException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        printThread.start();
     }
     @FXML
     void addBtnOnAction(ActionEvent event) throws IOException {

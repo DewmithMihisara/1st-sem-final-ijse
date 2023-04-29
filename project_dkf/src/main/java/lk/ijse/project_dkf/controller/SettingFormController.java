@@ -97,18 +97,21 @@ public class SettingFormController implements Initializable {
 
     @FXML
     void printBtnOnAction(ActionEvent event) {
-        try {
-            boolean isTrue = LogHistoryModel.isHave();
-            if (isTrue){
-                InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/logHistory.jrxml");
-                JasperReport compile =  JasperCompileManager.compileReport(rpt);
-                Map<String,Object> data = new HashMap<>();
-                JasperPrint report = JasperFillManager.fillReport(compile,data, DBConnection.getInstance().getConnection());
-                JasperViewer.viewReport(report,false);
-            }
-        } catch (SQLException | JRException e) {
-            throw new RuntimeException(e);
-        }
+            Thread printThread = new Thread(() -> {
+                try {
+                    boolean isTrue = LogHistoryModel.isHave();
+                    if (isTrue){
+                        InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/logHistory.jrxml");
+                        JasperReport compile =  JasperCompileManager.compileReport(rpt);
+                        Map<String,Object> data = new HashMap<>();
+                        JasperPrint report = JasperFillManager.fillReport(compile,data, DBConnection.getInstance().getConnection());
+                        JasperViewer.viewReport(report,false);
+                    }
+                } catch (JRException | SQLException e){
+                    e.printStackTrace();
+                }
+            });
+            printThread.start();
     }
 
     @FXML

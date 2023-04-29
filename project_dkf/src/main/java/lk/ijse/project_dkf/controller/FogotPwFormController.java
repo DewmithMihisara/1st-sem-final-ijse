@@ -35,61 +35,73 @@ public class FogotPwFormController implements Initializable {
     @FXML
     private TextField otpTxt;
     private int otp;
+
     @FXML
     void cnPwTxtOnAction(ActionEvent event) {
         doneBtn.fire();
     }
+
     @FXML
     void dnBtnOnAction(ActionEvent event) throws IOException {
-        if (newPwTxt.getText().equals(cnPwTxt.getText())){
+        if (newPwTxt.getText().equals(cnPwTxt.getText())) {
             try {
-                boolean isUpdate= ForgotPwModel.updatePw(newPwTxt.getText(), LogInFormController.usrName);
-                if (isUpdate){
-                    PopUps.popUps(AlertTypes.CONFORMATION,"Password","Password is reset properly.");
-                    Navigation.navigation(Rout.LOGIN,root);
-                }else {
-                    PopUps.popUps(AlertTypes.ERROR,"Password","Password is not update");
+                boolean isUpdate = ForgotPwModel.updatePw(newPwTxt.getText(), LogInFormController.usrName);
+                if (isUpdate) {
+                    PopUps.popUps(AlertTypes.CONFORMATION, "Password", "Password is reset properly.");
+                    Navigation.navigation(Rout.LOGIN, root);
+                } else {
+                    PopUps.popUps(AlertTypes.ERROR, "Password", "Password is not update");
                 }
             } catch (SQLException e) {
-                PopUps.popUps(AlertTypes.WARNING,"SQL Warning","Data base error when update password");
+                PopUps.popUps(AlertTypes.WARNING, "SQL Warning", "Data base error when update password");
             }
         }
     }
+
     @FXML
     void newPwTxtOnAction(ActionEvent event) {
         cnPwTxt.requestFocus();
     }
+
     @FXML
     void bkBtnOnAction(ActionEvent event) throws IOException {
-        Navigation.navigation(Rout.LOGIN,root);
+        Navigation.navigation(Rout.LOGIN, root);
     }
+
     @FXML
     void okBtnOnAction(ActionEvent event) {
-        if (Integer.parseInt(otpTxt.getText())==otp){
+        if (Integer.parseInt(otpTxt.getText()) == otp) {
             newPwTxt.setDisable(false);
             cnPwTxt.setDisable(false);
             doneBtn.setDisable(false);
             newPwTxt.requestFocus();
-        }else {
+        } else {
             ShakeTextAnimation.ShakeText(otpTxt);
         }
     }
+
     @FXML
     void otpTxtOnAction(ActionEvent event) {
         okBtn.fire();
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sendOtp();
         otpTxt.requestFocus();
     }
+
     private void sendOtp() {
         String ownerMail;
         try {
-            ownerMail= UserModel.getOwnerMail();
+            ownerMail = UserModel.getOwnerMail();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        otp= Gmail.getOtp(ownerMail, MailTypes.FORGOT_PW);
+        Thread printThread = new Thread(() -> {
+            otp = Gmail.getOtp(ownerMail, MailTypes.FORGOT_PW);
+
+        });
+        printThread.start();
     }
 }

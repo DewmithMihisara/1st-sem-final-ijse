@@ -13,10 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.project_dkf.animation.SetTime;
 import lk.ijse.project_dkf.model.LogHistoryModel;
 import lk.ijse.project_dkf.notification.PopUps;
-import lk.ijse.project_dkf.util.AlertTypes;
-import lk.ijse.project_dkf.util.Navigation;
-import lk.ijse.project_dkf.util.NewWindowNavigation;
-import lk.ijse.project_dkf.util.Rout;
+import lk.ijse.project_dkf.util.*;
 import lk.ijse.project_dkf.voiceAssistant.Assistant;
 
 
@@ -52,11 +49,11 @@ public class MainDashBoardController implements Initializable{
     @FXML
     private Button assBtn;
     Assistant assistant;
+    String command;
     @FXML
     void assistantOnAction(ActionEvent event) throws IOException {
         assistant = new Assistant();
-        String command = Assistant.assistant();
-
+        command = Assistant.assistant();
 
         if (command !=null){
             assLbl.setText("can't catch it. say again");
@@ -111,6 +108,7 @@ public class MainDashBoardController implements Initializable{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        LogInFormController.logHistory=null;
         Navigation.navigation(LOGIN,root);
     }
     @FXML
@@ -118,7 +116,6 @@ public class MainDashBoardController implements Initializable{
         bkBtn.setVisible(true);
         Navigation.navigation(USER_SETTINGS,midleStage);
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setTimeLbl();

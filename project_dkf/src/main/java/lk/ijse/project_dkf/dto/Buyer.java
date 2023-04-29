@@ -1,7 +1,5 @@
 package lk.ijse.project_dkf.dto;
-
 import lombok.*;
-
 @Setter
 @Getter
 @AllArgsConstructor

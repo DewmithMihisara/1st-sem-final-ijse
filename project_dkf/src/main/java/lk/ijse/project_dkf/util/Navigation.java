@@ -3,6 +3,7 @@ package lk.ijse.project_dkf.util;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -12,7 +13,6 @@ public class Navigation {
         Navigation.root = root;
         Navigation.root.getChildren().clear();
         Stage window = (Stage) Navigation.root.getScene().getWindow();
-
         switch (rout) {
             case LOGIN -> initUi("logInForm.fxml");
             case NEW_AC -> initUi("newAcForm.fxml");

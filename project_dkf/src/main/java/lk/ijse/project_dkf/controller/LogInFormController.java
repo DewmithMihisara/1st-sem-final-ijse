@@ -51,6 +51,7 @@ public class LogInFormController {
             boolean isUsr=LogInModel.isCorrextusr(usrTxt.getText());
             if (isUsr){
                 usrName=usrTxt.getText();
+                Navigation.navigation(Rout.FORGOT_PASS,root);
             }else {
                 PopUps.popUps(AlertTypes.ERROR,"User Name","Input user name is wrong.\n Try with correct one.");
                 ShakeTextAnimation.ShakeText(usrTxt);
@@ -58,7 +59,6 @@ public class LogInFormController {
         } catch (SQLException e) {
             PopUps.popUps(AlertTypes.WARNING,"SQL Warning","Database error when search user.");
         }
-        Navigation.navigation(Rout.FORGOT_PASS,root);
     }
 
     @FXML

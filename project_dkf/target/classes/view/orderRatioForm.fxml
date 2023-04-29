@@ -53,7 +53,7 @@
             <Font size="20.0" />
          </font>
       </TextField>
-      <Text fx:id="orderIdTxt" fill="WHITE" layoutX="174.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="264.3797302246094">
+      <Text fx:id="orderIdTxt" fill="WHITE" layoutX="174.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -95,5 +95,20 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <Text fx:id="orderQtyTxt" fill="WHITE" layoutX="468.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="addQtyTxt" fill="WHITE" layoutX="468.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="reqQtyTxt" fill="WHITE" layoutX="468.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

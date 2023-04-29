@@ -1,6 +1,4 @@
 package lk.ijse.project_dkf.controller;
-
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,7 +28,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-
 public class BuyerFormController implements Initializable {
     @FXML
     private AnchorPane midleStage;

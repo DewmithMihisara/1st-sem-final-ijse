@@ -107,13 +107,20 @@ public class OutputFormController implements Initializable {
     @FXML
     void reportOnAction(ActionEvent event) throws JRException, SQLException {
         if (inputsValidation.isNullCmb(orderIdCmbBox)){
-            InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/DailyOut.jrxml");
-            JasperReport compile =  JasperCompileManager.compileReport(rpt);
-            Map<String,Object> data = new HashMap<>();
-            data.put("orderId",orderIdCmbBox.getSelectionModel().getSelectedItem());
-            data.put("date",Date.valueOf(dateTxt.getText()));
-            JasperPrint report = JasperFillManager.fillReport(compile,data, DBConnection.getInstance().getConnection());
-            JasperViewer.viewReport(report,false);
+            Thread printThread = new Thread(() -> {
+                try {
+                    InputStream rpt = ShipingFormController.class.getResourceAsStream("/reports/DailyOut.jrxml");
+                    JasperReport compile =  JasperCompileManager.compileReport(rpt);
+                    Map<String,Object> data = new HashMap<>();
+                    data.put("orderId",orderIdCmbBox.getSelectionModel().getSelectedItem());
+                    data.put("date",Date.valueOf(dateTxt.getText()));
+                    JasperPrint report = JasperFillManager.fillReport(compile,data, DBConnection.getInstance().getConnection());
+                    JasperViewer.viewReport(report,false);
+                } catch (JRException | SQLException e){
+                    e.printStackTrace();
+                }
+            });
+            printThread.start();
         }else {
             ShakeTextAnimation.ShakeText(orderIdCmbBox);
             PopUps.popUps(AlertTypes.ERROR, "REPORTS", "Report cant print.");

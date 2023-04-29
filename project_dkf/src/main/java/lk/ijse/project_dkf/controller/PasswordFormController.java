@@ -66,7 +66,10 @@ public class PasswordFormController implements Initializable {
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
-                    otpNum=Gmail.getOtp(ownerMail, MailTypes.NEW_AC);
+                    Thread printThread = new Thread(() -> {
+                        otpNum=Gmail.getOtp(ownerMail, MailTypes.NEW_AC);
+                    });
+                    printThread.start();
                     Navigation.navigation(Rout.GMAIL, root);
                 } else {
                     ShakeTextAnimation.ShakeText(pwConformTxt);
