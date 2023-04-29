@@ -8,6 +8,7 @@ CREATE TABLE User(
     UserEmail VARCHAR(50) NOT NULL ,
     UserContact VARCHAR(12) NOT NULL,
     UserAddress TEXT,
+    Position VARCHAR(30),
     CONSTRAINT PRIMARY KEY (UserName)
 );
 
@@ -287,4 +288,3 @@ CREATE TABLE StockInvoice(
     CONSTRAINT PRIMARY KEY (StockID,InvoiceID)
 );
 
-INSERT INTO User (UserName, Password, UserEmail, UserContact, UserAddress) VALUES ('a','a','a','a','a');
