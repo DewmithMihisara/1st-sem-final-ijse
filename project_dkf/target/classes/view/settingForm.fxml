@@ -55,8 +55,8 @@
       <TableView fx:id="logHistoryTbl" layoutX="625.0" layoutY="146.0" prefHeight="357.0" prefWidth="630.0">
          <columns>
             <TableColumn fx:id="colName" minWidth="7.0" prefWidth="157.00982666015625" text="Name" />
-            <TableColumn fx:id="logInTimeClm" minWidth="7.0" prefWidth="233.0137939453125" text="Address" />
-            <TableColumn fx:id="logOutTimeClm" minWidth="7.0" prefWidth="236.0118408203125" text="Contact" />
+            <TableColumn fx:id="logInTimeClm" minWidth="7.0" prefWidth="233.0137939453125" text="Log-In" />
+            <TableColumn fx:id="logOutTimeClm" minWidth="7.0" prefWidth="236.0118408203125" text="Log-Out" />
          </columns>
       </TableView>
       <Button layoutX="1164.0" layoutY="70.0" mnemonicParsing="false" onAction="#printBtnOnAction" prefHeight="44.0" prefWidth="91.0" styleClass="btn" stylesheets="@../style/loginStyle.css" text="Print" textFill="WHITE">
